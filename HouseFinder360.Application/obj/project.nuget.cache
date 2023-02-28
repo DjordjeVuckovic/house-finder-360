@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eKK9igLsMhY5vS+q6DO24Mq3NXEFBZ3AJz6SwZOLku09PDBtnm2AvYWYb1FxNuq3fdWlmdcIDIh0VzF6uoolCA==",
+  "success": true,
+  "projectFilePath": "C:\\house-finder-360-be\\HouseFinder360\\HouseFinder360.Application\\HouseFinder360.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\djord\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

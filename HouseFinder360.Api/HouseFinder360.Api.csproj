@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+      <UserSecretsId>7cbe0d2f-a34c-4ca0-a7b5-776dbf872523</UserSecretsId>
+  </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HouseFinder360.Application\HouseFinder360.Application.csproj" />
+      <ProjectReference Include="..\HouseFinder360.Infrastructure\HouseFinder360.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NSwag.AspNetCore" Version="13.18.2" />
+    </ItemGroup>
+
+</Project>
