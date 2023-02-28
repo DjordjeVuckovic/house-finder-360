@@ -1,4 +1,5 @@
-﻿using HouseFinder360.Application.Common.Interfaces.Services;
+﻿using System;
+using HouseFinder360.Application.Common.Interfaces.Services;
 
 namespace HouseFinder360.Infrastructure.Services;
 

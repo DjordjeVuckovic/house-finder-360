@@ -1,4 +1,6 @@
-﻿namespace HouseFinder360.Application.Common.Interfaces.Services;
+﻿using System;
+
+namespace HouseFinder360.Application.Common.Interfaces.Services;
 
 public interface IDateTimeProvider
 {

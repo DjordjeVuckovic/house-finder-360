@@ -1,4 +1,6 @@
-﻿namespace HouseFinder360.Application.Common.Interfaces.Authentication;
+﻿using System;
+
+namespace HouseFinder360.Application.Common.Interfaces.Authentication;
 
 public interface IJwtTokenGenerator
 {

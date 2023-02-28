@@ -1,7 +1,9 @@
-﻿namespace HouseFinder360.Application.Authentication;
+﻿using FluentResults;
+
+namespace HouseFinder360.Application.Authentication;
 
 public interface IAuthenticationService
 {
-   AuthResult Login(string email, string password);
-   AuthResult Register(string firstName, string lastName, string email, string password);
+   Result<AuthResult> Login(string email, string password);
+   Result<AuthResult> Register(string firstName, string lastName, string email, string password);
 }

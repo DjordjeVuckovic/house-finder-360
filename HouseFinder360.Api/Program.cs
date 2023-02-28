@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 }
 var app = builder.Build();
 {
-    app.UseStaticFiles();
+    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.MapControllers();
     app.UseOpenApi();

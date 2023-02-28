@@ -1,6 +1,8 @@
 ﻿using HouseFinder360.Application.Common.Interfaces.Authentication;
+using HouseFinder360.Application.Common.Interfaces.Persistence;
 using HouseFinder360.Application.Common.Interfaces.Services;
 using HouseFinder360.Infrastructure.Authentication;
+using HouseFinder360.Infrastructure.Persistence;
 using HouseFinder360.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,7 @@ public static class DependencyInjection
         services.Configure<JwtSettings>(builderConfiguration.GetSection(JwtSettings.SectionName));
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
 }
