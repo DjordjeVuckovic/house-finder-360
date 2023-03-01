@@ -1,38 +1,43 @@
 ﻿using HouseFinder360.Api.Requests.Auth;
 using HouseFinder360.Api.Responses;
 using HouseFinder360.Application.Authentication;
+using HouseFinder360.Application.Authentication.Commands.Register;
+using HouseFinder360.Application.Authentication.Query.Login;
 using HouseFinder360.Application.Common.Errors;
+using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HouseFinder360.Api.Controllers;
 [Route("api/v1/[controller]")]
 public class AuthenticationController:BaseApiController
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly ISender _sender;
+    private readonly IMapper _mapper;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
+    public AuthenticationController(ISender sender, IMapper mapper)
     {
-        _authenticationService = authenticationService;
+        _sender = sender;
+        _mapper = mapper;
     }
 
-    [Route("register")]
-    [HttpPost]
-    public ActionResult<AuthenticationResponse> Register(RegisterRequest registerRequest)
+    
+    [HttpPost("register")]
+    public async Task<ActionResult<AuthenticationResponse>> Register([FromBody] RegisterRequest registerRequest)
     {
-        var result = _authenticationService.Register(
-            registerRequest.FirstName,
-            registerRequest.LastName,
-            registerRequest.Email,
-            registerRequest.Password);
-        if (result.IsFailed) return CreateErrorResponse(result.Errors);
-        var authToken = new AuthenticationResponse(result.Value.Token);
+        var command = _mapper.Map<RegisterCommand>(registerRequest);
+        var authResult = await _sender.Send(command);
+        
+        if (authResult.IsFailed) return CreateErrorResponse(authResult.Errors);
+        var authToken = _mapper.Map<AuthenticationResponse>(authResult.Value);
         return Ok(authToken);   
         
     }
-    [Route("login")]
-    [HttpPost]
-    public IActionResult Login(LoginRequest loginRequest)
+    [HttpPost("login")]
+    public async Task<ActionResult<AuthenticationResponse>> Login([FromBody] LoginRequest loginRequest)
     {
+        var query = _mapper.Map<LoginQuery>(loginRequest);
+        var loginResult = await _sender.Send(query);
         return Ok(loginRequest);
     }
 }

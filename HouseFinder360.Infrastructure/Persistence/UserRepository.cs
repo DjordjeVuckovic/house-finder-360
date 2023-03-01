@@ -6,9 +6,9 @@ namespace HouseFinder360.Infrastructure.Persistence;
 public class UserRepository:IUserRepository
 {
     private static readonly List<User> _users = new();
-    public User? GetUserByEmail(string email)
+    public  User? GetUserByEmail(string email)
     {
-        return _users.SingleOrDefault(user => user.Email == email);
+        return  _users.SingleOrDefault(user => user.Email == email);
     }
 
     public void Add(User user)

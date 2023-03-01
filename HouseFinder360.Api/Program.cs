@@ -1,3 +1,4 @@
+using HouseFinder360.Api;
 using HouseFinder360.Application;
 using HouseFinder360.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -6,10 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    builder.Services.AddControllers();
-    builder.Services.AddSwaggerDocument();
 }
 var app = builder.Build();
 {
