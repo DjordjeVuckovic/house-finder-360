@@ -3,7 +3,7 @@ namespace HouseFinder360.Api.Controllers;
 
 [Route("api/v1/[controller]")]
 [ApiController]
-public class EstateController:ControllerBase
+public class EstatesController:ControllerBase
 {
     [HttpGet]
     public IActionResult GetAll()

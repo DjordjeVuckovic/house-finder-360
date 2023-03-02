@@ -20,10 +20,11 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
 
     public async Task<Result<AuthResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
         var user =  _userRepository.GetUserByEmail(query.Email);
         if (user is null)
         {
-            return Result.Fail<AuthResult>(ErrorResults.Generic.NotFound);
+            return Result.Fail<AuthResult>(ErrorResults.Generic.BadRequest);
         }
 
         if (user.Password != query.Password)
@@ -32,6 +33,7 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
         }
         var userId = Guid.NewGuid();
         var token = _jwtTokenGenerator.GenerateToken(userId, user.FirstName, user.LastName,user.Email);
-        return new AuthResult(token);
+        return Result.Fail<AuthResult>(ErrorResults.Generic.BadRequest);
+        //return new AuthResult(token);
     }
 }

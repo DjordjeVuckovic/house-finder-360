@@ -1,10 +1,7 @@
-﻿using HouseFinder360.Api.Mapping;
-using HouseFinder360.Application.Common.Interfaces.Authentication;
-using HouseFinder360.Application.Common.Interfaces.Persistence;
-using HouseFinder360.Application.Common.Interfaces.Services;
-using HouseFinder360.Infrastructure.Authentication;
-using HouseFinder360.Infrastructure.Persistence;
-using HouseFinder360.Infrastructure.Services;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using HouseFinder360.Api.Common;
+using HouseFinder360.Api.Mapping;
 
 namespace HouseFinder360.Api;
 
@@ -15,6 +12,16 @@ public static class DependencyInjection
         services.AddMapping();
         services.AddControllers();
         services.AddSwaggerDocument();
+        services.AddValidation();
+        return services;
+    }
+
+    private static IServiceCollection AddValidation(this IServiceCollection services)
+    {
+        services.AddValidatorsFromAssemblyContaining<IAssemblyMarker>();
+        services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+        // services.AddScoped(typeof(IPipelineBehavior<,>)
+        //     , typeof(ValidationBehavior<,>));
         return services;
     }
 }

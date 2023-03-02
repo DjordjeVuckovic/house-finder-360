@@ -23,12 +23,15 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
         var user = _userRepository.GetUserByEmail(request.Email);
         if (user is not null)
         {
-            var error = await Task.FromResult(
-                Result.Fail<AuthResult>(ErrorResults.Generic.BadRequest));
-            return error;
+            var error1 = await Task.FromResult(
+                Result.Fail<AuthResult>(new BadRequestError("")));
+            return error1;
         }
         var userId = Guid.NewGuid();
         var token = _jwtTokenGenerator.GenerateToken(userId, request.FirstName, request.LastName,request.Email);
-        return Result.Ok(new AuthResult(token));
+        var error = await Task.FromResult(
+            Result.Fail<AuthResult>(ErrorResults.Generic.BadRequest));
+        return error;
+        //return Result.Ok(new AuthResult(token));
     }
 }

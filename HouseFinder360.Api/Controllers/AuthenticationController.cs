@@ -34,10 +34,11 @@ public class AuthenticationController:BaseApiController
         
     }
     [HttpPost("login")]
-    public async Task<ActionResult<AuthenticationResponse>> Login([FromBody] LoginRequest loginRequest)
+    public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
     {
         var query = _mapper.Map<LoginQuery>(loginRequest);
         var loginResult = await _sender.Send(query);
+        if (loginResult.IsFailed) return CreateErrorResponse(loginResult.Errors);
         return Ok(loginRequest);
     }
 }

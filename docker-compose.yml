@@ -1,8 +1,8 @@
 ﻿version: '3.8'
 services:
-  housefinder360app:
+  house-finder-360-app:
     container_name: house-finder-360
-    image: ${DOCKER_REGISTRY-}housefinder360app
+    image: ${DOCKER_REGISTRY-}house-finder-360-app
     build:
       context: .
       dockerfile: Dockerfile
