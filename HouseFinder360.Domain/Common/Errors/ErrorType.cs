@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Application.Common.Errors;
+﻿namespace HouseFinder360.Domain.Common.Errors;
 
 public enum ErrorType
 {

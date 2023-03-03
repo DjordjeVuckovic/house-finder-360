@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using HouseFinder360.Domain.Common.Errors;
 
 namespace HouseFinder360.Application.Common.Errors;
 

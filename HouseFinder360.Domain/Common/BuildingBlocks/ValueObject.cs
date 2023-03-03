@@ -1,14 +1,18 @@
-﻿namespace HouseFinder360.Domain.Common;
+﻿namespace HouseFinder360.Domain.Common.BuildingBlocks;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
     public abstract IEnumerable<object> GetEqualityComponents();
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((ValueObject) obj);
+        if (obj is null || obj.GetType() != GetType())
+        {
+            return false;
+        }
+
+        var valueObject = (ValueObject) obj;
+        return GetEqualityComponents()
+            .SequenceEqual(valueObject.GetEqualityComponents());
     }
 
     public override int GetHashCode()

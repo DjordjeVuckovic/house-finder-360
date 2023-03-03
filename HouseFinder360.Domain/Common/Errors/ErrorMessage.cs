@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 
-namespace HouseFinder360.Application.Common.Errors;
+namespace HouseFinder360.Domain.Common.Errors;
 
 public class ErrorMessage : IError
 {
@@ -51,7 +51,7 @@ public class ErrorMessage : IError
     {
         return new ErrorMessage(message)
         {
-            StatusCode = ErrorType.Forbidden
+            StatusCode = ErrorType.BadRequest
         };
     }
 }

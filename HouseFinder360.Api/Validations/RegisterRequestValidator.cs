@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
+using HouseFinder360.Api.Requests.Auth;
 using HouseFinder360.Application.Authentication.Commands.Register;
 
 namespace HouseFinder360.Api.Validations;
 
-public class RegisterCommandValidator : AbstractValidator<RegisterCommand>
+public class RegisterRequestValidator : AbstractValidator<RegisterRequest>
 {
-    public RegisterCommandValidator()
+    public RegisterRequestValidator()
     {
         RuleFor(x => x.FirstName)
             .NotEmpty()

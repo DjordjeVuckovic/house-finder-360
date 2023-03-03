@@ -23,8 +23,9 @@ public static class DependencyInjection
         services.AddAuth(builderConfiguration);
         return services;
     }
-    public static IServiceCollection AddAuth(this IServiceCollection services,
-        ConfigurationManager builderConfiguration)
+
+    private static IServiceCollection AddAuth(this IServiceCollection services,
+        IConfiguration builderConfiguration)
     {
         var jwtSettings = new JwtSettings();
         builderConfiguration.Bind(JwtSettings.SectionName,jwtSettings);

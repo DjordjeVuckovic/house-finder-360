@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.Common;
+﻿namespace HouseFinder360.Domain.Common.BuildingBlocks;
 
 public class AggregateRoot<TId> : Entity<TId> 
     where TId : notnull
