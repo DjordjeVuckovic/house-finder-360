@@ -2,18 +2,22 @@
 
 namespace HouseFinder360.Domain.Property.ValueObjects;
 
-public class PropertyId : ValueObject
+public class SalePropertyId : ValueObject
 {
     public Guid Value { get; private set; }
 
-    private PropertyId(Guid value)
+    private SalePropertyId(Guid value)
     {
         Value = value;
     }
 
-    public static PropertyId CreateUnique()
+    public static SalePropertyId CreateUnique()
     {
-        return new PropertyId(Guid.NewGuid());
+        return new SalePropertyId(Guid.NewGuid());
+    }
+
+    private SalePropertyId()
+    {
     }
 
     public override IEnumerable<object> GetEqualityComponents()

@@ -12,4 +12,8 @@ public class PropertyType
         TypeOfProperty = typeOfProperty;
         PropertyTypeDeclaration = propertyTypeDeclaration;
     }
+
+    private PropertyType()
+    {
+    }
 }

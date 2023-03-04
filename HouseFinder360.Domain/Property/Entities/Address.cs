@@ -4,10 +4,10 @@ namespace HouseFinder360.Domain.Property.Entities;
 
 public class Address : Entity<long>
 {
-    public string Street { get; set; }
-    public string StreetNumber { get; set; }
-    public string City { get; set; }
-    public string Country { get; set; }
+    public string Street { get; private set; }
+    public string StreetNumber { get; private set; }
+    public string City { get; private set; }
+    public string Country { get; private set; }
 
     public Address(long id, string street, string streetNumber, string city, string country) : base(id)
     {
@@ -15,5 +15,9 @@ public class Address : Entity<long>
         StreetNumber = streetNumber;
         City = city;
         Country = country;
+    }
+
+    private Address()
+    {
     }
 }

@@ -1,8 +1,8 @@
+using System.Security.Cryptography.X509Certificates;
 using HouseFinder360.Api;
 using HouseFinder360.Application;
 using HouseFinder360.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
 {

@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.Entities;
+﻿namespace HouseFinder360.Domain.User;
 
 public class User
 {
@@ -7,4 +7,5 @@ public class User
     public string LastName { get; private set; } = null!;
     public string Email { get; private set; } = null!;
     public string Password { get; private set; } = null!;
+    public UserRole UserRole;
 }

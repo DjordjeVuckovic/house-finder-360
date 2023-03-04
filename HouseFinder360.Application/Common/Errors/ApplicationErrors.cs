@@ -16,6 +16,7 @@ public static class ApplicationErrors
     public static class User
     {
         public static readonly IError DuplicateEmail = ErrorMessage.Conflict("Duplicate email error");
+        public static readonly IError WrongCredential = ErrorMessage.Conflict("Wrong credential");
     }
     
 }

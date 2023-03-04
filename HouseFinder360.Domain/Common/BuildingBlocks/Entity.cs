@@ -10,6 +10,10 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
         Id = id;
     }
 
+    protected Entity()
+    {
+    }
+
     public bool Equals(Entity<TId>? other)
     {
         return Equals((object?) other);

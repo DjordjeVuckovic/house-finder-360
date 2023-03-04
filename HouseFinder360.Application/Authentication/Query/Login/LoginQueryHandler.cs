@@ -20,20 +20,18 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
 
     public async Task<Result<AuthResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-        var user =  _userRepository.GetUserByEmail(query.Email);
+        var user = await _userRepository.GetUserByEmail(query.Email);
         if (user is null)
         {
-            return Result.Fail<AuthResult>(ApplicationErrors.Generic.BadRequest);
+            return Result.Fail<AuthResult>(ApplicationErrors.User.DuplicateEmail);
         }
 
         if (user.Password != query.Password)
         {
-            
+            return Result.Fail<AuthResult>(ApplicationErrors.User.WrongCredential);
         }
         var userId = Guid.NewGuid();
         var token = _jwtTokenGenerator.GenerateToken(userId, user.FirstName, user.LastName,user.Email);
-        return Result.Fail<AuthResult>(ApplicationErrors.Generic.BadRequest);
-        //return new AuthResult(token);
+        return new AuthResult(token);
     }
 }

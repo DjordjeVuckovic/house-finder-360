@@ -5,20 +5,20 @@ using HouseFinder360.Domain.Property.ValueObjects;
 
 namespace HouseFinder360.Domain.Property;
 
-public class SaleProperty : AggregateRoot<PropertyId>
+public class SaleProperty : AggregateRoot<SalePropertyId>
 {
-    public string Title { get; }
-    public string Description { get; }
-    public int NumberOfRooms { get; set; }
-    public Address Address { get; set; }
-    public PropertyState PropertyState { get; set; }
-    public Area Area { get; set; }
-    public FloorInformation FloorInformation { get; set; }
-    public Price Price { get; set; }
-    public PropertyAdditionalInfo AdditionalInfo {get; set; }
-    public PropertyType PropertyType { get; set; }
-    public RegisterStatus RegisterStatus { get; set; }
-    public SaleProperty(PropertyId id, string title, string description, Address address, Area area, 
+    public string Title { get; private set; }
+    public string Description { get; private set;}
+    public int NumberOfRooms { get; private set; }
+    public Address Address { get; private set; }
+    public PropertyState PropertyState { get; private set; }
+    public Area Area { get; private set; }
+    public FloorInformation FloorInformation { get; private set;}
+    public Price Price { get; private set;}
+    public PropertyAdditionalInfo AdditionalInfo {get; private set;}
+    public PropertyType PropertyType { get; private set;}
+    public RegisterStatus RegisterStatus { get; private set;}
+    public SaleProperty(SalePropertyId id, string title, string description, Address address, Area area, 
         FloorInformation floorInformation, Price price, PropertyAdditionalInfo additionalInfo, 
         PropertyType propertyType) : base(id)
     {
@@ -30,5 +30,9 @@ public class SaleProperty : AggregateRoot<PropertyId>
         Price = price;
         AdditionalInfo = additionalInfo;
         PropertyType = propertyType;
+    }
+
+    private SaleProperty()
+    {
     }
 }

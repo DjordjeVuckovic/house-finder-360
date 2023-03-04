@@ -9,4 +9,13 @@ public class Area : ValueObject
     {
         yield return SquadMeter;
     }
+
+    public Area(int squadMeter)
+    {
+        SquadMeter = squadMeter;
+    }
+
+    private Area()
+    {
+    }
 }

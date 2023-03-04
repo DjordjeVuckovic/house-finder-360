@@ -4,8 +4,10 @@ using HouseFinder360.Application.Common.Interfaces.Persistence;
 using HouseFinder360.Application.Common.Interfaces.Services;
 using HouseFinder360.Infrastructure.Authentication;
 using HouseFinder360.Infrastructure.Persistence;
+using HouseFinder360.Infrastructure.Persistence.Repositories;
 using HouseFinder360.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -19,11 +21,29 @@ public static class DependencyInjection
         ConfigurationManager builderConfiguration)
     {
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddAuth(builderConfiguration);
+        services
+            .AddAuth(builderConfiguration)
+            .AddPersistence();
         return services;
     }
 
+    private static IServiceCollection AddPersistence(this IServiceCollection services)
+    {
+        services.AddDbContext<HouseFinder360DbContext>(options => 
+            options.UseNpgsql(CreateConnectionString()).EnableSensitiveDataLogging());
+        services.AddScoped<IUserRepository, UserRepository>();
+        return services;
+    }
+
+    private static string CreateConnectionString()
+    {
+        var server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
+        var port = "5431";
+        var database = "postgres";
+        var username = "postgres";
+        var password = "housefinder365";
+        return $"Server={server};Port={port};Database={database};Username={username};Password={password}";
+    }
     private static IServiceCollection AddAuth(this IServiceCollection services,
         IConfiguration builderConfiguration)
     {
