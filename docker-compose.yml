@@ -10,10 +10,10 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USERNAME: postgres
   house-finder-360-app:
-    container_name: house-finder-360
+    container_name: house-finder-360-api
     image: ${DOCKER_REGISTRY-}house-finder-360-app
     build:
-      context: .
+      context: ./house-finder-be
       dockerfile: Dockerfile
     ports:
       - "5000:80"
