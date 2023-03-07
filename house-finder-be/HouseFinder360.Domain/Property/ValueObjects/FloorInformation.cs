@@ -4,8 +4,9 @@ namespace HouseFinder360.Domain.Property.ValueObjects;
 
 public class FloorInformation:ValueObject
 {
-    public string Floor { get; private set; }
-    public string TotalFloors { get; private set; }
+    public string Floor { get; private set; } = null!;
+    public string TotalFloors { get; private set; } = null!;
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Floor;

@@ -5,7 +5,8 @@ namespace HouseFinder360.Domain.Property.ValueObjects;
 public class Price:ValueObject
 {
     public int Value { get; private set; }
-    public string Currency { get; private set; }
+    public string Currency { get; private set; } = null!;
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;

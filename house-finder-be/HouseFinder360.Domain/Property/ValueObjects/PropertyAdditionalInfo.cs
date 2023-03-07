@@ -12,7 +12,7 @@ public class PropertyAdditionalInfo: Entity<long>
     public bool HaveKitchen { get; private set; }
     public bool HaveStorage { get; private set; }
     public bool HaveParking { get; private set; }
-    public SalePropertyId PropertyId { get; private set; }
+    public SalePropertyId PropertyId { get; private set; } = null!;
 
     public PropertyAdditionalInfo(DateOnly yearOfBuild, DateOnly availableFrom, int balconyNumber, int bathroomNumber, int toiletNumber, bool haveKitchen, bool haveStorage, bool haveParking)
     {
