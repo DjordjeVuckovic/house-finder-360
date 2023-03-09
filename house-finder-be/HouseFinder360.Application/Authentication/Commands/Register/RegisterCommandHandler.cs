@@ -31,7 +31,7 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
             return error;
         }
         var userId = Guid.NewGuid();
-        var token = _jwtTokenGenerator.GenerateToken(userId, request.FirstName, request.LastName,request.Email);
+        var token = _jwtTokenGenerator.GenerateToken(userId, request.FirstName, request.LastName, request.Email);
         var user = new User(userId, request.FirstName, request.LastName, request.Email, request.Password,
             UserRole.Buyer);
         await _userRepository.Create(user);

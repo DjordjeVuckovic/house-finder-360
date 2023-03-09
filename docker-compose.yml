@@ -26,4 +26,5 @@ services:
       DATABASE_PASSWORD: "postgres"
     depends_on:
       - house-finder-360-db
+    
       
