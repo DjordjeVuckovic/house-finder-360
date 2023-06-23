@@ -30,7 +30,7 @@ public class AuthenticationController:BaseApiController
         
         if (authResult.IsFailed) return CreateErrorResponse(authResult.Errors);
         var authToken = _mapper.Map<AuthenticationResponse>(authResult.Value);
-        return Ok(authToken);   
+        return Ok(authToken); 
         
     }
     [HttpPost("login")]

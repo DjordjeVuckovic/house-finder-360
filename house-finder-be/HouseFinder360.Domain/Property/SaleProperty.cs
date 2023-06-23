@@ -7,16 +7,16 @@ namespace HouseFinder360.Domain.Property;
 
 public class SaleProperty : AggregateRoot<SalePropertyId>
 {
-    public string Title { get; private set; }
-    public string Description { get; private set;}
+    public string Title { get; private set; } = null!;
+    public string Description { get; private set;} = null!;
     public int NumberOfRooms { get; private set; }
-    public Address Address { get; private set; }
+    public Address Address { get; private set; } = null!;
     public PropertyState PropertyState { get; private set; }
-    public Area Area { get; private set; }
-    public FloorInformation FloorInformation { get; private set;}
-    public Price Price { get; private set;}
-    public PropertyAdditionalInfo AdditionalInfo {get; private set;}
-    public PropertyType PropertyType { get; private set;}
+    public Area Area { get; private set; } = null!;
+    public FloorInformation FloorInformation { get; private set;} = null!;
+    public Price Price { get; private set;} = null!;
+    public PropertyAdditionalInfo AdditionalInfo {get; private set;} = null!;
+    public PropertyType PropertyType { get; private set;} = null!;
     public RegisterStatus RegisterStatus { get; private set;}
     public SaleProperty(SalePropertyId id, string title, string description, Address address, Area area, 
         FloorInformation floorInformation, Price price, PropertyAdditionalInfo additionalInfo, 
