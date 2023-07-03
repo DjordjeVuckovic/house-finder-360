@@ -42,10 +42,10 @@ public static class DependencyInjection
     private static string CreateConnectionString()
     {
         var server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
-        var port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "5431";
-        var database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "postgres";
+        var port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "5432";
+        var database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "house-finder";
         var username = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "postgres";
-        var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "housefinder365";
+        var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "postgres";
         return $"Server={server};Port={port};Database={database};Username={username};Password={password}";
     }
     private static IServiceCollection AddAuth(this IServiceCollection services,
@@ -64,7 +64,9 @@ public static class DependencyInjection
               ValidateIssuerSigningKey = true,
               ValidIssuer = jwtSettings.Issuer,
               ValidAudience = jwtSettings.Audience,
-              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET")!))
+              IssuerSigningKey = new SymmetricSecurityKey(
+                  Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("JWT_SECRET") ?? "PFJ52kF3xywSyLK0")
+                  )
             });
         return services;
     }

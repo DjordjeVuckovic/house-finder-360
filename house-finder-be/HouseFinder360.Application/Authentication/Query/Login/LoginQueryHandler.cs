@@ -23,7 +23,7 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
         var user = await _userRepository.GetUserByEmail(query.Email);
         if (user is null)
         {
-            return Result.Fail<AuthResult>(ApplicationErrors.User.DuplicateEmail);
+            return Result.Fail<AuthResult>(ApplicationErrors.User.WrongCredential);
         }
 
         if (user.Password != query.Password)

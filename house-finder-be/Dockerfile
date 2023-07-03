@@ -10,10 +10,7 @@ COPY ["HouseFinder360.Api/HouseFinder360.Api.csproj", "HouseFinder360.Api/"]
 COPY ["HouseFinder360.Domain/HouseFinder360.Domain.csproj", "HouseFinder360.Domain/"]
 COPY ["HouseFinder360.Application/HouseFinder360.Application.csproj", "HouseFinder360.Application/"]
 COPY ["HouseFinder360.Infrastructure/HouseFinder360.Infrastructure.csproj", "HouseFinder360.Infrastructure/"]
-RUN dotnet restore "HouseFinder360.Api/HouseFinder360.Api.csproj"  \
-    && dotnet restore "HouseFinder360.Domain/HouseFinder360.Domain.csproj" \
-    && dotnet restore "HouseFinder360.Application/HouseFinder360.Application.csproj" \
-    && dotnet restore "HouseFinder360.Infrastructure/HouseFinder360.Infrastructure.csproj"
+RUN dotnet restore "HouseFinder360.Api/HouseFinder360.Api.csproj"
 COPY . .
 WORKDIR "/src/HouseFinder360.Api"
 RUN dotnet build "HouseFinder360.Api.csproj" -c Release -o /app/build

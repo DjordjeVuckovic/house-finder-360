@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Api.Requests.Auth;
+﻿using HouseFinder360.Api.Dto.Requests.Auth;
 using HouseFinder360.Application.Authentication.Commands.Register;
 using Mapster;
 

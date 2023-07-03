@@ -1,0 +1,16 @@
+@import "src/scss/variables";
+.stats{
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.stat>:nth-child(1){
+  font-size: 1.2rem;
+}
+.stat-info{
+  display: flex;
+  gap: .2rem;
+}
+.orange{
+  color: $orange;
+}

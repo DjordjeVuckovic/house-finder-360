@@ -1,5 +1,0 @@
-export const EditProperty = () => {
-  return (
-    <></>
-  );
-}

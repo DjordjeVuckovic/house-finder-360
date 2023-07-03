@@ -1,10 +1,11 @@
-﻿using HouseFinder360.Domain.Property;
+﻿using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
+using HouseFinder360.Domain.Property;
 using HouseFinder360.Domain.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.Infrastructure.Persistence;
 
-public class HouseFinder360DbContext:DbContext
+public class HouseFinder360DbContext:DbContext,IDbContext
 {
     public HouseFinder360DbContext(DbContextOptions<HouseFinder360DbContext> options) : base(options)
     {

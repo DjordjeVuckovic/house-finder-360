@@ -1,0 +1,39 @@
+@import "src/scss/variables";
+.navbar-wrapper {
+  background: $black;
+  color: $text-color;
+  //position: fixed;
+  //width: 100%;
+  //z-index: 1000;
+}
+.navbar-container {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(3,1fr);
+  color: $secondary-color;
+}
+.navbar-menu-middle {
+  gap: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.navbar-menu-end{
+  gap: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.logo-container{
+  padding-bottom: .5rem;
+  .image-logo{
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.02);
+    }
+  }
+}
+.button-link{
+  text-decoration: none;
+  color: $text-color;
+}

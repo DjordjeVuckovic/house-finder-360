@@ -1,0 +1,36 @@
+version: '3.8'
+name: house-finder
+services:
+  house-finder-db:
+    container_name: postgres-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_DB: house-finder
+    volumes:
+      - house-finder-db-data:/var/lib/postgresql/data
+  house-finder-360-app:
+    container_name: house-finder-360-api
+    image: ${DOCKER_REGISTRY-}house-finder-360-app
+    build: ../house-finder-be/
+    ports:
+      - "5000:80"
+    restart: on-failure
+    environment:
+      DATABASE_HOST: "house-finder-db"
+      DATABASE_PORT: "5432"
+      DATABASE_SCHEMA: "house-finder"
+      DATABASE_USERNAME: "postgres"
+      DATABASE_PASSWORD: "postgres"
+    depends_on:
+      - house-finder-db
+volumes: 
+  house-finder-db-data:
+    driver: local
+networks:
+  house-finder-net:
+    driver: bridge

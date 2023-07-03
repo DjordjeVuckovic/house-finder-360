@@ -1,0 +1,12 @@
+@import "src/scss/variables";
+.search-bar{
+  display: flex;
+  flex-direction: row!important;
+  gap: 1rem;
+  .icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

@@ -1,0 +1,20 @@
+﻿version: '3.8'
+name: house-finder-dev
+services:
+  house-finder-db:
+    container_name: postgres-db
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_DB: house-finder
+    volumes:
+      - house-finder-db-data:/var/lib/postgresql/data
+volumes:
+  house-finder-db-data:
+    driver: local
+    
+      

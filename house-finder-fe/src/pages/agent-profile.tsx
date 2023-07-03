@@ -1,6 +1,0 @@
-
-export const AgentProfile = () => {
-  return (
-    <></>
-  );
-}
