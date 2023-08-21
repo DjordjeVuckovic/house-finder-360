@@ -4,5 +4,6 @@ namespace HouseFinder360.Application.Common.Interfaces.Services;
 
 public interface IDateTimeProvider
 {
-  DateTime UtcNow { get; }  
+  DateTime UtcNow { get; }
+  DateTimeOffset UnixTimeNow { get; }
 }

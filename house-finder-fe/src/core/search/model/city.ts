@@ -11,3 +11,7 @@ export interface City {
     population?: number;
     id: number;
 }
+export interface Country {
+    name: string;
+    iso2: string;
+}

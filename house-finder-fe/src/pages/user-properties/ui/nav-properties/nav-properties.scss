@@ -1,0 +1,29 @@
+@import "src/scss/variables";
+@import "src/scss/mixins";
+.nav-container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.nav-top{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(26, 28, 29,0.99);
+  backdrop-filter: blur(1rem);
+  border: 2px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: $text-color;
+  box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+.nav-link{
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+.properties{
+  @include secondary-bg;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

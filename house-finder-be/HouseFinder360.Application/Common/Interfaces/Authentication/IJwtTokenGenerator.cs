@@ -1,8 +1,9 @@
 ﻿using System;
+using HouseFinder360.Domain.Users;
 
 namespace HouseFinder360.Application.Common.Interfaces.Authentication;
 
 public interface IJwtTokenGenerator
 {
-    string GenerateToken(Guid userId, string firstName, string lastName, string email);
+    string GenerateToken(User user);
 }

@@ -17,7 +17,7 @@ namespace HouseFinder360.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -30,19 +30,7 @@ namespace HouseFinder360.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("StreetNumber")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -51,9 +39,40 @@ namespace HouseFinder360.Infrastructure.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("HouseFinder360.Domain.Property.SaleProperty", b =>
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Entities.PropertyPhoto", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Container")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("PropertyId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Uri")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("PropertyPhoto");
+                });
+
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Property", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<long>("AddressId")
@@ -61,13 +80,23 @@ namespace HouseFinder360.Infrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
-                    b.Property<int>("NumberOfRooms")
+                    b.Property<int>("ElevatorsNumber")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PropertyState")
+                    b.Property<string>("Heating")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NumberOfRooms")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PropertyState")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Purpose")
                         .HasColumnType("integer");
 
                     b.Property<int>("RegisterStatus")
@@ -82,53 +111,10 @@ namespace HouseFinder360.Infrastructure.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("SaleProperty", (string)null);
+                    b.ToTable("Properties");
                 });
 
-            modelBuilder.Entity("HouseFinder360.Domain.Property.ValueObjects.PropertyAdditionalInfo", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<DateOnly>("AvailableFrom")
-                        .HasColumnType("date");
-
-                    b.Property<int>("BalconyNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("BathroomNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("HaveKitchen")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("HaveParking")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("HaveStorage")
-                        .HasColumnType("boolean");
-
-                    b.Property<Guid>("PropertyId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("ToiletNumber")
-                        .HasColumnType("integer");
-
-                    b.Property<DateOnly>("YearOfBuild")
-                        .HasColumnType("date");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PropertyId")
-                        .IsUnique();
-
-                    b.ToTable("PropertyAdditionalInfo");
-                });
-
-            modelBuilder.Entity("HouseFinder360.Domain.User.User", b =>
+            modelBuilder.Entity("HouseFinder360.Domain.Users.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,15 +127,22 @@ namespace HouseFinder360.Infrastructure.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(70)
+                        .HasColumnType("character varying(70)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(70)
+                        .HasColumnType("character varying(70)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<int>("UserRole")
                         .HasColumnType("integer");
@@ -159,10 +152,83 @@ namespace HouseFinder360.Infrastructure.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
+                    b.HasIndex("Phone")
+                        .IsUnique();
+
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HouseFinder360.Domain.Property.SaleProperty", b =>
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Entities.Address", b =>
+                {
+                    b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.Location", "City", b1 =>
+                        {
+                            b1.Property<long>("AddressId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<double>("Latitude")
+                                .HasColumnType("double precision")
+                                .HasColumnName("CityLatitude");
+
+                            b1.Property<double>("Longitude")
+                                .HasColumnType("double precision")
+                                .HasColumnName("CityLongitude");
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("character varying(50)")
+                                .HasColumnName("CityName");
+
+                            b1.HasKey("AddressId");
+
+                            b1.ToTable("Address");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AddressId");
+                        });
+
+                    b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.Location", "Street", b1 =>
+                        {
+                            b1.Property<long>("AddressId")
+                                .HasColumnType("bigint");
+
+                            b1.Property<double>("Latitude")
+                                .HasColumnType("double precision")
+                                .HasColumnName("StreetLatitude");
+
+                            b1.Property<double>("Longitude")
+                                .HasColumnType("double precision")
+                                .HasColumnName("StreetLongitude");
+
+                            b1.Property<string>("Name")
+                                .IsRequired()
+                                .HasMaxLength(50)
+                                .HasColumnType("character varying(50)")
+                                .HasColumnName("StreetName");
+
+                            b1.HasKey("AddressId");
+
+                            b1.ToTable("Address");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AddressId");
+                        });
+
+                    b.Navigation("City")
+                        .IsRequired();
+
+                    b.Navigation("Street")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Entities.PropertyPhoto", b =>
+                {
+                    b.HasOne("HouseFinder360.Domain.Property.Property", null)
+                        .WithMany("Photos")
+                        .HasForeignKey("PropertyId");
+                });
+
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Property", b =>
                 {
                     b.HasOne("HouseFinder360.Domain.Property.Entities.Address", "Address")
                         .WithMany()
@@ -172,44 +238,49 @@ namespace HouseFinder360.Infrastructure.Migrations
 
                     b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.Area", "Area", b1 =>
                         {
-                            b1.Property<Guid>("SalePropertyId")
+                            b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
 
                             b1.Property<int>("SquadMeter")
-                                .HasColumnType("integer");
+                                .HasColumnType("integer")
+                                .HasColumnName("Area");
 
-                            b1.HasKey("SalePropertyId");
+                            b1.HasKey("PropertyId");
 
-                            b1.ToTable("SaleProperty");
+                            b1.ToTable("Properties");
 
                             b1.WithOwner()
-                                .HasForeignKey("SalePropertyId");
+                                .HasForeignKey("PropertyId");
                         });
 
                     b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.FloorInformation", "FloorInformation", b1 =>
                         {
-                            b1.Property<Guid>("SalePropertyId")
+                            b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
 
                             b1.Property<string>("Floor")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)")
+                                .HasColumnName("Floor");
 
                             b1.Property<string>("TotalFloors")
                                 .IsRequired()
-                                .HasColumnType("text");
+                                .HasMaxLength(20)
+                                .HasColumnType("character varying(20)")
+                                .HasColumnName("TotalFloors");
 
-                            b1.HasKey("SalePropertyId");
+                            b1.HasKey("PropertyId");
 
-                            b1.ToTable("SaleProperty");
+                            b1.ToTable("Properties");
 
                             b1.WithOwner()
-                                .HasForeignKey("SalePropertyId");
+                                .HasForeignKey("PropertyId");
                         });
 
                     b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<Guid>("SalePropertyId")
+                            b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
 
                             b1.Property<string>("Currency")
@@ -220,33 +291,74 @@ namespace HouseFinder360.Infrastructure.Migrations
                                 .HasColumnType("integer")
                                 .HasColumnName("Price");
 
-                            b1.HasKey("SalePropertyId");
+                            b1.HasKey("PropertyId");
 
-                            b1.ToTable("SaleProperty");
+                            b1.ToTable("Properties");
 
                             b1.WithOwner()
-                                .HasForeignKey("SalePropertyId");
+                                .HasForeignKey("PropertyId");
+                        });
+
+                    b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.PropertyAdditionalInfo", "AdditionalInfo", b1 =>
+                        {
+                            b1.Property<Guid>("PropertyId")
+                                .HasColumnType("uuid");
+
+                            b1.Property<DateOnly>("AvailableFrom")
+                                .HasColumnType("date");
+
+                            b1.Property<int>("BalconyNumber")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("BathroomNumber")
+                                .HasColumnType("integer");
+
+                            b1.Property<bool>("HaveKitchen")
+                                .HasColumnType("boolean");
+
+                            b1.Property<bool>("HaveParking")
+                                .HasColumnType("boolean");
+
+                            b1.Property<bool>("HaveStorage")
+                                .HasColumnType("boolean");
+
+                            b1.Property<int>("ToiletNumber")
+                                .HasColumnType("integer");
+
+                            b1.Property<DateOnly>("YearOfBuild")
+                                .HasColumnType("date");
+
+                            b1.HasKey("PropertyId");
+
+                            b1.ToTable("Properties");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PropertyId");
                         });
 
                     b.OwnsOne("HouseFinder360.Domain.Property.ValueObjects.PropertyType", "PropertyType", b1 =>
                         {
-                            b1.Property<Guid>("SalePropertyId")
+                            b1.Property<Guid>("PropertyId")
                                 .HasColumnType("uuid");
 
                             b1.Property<string>("PropertyTypeDeclaration")
-                                .IsRequired()
-                                .HasColumnType("text");
+                                .HasMaxLength(50)
+                                .HasColumnType("character varying(50)")
+                                .HasColumnName("PropertyTypeDeclaration");
 
                             b1.Property<int>("TypeOfProperty")
                                 .HasColumnType("integer");
 
-                            b1.HasKey("SalePropertyId");
+                            b1.HasKey("PropertyId");
 
-                            b1.ToTable("SaleProperty");
+                            b1.ToTable("Properties");
 
                             b1.WithOwner()
-                                .HasForeignKey("SalePropertyId");
+                                .HasForeignKey("PropertyId");
                         });
+
+                    b.Navigation("AdditionalInfo")
+                        .IsRequired();
 
                     b.Navigation("Address");
 
@@ -263,19 +375,9 @@ namespace HouseFinder360.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HouseFinder360.Domain.Property.ValueObjects.PropertyAdditionalInfo", b =>
+            modelBuilder.Entity("HouseFinder360.Domain.Property.Property", b =>
                 {
-                    b.HasOne("HouseFinder360.Domain.Property.SaleProperty", null)
-                        .WithOne("AdditionalInfo")
-                        .HasForeignKey("HouseFinder360.Domain.Property.ValueObjects.PropertyAdditionalInfo", "PropertyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("HouseFinder360.Domain.Property.SaleProperty", b =>
-                {
-                    b.Navigation("AdditionalInfo")
-                        .IsRequired();
+                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,5 +6,7 @@ public enum TypeOfProperty
     House = 1,
     ResidentialPlace = 2,
     Lot = 3,
-    Garage = 4
+    Garage = 4,
+    Villa = 5,
+    Other = 6
 }

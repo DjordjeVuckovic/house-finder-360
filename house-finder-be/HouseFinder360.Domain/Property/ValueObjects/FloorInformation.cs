@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.Common.BuildingBlocks;
+﻿using HouseFinder360.BuildingBlocks.BuildingBlocks;
 
 namespace HouseFinder360.Domain.Property.ValueObjects;
 

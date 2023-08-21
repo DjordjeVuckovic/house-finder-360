@@ -6,4 +6,5 @@ namespace HouseFinder360.Infrastructure.Services;
 public class DateTimeProvider:IDateTimeProvider
 {
     public DateTime UtcNow => DateTime.Now;
+    public DateTimeOffset UnixTimeNow => DateTimeOffset.UtcNow;
 }

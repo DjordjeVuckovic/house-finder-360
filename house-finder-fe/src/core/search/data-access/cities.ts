@@ -1,5 +1,11 @@
-import {City} from "../model/city.ts";
+import {City, Country} from "../model/city.ts";
 //iso2 = code
+export const countries: Country[] = [
+    {name: "Serbia",iso2: 'RS'},
+    {name: "Croatia",iso2: 'HR'},
+    {name: "Macedonia",iso2: 'MK'},
+    {name: "Bosnia and Herzegovina",iso2: 'MK'},
+]
 export const citiesAndCountries: City[]= [
     {
         "city": "Belgrade",

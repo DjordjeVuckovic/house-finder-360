@@ -13,7 +13,7 @@ public static class ApplicationErrors
         public static readonly IError Forbidden =  ErrorMessage.Forbidden("Access to resource is restricted.");
         public static readonly IError Conflict = ErrorMessage.Conflict("Conflict exception.");   
     }
-    public static class User
+    public static class Users
     {
         public static readonly IError WrongCredential = ErrorMessage.Conflict("Bad credentials!");
     }

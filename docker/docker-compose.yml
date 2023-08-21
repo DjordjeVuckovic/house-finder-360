@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: house-finder
     volumes:
       - house-finder-db-data:/var/lib/postgresql/data
+    networks: 
+      - house-finder-net
   house-finder-360-app:
     container_name: house-finder-360-api
     image: ${DOCKER_REGISTRY-}house-finder-360-app
@@ -28,6 +30,8 @@ services:
       DATABASE_PASSWORD: "postgres"
     depends_on:
       - house-finder-db
+    networks:
+      - house-finder-net
 volumes: 
   house-finder-db-data:
     driver: local

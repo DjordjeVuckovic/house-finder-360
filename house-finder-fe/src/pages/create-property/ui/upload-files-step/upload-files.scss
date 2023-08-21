@@ -1,0 +1,81 @@
+@import "src/scss/variables";
+.drag-area {
+  border: 2px dashed #999999;
+  padding: 2rem;
+  text-align: center;
+  color: $text-color;
+  img{
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.dragging {
+  border: 2px dashed $secondary-color-blue;
+  background: $input-bg;
+}
+.file-input{
+  background: transparent;
+  display: none;
+}
+.file-uploader{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  label{
+    cursor: pointer;
+    background: $blue-gradient;
+    border-radius: 30px;
+    border-width: 0;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    font-size: 12px;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.4rem 1rem 0.4rem 1rem;
+    color: $text-color;
+    transition: all 300ms ease-in;
+    &:hover{
+      background: $blue-gradient-hover;
+      opacity: 0.9;
+      transform: scale(1.012);
+      border-color: white;
+      box-shadow: 0 0 .6em $primary-color;
+    }
+  }
+}
+.file-index{
+  color: $orange;
+  padding-right: .3rem;
+}
+.file-card{
+  border: 3px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  gap: .1rem;
+  img{
+    padding: .2rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &:hover {
+    box-shadow: 0 0 .5rem $primary-black-bg;
+  }
+}
+.header-file-card{
+  padding: .5rem;
+  background: $blue-gradient;
+}
+.delete-file{
+  &:hover{
+    cursor: pointer;
+  }
+}

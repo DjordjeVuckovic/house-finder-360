@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
 using HouseFinder360.Api.Mapping;
+using HouseFinder360.Api.Services;
+using HouseFinder360.Application.Common.Interfaces.Authentication;
 
 namespace HouseFinder360.Api;
 
@@ -10,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddMapping();
         services.AddValidation();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
         return services;
     }
 

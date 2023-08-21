@@ -32,7 +32,7 @@ public class UsersModule : CarterModule
             var loginResult = await sender.Send(query);
             return loginResult.IsFailed 
                 ? Results.BadRequest(loginResult.Errors.ToResponse()) 
-                : Results.Ok(loginResult);
+                : Results.Ok(loginResult.Value);
         });
     }
 }

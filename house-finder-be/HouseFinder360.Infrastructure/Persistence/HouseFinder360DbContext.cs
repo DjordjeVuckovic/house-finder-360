@@ -1,22 +1,24 @@
 ﻿using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.Domain.Property;
-using HouseFinder360.Domain.User;
+using HouseFinder360.Domain.Users;
+using HouseFinder360.Infrastructure.Extensions;
+using HouseFinder360.Infrastructure.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.Infrastructure.Persistence;
 
-public class HouseFinder360DbContext:DbContext,IDbContext
+public class HouseFinder360DbContext: DbContext,IDbContext
 {
-    public HouseFinder360DbContext(DbContextOptions<HouseFinder360DbContext> options) : base(options)
+    public HouseFinder360DbContext(DbContextOptions options) : base(options)
     {
     }
 
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<SaleProperty> SaleProperties { get; set; } = null!;
+    public DbSet<Property> Properties { get; set; } = null!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .ApplyConfigurationsFromAssembly(typeof(HouseFinder360DbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(HouseFinder360DbContext).Assembly);
         base.OnModelCreating(modelBuilder);
+
     }
 }

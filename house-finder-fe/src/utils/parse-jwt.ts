@@ -12,6 +12,5 @@ export function parseJwt(token: string): UserPayload {
             })
             .join("")
     );
-
     return JSON.parse(jsonPayload);
 }

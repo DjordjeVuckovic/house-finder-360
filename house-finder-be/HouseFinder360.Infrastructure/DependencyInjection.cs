@@ -1,10 +1,12 @@
 ﻿using System.Text;
 using DotNetEnv.Configuration;
+using HouseFinder360.Application.Common.BlobStorage;
 using HouseFinder360.Application.Common.Interfaces.Authentication;
 using HouseFinder360.Application.Common.Interfaces.Persistence;
 using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.Application.Common.Interfaces.Services;
 using HouseFinder360.Infrastructure.Authentication;
+using HouseFinder360.Infrastructure.Common.Blob;
 using HouseFinder360.Infrastructure.Persistence;
 using HouseFinder360.Infrastructure.Persistence.Generic;
 using HouseFinder360.Infrastructure.Persistence.Repositories;
@@ -25,16 +27,39 @@ public static class DependencyInjection
     {
         builderConfiguration.AddDotNetEnv();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        services
-            .AddAuth(builderConfiguration)
-            .AddPersistence();
+        
+        services.Configure<BlobStorageSettings>
+            (builderConfiguration.GetSection(BlobStorageSettings.SectionName));
+        services.AddSingleton(provider => 
+            provider.GetRequiredService<IOptions<BlobStorageSettings>>().Value);
+        services.ConfigureBlobClient();
+        
+        services.AddAuth(builderConfiguration).AddPersistence();
         return services;
+    }
+    private static void ConfigureBlobClient(this IServiceCollection services)
+    {
+        services.AddHttpClient<IBlobService, BlobService>((serviceProvider, httpClient) =>
+            {
+                var blobSettings = serviceProvider.GetRequiredService<IOptions<BlobStorageSettings>>().Value;
+                httpClient.BaseAddress = new Uri(blobSettings.BaseAddress);
+                httpClient.DefaultRequestHeaders.Add("X-Api-Key", blobSettings.Authorization);
+            })
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
+            {
+                PooledConnectionLifetime = TimeSpan.FromMinutes(5)
+            })
+            .SetHandlerLifetime(Timeout.InfiniteTimeSpan);
     }
 
     private static void AddPersistence(this IServiceCollection services)
     {
         services.AddDbContext<HouseFinder360DbContext>(options => 
-            options.UseNpgsql(CreateConnectionString()).EnableSensitiveDataLogging());
+            options.UseNpgsql(CreateConnectionString(), o =>
+                o.MigrationsAssembly(typeof(HouseFinder360DbContext).Assembly.FullName)
+                ).EnableSensitiveDataLogging());
+        
+        services.AddScoped<IDbContext>(provider => provider.GetRequiredService<HouseFinder360DbContext>());
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserRepository, UserRepository>();
     }
@@ -55,8 +80,14 @@ public static class DependencyInjection
         builderConfiguration.Bind(JwtSettings.SectionName,jwtSettings);
         services.AddSingleton(Options.Create(jwtSettings));
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-        services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+        services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options => 
+                options.TokenValidationParameters = new TokenValidationParameters
             {
               ValidateAudience  = true,
               ValidateIssuer = true,

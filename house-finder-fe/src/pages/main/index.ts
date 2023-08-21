@@ -1,4 +1,4 @@
-import {MainPage} from "./main.page.tsx"
+import {HomePage} from "./home.page.tsx"
 export {
-    MainPage
+    HomePage
 }

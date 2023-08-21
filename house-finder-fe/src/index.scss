@@ -9,12 +9,11 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }
 body{
   background: $background-black;
 }
-
 //@media (prefers-color-scheme: light) {
 //  :root {
 //    color: #213547;
@@ -34,14 +33,44 @@ body{
   align-items: center;
   flex-wrap: wrap;
 }
+.g-5{
+ gap: 0.5rem;
+}
+.g-1{
+  gap: 1rem;
+}
+.g-07{
+  gap: .7rem;
+}
+.g-3{
+  gap: 0.3rem;
+}
+.flex-center-align{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-space{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
 .flex-start{
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+.flex-wrap{
+  flex-wrap: wrap;
+}
 .flex-end{
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+}
+.flex-space{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 .flex-col-center {
@@ -67,16 +96,41 @@ body{
   font-weight: bold;
   font-size: 2rem;
 }
+.white-text{
+  color: $text-color;
+}
 .secondary-text {
   color: rgb(140 139 139);
   font-size: 0.9rem;
+}
+.input-base-color{
+  color: $text-color;
+  background: $input-bg;
+}
+.input-base{
+  color-scheme: dark;
+  color: $text-color;
+  background: $primary-black-bg;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  &::placeholder{
+    color: $text-color;
+  }
+  &:focus{
+    border: 2px solid $secondary-color-blue;
+    outline: none;
+  }
+}
+.area-height{
+  height: 10rem;
 }
 .btn-primary{
   font-weight: 550;
   color: $text-color;
   background: $blue-gradient;
   width: fit-content;
-  padding: .5rem 1rem;
+  padding: .6rem 1.2rem;
   border: none;
   outline: none;
   border-radius: 16px;
@@ -85,9 +139,13 @@ body{
   margin-top: 0;
   &:hover{
     cursor: pointer;
-    transform: scale(1.02);
+    opacity: 0.9;
     background: $blue-gradient-hover;
+    box-shadow: 0 0 .7em $black;
   }
+}
+.btn-large{
+  width: 20%;
 }
 .orange-text {
   color: orange;
@@ -100,7 +158,10 @@ body{
 .inner-width{
   width: 100%;
 }
-@media (min-width: 1536px) {
+.header{
+  font-size: 32px;
+}
+@media (min-width: 1400px) {
   .inner-width{
     max-width: 1280px;
     margin: auto;

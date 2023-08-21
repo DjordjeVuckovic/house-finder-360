@@ -2,7 +2,10 @@
 
 public record AddressRequest(
     string Street,
-    string StreetNumber,
     string City,
-    string Country
+    double CityLongitude,
+    double CityLatitude,
+    string Country,
+    double StreetLongitude,
+    double StreetLatitude
     );

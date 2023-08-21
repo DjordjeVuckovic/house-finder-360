@@ -1,19 +1,62 @@
-﻿using HouseFinder360.Domain.Property.Enums;
+﻿using FluentResults;
+using HouseFinder360.BuildingBlocks.BuildingBlocks;
+using HouseFinder360.Domain.Property.Enums;
+using ArgumentOutOfRangeException = System.ArgumentOutOfRangeException;
 
 namespace HouseFinder360.Domain.Property.ValueObjects;
 
-public class PropertyType
+public class PropertyType : ValueObject
 {
-    public TypeOfProperty TypeOfProperty { get; private set; }
-    public string PropertyTypeDeclaration { get; private set; } = null!;
+    public TypeOfProperty TypeOfProperty { get; init; }
+    public string? PropertyTypeDeclaration { get; init; }
 
-    public PropertyType(TypeOfProperty typeOfProperty, string propertyTypeDeclaration)
+    public string TypeOfPropertyToString()
+    {
+        return TypeOfProperty switch
+        {
+            TypeOfProperty.Apartment => "Apartment",
+            TypeOfProperty.House => "House",
+            TypeOfProperty.ResidentialPlace => "Residential Place",
+            TypeOfProperty.Lot => "Lot",
+            TypeOfProperty.Garage => "Garage",
+            TypeOfProperty.Villa => "Villa",
+            TypeOfProperty.Other => "Other",
+            _ => throw new ArgumentOutOfRangeException($"Unknown type")
+        };
+    }
+
+    public static Result<PropertyType> CreatePropertyType(TypeOfProperty typeOfProperty, string? propertyTypeDeclaration)
+    {
+        return new PropertyType(typeOfProperty, propertyTypeDeclaration);
+    }
+
+    private PropertyType(TypeOfProperty typeOfProperty, string? propertyTypeDeclaration)
     {
         TypeOfProperty = typeOfProperty;
         PropertyTypeDeclaration = propertyTypeDeclaration;
     }
 
+    public static TypeOfProperty TypeOfPropertyToEnum(string type)
+    {
+        return type switch
+        {
+            "Apartment" => TypeOfProperty.Apartment,
+            "House" => TypeOfProperty.House,
+            "Residential Place" => TypeOfProperty.ResidentialPlace,
+            "Lot" => TypeOfProperty.Lot,
+            "Garage" => TypeOfProperty.Garage,
+            "Villa" => TypeOfProperty.Villa,
+            _ => TypeOfProperty.Other
+        };
+    }
+
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return TypeOfProperty;
+    }
+
     private PropertyType()
     {
+        
     }
 }

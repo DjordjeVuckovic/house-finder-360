@@ -1,0 +1,27 @@
+@import "src/scss/mixins";
+.inputs-group{
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  @include input-base;
+  padding: 0.1rem;
+}
+.inputs-group.focused {
+  border: 2px solid $secondary-color-blue;
+}
+.input-transparent{
+  flex: 1;
+  background: transparent;
+  outline: none;
+  color: $text-color;
+  border: none;
+  padding: .8rem;
+}
+.symbol{
+  font-size: 20px;
+  color: $text-color;
+  padding-right: .3rem;
+}
+.symbol.focused{
+  color: $secondary-color-blue;
+}

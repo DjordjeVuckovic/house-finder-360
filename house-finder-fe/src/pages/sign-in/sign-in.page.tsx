@@ -63,7 +63,7 @@ export const SignInPage = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             Enter your email address and we'll send you a link to set your password.
                         </Typography>
-                        <input type="text" placeholder="Email" id="username"/>
+                        <input type="text" className={'input-base'} placeholder="Email" id="username"/>
                         <button className={'btn'}>Send</button>
                     </Box>
                 </Modal>

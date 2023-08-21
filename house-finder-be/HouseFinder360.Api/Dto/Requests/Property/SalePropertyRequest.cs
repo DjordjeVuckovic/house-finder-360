@@ -3,13 +3,17 @@
 public record SalePropertyRequest(
     string Title,
     string Description,
-    int NumberOfRooms, 
-    AddressRequest AddressRequest,
-    string PropertyState,
+    string RoomsNumber, 
+    AddressRequest Address,
+    string Condition,
     int Area,
     string Floor,
     string TotalFloors,
     int Price,
-    string PropertyType,
-    string RegisterStatus
-);
+    string Type,
+    string RegisterStatus,
+    string Heating,
+    int ElevatorsNumber,
+    int NumberOfToilets, 
+    int BathroomsNumber, 
+    int NumberOfBalconies);

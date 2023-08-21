@@ -1,0 +1,16 @@
+@import "src/scss/variables";
+.grid-form{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+}
+.form-create{
+  display: flex;
+  flex-direction: column;
+}
+.city-auto-complete{
+  padding-top: 0.4rem;
+}
+.input-full-width{
+  flex: 1;
+}

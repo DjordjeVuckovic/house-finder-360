@@ -1,0 +1,26 @@
+@import "src/scss/variables";
+.step-count{
+  font-size: 1rem;
+  color: $orange;
+}
+.btn-next{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.btn-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.grid-2-c{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+.p-top{
+  padding-top: .5rem;
+}
+.p-top-1 {
+  padding-top: 1rem;
+}

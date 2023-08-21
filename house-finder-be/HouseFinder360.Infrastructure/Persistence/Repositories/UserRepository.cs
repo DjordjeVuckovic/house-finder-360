@@ -1,5 +1,5 @@
 ﻿using HouseFinder360.Application.Common.Interfaces.Persistence;
-using HouseFinder360.Domain.User;
+using HouseFinder360.Domain.Users;
 using HouseFinder360.Infrastructure.Persistence.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,4 +15,5 @@ public class UserRepository: Repository<User,Guid>,IUserRepository
     {
         return  await DbSet.SingleOrDefaultAsync(user => user.Email == email);
     }
+    
 }

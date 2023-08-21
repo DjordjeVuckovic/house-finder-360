@@ -1,6 +1,7 @@
 import {Box, Stack, Typography} from "@mui/material";
 import {propertyReferralsInfo} from "../../constants/constants.ts";
 
+import './charts.scss';
 interface ProgressBarProps {
   title: string,
   percentage: number,
@@ -12,7 +13,7 @@ const ProgressBar = ({title,percentage,color} : ProgressBarProps) => (
            alignItems="center"
            justifyContent="space-between"
     >
-      <Typography fontSize={16} fontWeight={520} color="#11142d">
+      <Typography fontSize={16} fontWeight={520} color="#f5f8f2">
         {title}
       </Typography>
       <Typography fontSize={16} fontWeight={520} color="#11142d">
@@ -42,14 +43,14 @@ export const PropertyReferrals = () => {
   return (
     <Box
       p={4}
-      bgcolor="#fcfcfc"
+      bgcolor="rgb(26, 28, 29)"
       id="chart"
       minWidth={490}
       display="flex"
       flexDirection="column"
       borderRadius="15px"
     >
-      <Typography fontSize={18} fontWeight={600} color="#11142d">
+      <Typography fontSize={18} fontWeight={600} color="#f5f8f2">
         Property Referrals
       </Typography>
       <Stack my="20px" direction="column" gap={4}>

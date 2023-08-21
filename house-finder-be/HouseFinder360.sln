@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseFinder360.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseFinder360.Domain", "HouseFinder360.Domain\HouseFinder360.Domain.csproj", "{5FD9E025-EFDA-4941-B141-A79E7CE9152C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseFinder360.BuildingBlocks", "HouseFinder360.BuildingBlocks\HouseFinder360.BuildingBlocks.csproj", "{D44A2042-4202-4EC9-A7B1-5B20037C935D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{5FD9E025-EFDA-4941-B141-A79E7CE9152C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FD9E025-EFDA-4941-B141-A79E7CE9152C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD9E025-EFDA-4941-B141-A79E7CE9152C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -2,14 +2,13 @@
 .navbar-wrapper {
   background: $black;
   color: $text-color;
-  //position: fixed;
-  //width: 100%;
-  //z-index: 1000;
+  border-bottom: 3px solid #222529;
 }
 .navbar-container {
-  display: grid;
+  display: flex;
   flex-direction: row;
-  grid-template-columns: repeat(3,1fr);
+  justify-content: space-between;
+  align-items: center;
   color: $secondary-color;
 }
 .navbar-menu-middle {

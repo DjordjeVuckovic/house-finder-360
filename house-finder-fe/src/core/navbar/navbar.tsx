@@ -10,9 +10,9 @@ export const Navbar = () => {
                  <img src={logo} alt={'logo'} className={'image-logo'} loading='lazy'/>
              </div>
              <div className='flex-center navbar-menu-middle'>
-                 <NavLink title={'Home'} url={'/home'}/>
-                 <NavLink title={'Main'} url={''}/>
-                 <NavButton title={'Contact'} link={'/contact'}/>
+                 <NavLink title={'Home'} url={''} />
+                 <NavLink title={'Dashboard'} url={'/home'} />
+                 <NavButton title={'Contact'} link={'/contact'} />
              </div>
              <div className='flex-end navbar-menu-end'>
                  <NavLink title={'Sign In'} url={'/sign-in'}/>

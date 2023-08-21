@@ -1,18 +1,21 @@
-﻿using HouseFinder360.Domain.Common.BuildingBlocks;
+﻿using HouseFinder360.BuildingBlocks.BuildingBlocks;
+using HouseFinder360.Domain.Property.ValueObjects;
 
 namespace HouseFinder360.Domain.Property.Entities;
 
 public class Address : Entity<long>
 {
-    public string Street { get; private set; } = null!;
-    public string StreetNumber { get; private set; } = null!;
-    public string City { get; private set; } = null!;
+    public Location Street { get; private set; } = null!;
+    public Location City { get; private set; } = null!;
     public string Country { get; private set; } = null!;
 
-    public Address(long id, string street, string streetNumber, string city, string country) : base(id)
+
+    public Address(
+        Location street,
+        Location city, 
+        string country)
     {
         Street = street;
-        StreetNumber = streetNumber;
         City = city;
         Country = country;
     }

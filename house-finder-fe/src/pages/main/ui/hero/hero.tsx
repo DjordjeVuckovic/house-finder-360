@@ -1,17 +1,17 @@
 import heroImage from "../../../../assets/pictures/hero-image.png"
 import "./hero.scss"
-import {Searchbar} from "../../../../core/search/searchbar.tsx";
+import {SearchBar} from "../../../../core/search/search-bar.tsx";
 import {useState} from "react";
 import {City} from "../../../../core/search/model/city.ts";
 import {Stats} from "../stats/stats.tsx";
 export const Hero = () => {
-    const [selectedCountry, setSelectedCountry] = useState<City | null>(null);
+    const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
     const handleCityChange = (city: City): void => {
-        setSelectedCountry(city);
+        setSelectedCity(city);
     };
     const handleOnSearch = (): void => {
-        console.log(selectedCountry)
+        console.log(selectedCity)
     }
     return (
         <section className="hero-wrapper">
@@ -29,7 +29,9 @@ export const Hero = () => {
                         <span className={'secondary-text'}>Find a variety of properties that suit you very easily</span>
                         <span className={'secondary-text'}>Forget all difficulties in finding a residence for you</span>
                     </div>
-                    <Searchbar onSearch={handleOnSearch} onSearchChange={handleCityChange}/>
+                    <SearchBar onSearch={handleOnSearch}
+                               onSearchChange={handleCityChange}
+                               mode={'white'}/>
                     <Stats/>
                 </div>
                 <div className="hero-right">

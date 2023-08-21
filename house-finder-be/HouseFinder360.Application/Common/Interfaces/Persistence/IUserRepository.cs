@@ -1,5 +1,5 @@
 ﻿using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
-using HouseFinder360.Domain.User;
+using HouseFinder360.Domain.Users;
 
 namespace HouseFinder360.Application.Common.Interfaces.Persistence;
 

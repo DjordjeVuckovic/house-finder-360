@@ -1,0 +1,15 @@
+﻿using HouseFinder360.Application.Common.Dtos.Shared;
+
+namespace HouseFinder360.Application.Property.Dto;
+
+public class PropertyResponse
+{
+    public string Title { get; set; } = null!;
+    public int Price { get; set; }
+    public AddressDto Address { get; set; } = null!;
+    public string BedroomsNumber { get; set; } = null!;
+    public int BathroomsNumber { get; set; }
+    public int Area { get; set; }
+    public string PropertyType { get; set; } = null!;
+    public string Kind { get; set; } = null!;
+}
