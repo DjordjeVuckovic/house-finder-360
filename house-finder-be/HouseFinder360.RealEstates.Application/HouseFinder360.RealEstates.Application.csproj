@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HouseFinder360.Application.BuildingBlocks\HouseFinder360.Application.BuildingBlocks.csproj" />
+      <ProjectReference Include="..\HouseFinder360.RealEstates.Domain\HouseFinder360.RealEstates.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.5.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-preview.6.23329.7" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.0-preview.6.23329.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Common\Dtos\Requests\" />
+    </ItemGroup>
+
+</Project>

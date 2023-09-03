@@ -35,6 +35,7 @@ export const CreatePropertyPage = () => {
 
     const mutation = useMutation(createSaleProperty, {
         onError: (error: AxiosError) => {
+            mutation.isLoading = false
             showToast(handleError(error), 'error');
         },
         onSuccess: _ => {

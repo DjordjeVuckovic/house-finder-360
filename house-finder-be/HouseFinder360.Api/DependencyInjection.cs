@@ -1,18 +1,17 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
-using HouseFinder360.Api.Mapping;
 using HouseFinder360.Api.Services;
-using HouseFinder360.Application.Common.Interfaces.Authentication;
+using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 
 namespace HouseFinder360.Api;
 
-public static class DependencyInjection
+internal static class DependencyInjection
 {
-    public static IServiceCollection AddPresentation(this IServiceCollection services)
+    public static IServiceCollection AddBootstrapper(this IServiceCollection services)
     {
-        services.AddMapping();
         services.AddValidation();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         return services;
     }
 
@@ -20,7 +19,5 @@ public static class DependencyInjection
     {
         services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
         services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
-        // services.AddScoped(typeof(IPipelineBehavior<,>)
-        //     , typeof(ValidationBehavior<,>));
     }
 }

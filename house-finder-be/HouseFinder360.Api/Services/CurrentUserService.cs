@@ -1,6 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using HouseFinder360.Application.Common.Interfaces.Authentication;
+using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 
 namespace HouseFinder360.Api.Services;
 

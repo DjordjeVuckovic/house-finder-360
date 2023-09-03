@@ -16,5 +16,5 @@ export const fetchProperties = async (currentPage: number,pageSize: number) => {
     return response.data;
 }
 export const fetchPropertiesPaginate = async ({pageParam = 1}) => {
-    return fetchProperties(pageParam,5)
+    return fetchProperties(pageParam,10)
 }
