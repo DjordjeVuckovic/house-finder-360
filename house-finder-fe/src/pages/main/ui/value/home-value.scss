@@ -1,0 +1,53 @@
+.value-container{
+  .image-container{
+    border: 8px solid rgb(220 220 220 / 93%);
+  }
+  >div{
+    flex: 1;
+  }
+}
+.value-right{
+  gap: 0.5rem;
+}
+.value-accordion{
+  background-color: #d9d9d9;
+  background-image: linear-gradient(350deg, #d9d9d9 0%, #f6f2f2 2%);
+  border: .8px solid rgba(128,128,128,0.143);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow)!important;
+  gap: .5rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  width: 100%;
+}
+.accordion-button{
+  background-color: #d9d9d9;
+  background-image: linear-gradient(10deg, #d9d9d9 0%, #f6f2f2 2%);
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
+  display: flex;
+}
+.value-primary-text {
+  color: var(--primary-text-color);
+  padding-top: .5rem;
+  padding-left: .4rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.value-icon{
+  padding: 10px;
+  background: #eeeeff;
+  border-radius: 5px;
+  svg{
+    fill: var(--primary-color);
+  }
+}
+.v-accordion-item {
+  box-shadow: var(--shadow)!important;
+  border-radius: 5px;
+}

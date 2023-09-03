@@ -1,0 +1,18 @@
+.swiper-container-hf {
+  margin-top: 1rem;
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  gap: 2rem;
+}
+
+.swiper-slide {
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+}
+
+/* Hide scrollbars */
+.swiper-container-hf::-webkit-scrollbar {
+  display: none;
+}

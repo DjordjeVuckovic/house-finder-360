@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseFinder360.Domain", "Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseFinder360.BuildingBlocks", "HouseFinder360.BuildingBlocks\HouseFinder360.BuildingBlocks.csproj", "{D44A2042-4202-4EC9-A7B1-5B20037C935D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{40AAB4C0-A3A3-4C24-9E65-58249B9D463C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E182057A-2187-4517-AE54-9B1912197A1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,7 @@ Global
 		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D44A2042-4202-4EC9-A7B1-5B20037C935D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal

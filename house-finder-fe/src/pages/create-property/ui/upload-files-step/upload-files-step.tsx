@@ -8,7 +8,7 @@ import {FilePreview} from "./model/files.ts";
 import {useFileStore} from "../../state/file.store.ts";
 import {ButtonWithIcon} from "../../../../shared/ui/buttons";
 import {MdNavigateBefore, MdOutlineNavigateNext} from "react-icons/md";
-export const UploadFilesStep = ({ onUpload,type,onBack,onNext }) => {
+export const UploadFilesStep = ({ type,onBack,onNext }) => {
     const [dragging, setDragging] = useState(false);
     const { files, previews, addFiles, removeFile, addPreviews, removePreview } = useFileStore();
 
@@ -40,7 +40,6 @@ export const UploadFilesStep = ({ onUpload,type,onBack,onNext }) => {
         const filesArray = [...e.dataTransfer.files];
         addFiles(filesArray);
         handlePreviewFiles(filesArray)
-        if (onUpload) onUpload(filesArray);
     };
     const handlePreviewFiles = (filesUpload) => {
         const previewsArray: FilePreview[] = filesUpload.map(file => {

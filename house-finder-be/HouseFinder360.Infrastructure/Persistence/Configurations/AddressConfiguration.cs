@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.Property.Entities;
+﻿using HouseFinder360.Domain.Properties.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

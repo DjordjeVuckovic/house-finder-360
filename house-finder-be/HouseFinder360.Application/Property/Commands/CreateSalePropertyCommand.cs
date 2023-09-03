@@ -25,4 +25,5 @@ public class CreateSalePropertyCommand : IRequest<Result>
     public int ToiletsNumber { get; set; }
     public DateTime YearOfBuild { get; set; }
     public IFormFileCollection? Photos { get; set; }
+    public Guid UserId { get; set; }
 }

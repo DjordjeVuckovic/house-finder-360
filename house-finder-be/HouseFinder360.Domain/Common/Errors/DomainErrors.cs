@@ -1,5 +1,5 @@
 ﻿using FluentResults;
-using HouseFinder360.Domain.Property.ValueObjects;
+using HouseFinder360.Domain.Properties.ValueObjects;
 
 namespace HouseFinder360.Domain.Common.Errors;
 

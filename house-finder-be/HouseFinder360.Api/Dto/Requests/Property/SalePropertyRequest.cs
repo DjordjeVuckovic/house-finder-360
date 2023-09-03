@@ -16,4 +16,5 @@ public record SalePropertyRequest(
     int ElevatorsNumber,
     int NumberOfToilets, 
     int BathroomsNumber, 
-    int NumberOfBalconies);
+    int NumberOfBalconies,
+    Guid UserId);

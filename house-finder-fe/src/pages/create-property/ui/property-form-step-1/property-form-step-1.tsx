@@ -29,15 +29,14 @@ export const PropertyFormStep1 = ({type,register,handleSubmit,errors,onFinishHan
         {value: 'old', text: 'Old'},
     ]
     const roomItems: SelectItem[] = [
-        {value: 'one', text: 'One'},
-        {value: 'studio', text: 'Studio '},
-        {value: 'oneAndHalf', text: 'One and a half'},
-        {value: 'two', text: 'Two'},
-        {value: 'twoAndHalf', text: 'Two and a half'},
-        {value: 'three', text: 'Three'},
-        {value: 'threeAndHalf', text: 'Three and a half'},
-        {value: 'four', text: 'Four'},
-        {value: 'four+', text: 'Four +'},
+        {value: '1', text: 'One'},
+        {value: '1 1/2', text: 'One and a half'},
+        {value: '2', text: 'Two'},
+        {value: '2 1/2', text: 'Two and a half'},
+        {value: '3', text: 'Three'},
+        {value: '3 1/2', text: 'Three and a half'},
+        {value: '4', text: 'Four'},
+        {value: '4+', text: 'Four +'},
     ]
     const heatingItems: SelectItem[] = [
         {value: 'central', text: 'Central'},
@@ -54,21 +53,21 @@ export const PropertyFormStep1 = ({type,register,handleSubmit,errors,onFinishHan
         {value: 4, text: '3 +'},
     ]
     const floorItems: SelectItem[] = [
-        {value: 'groundLevel', text: 'Ground Level'},
-        {value: 'first', text: '1. floor'},
-        {value: 'second', text: '2. floor'},
-        {value: 'third', text: '3. floor'},
-        {value: 'fourth', text: '4. floor'},
-        {value: 'fifth', text: '5. floor'},
-        {value: 'fifthPlus', text: '5. floor +'},
+        {value: 'ground', text: 'Ground Level'},
+        {value: '1', text: '1. floor'},
+        {value: '2', text: '2. floor'},
+        {value: '3', text: '3. floor'},
+        {value: '4', text: '4. floor'},
+        {value: '5', text: '5. floor'},
+        {value: '5+', text: '5. floor +'},
     ]
     const totalFloorItems: SelectItem[] = [
-        {value: 'one', text: '1 floor'},
-        {value: 'two', text: '2 floor'},
-        {value: 'three', text: '3 floor'},
-        {value: 'four', text: '4 floor'},
-        {value: 'five', text: '5 floor'},
-        {value: 'fivePlus', text: '5 floor +'},
+        {value: '1', text: '1 floor'},
+        {value: '2', text: '2 floor'},
+        {value: '3', text: '3 floor'},
+        {value: '4', text: '4 floor'},
+        {value: '5', text: '5 floor'},
+        {value: '5+', text: '5 floor +'},
     ]
     const numberOfBathrooms: SelectItem[] = [
         {value: 1,text: '1'},

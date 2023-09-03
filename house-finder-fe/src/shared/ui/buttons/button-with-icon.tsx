@@ -7,12 +7,11 @@ export const ButtonWithIcon = ({   color,
                                    icon: Icon,
                                    children,
                                    onClick,
-                                   className,
                                    iconFirst = true,
                                    type = 'button' } : ButtonWithIconProps) => {
     return (
         <button
-            className={`${className} button-base-icon`}
+            className={`button-base-icon`}
             style={{ background: bgColor, color: color, width: width}}
             onClick={onClick}
             type={type}

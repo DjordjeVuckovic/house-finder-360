@@ -1,40 +1,40 @@
-﻿using HouseFinder360.Domain.Property;
-using HouseFinder360.Domain.Property.ValueObjects;
+﻿using HouseFinder360.Domain.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace HouseFinder360.Infrastructure.Persistence.Configurations;
 
-public class PropertyConfiguration : IEntityTypeConfiguration<Property>
+public class PropertyConfiguration : IEntityTypeConfiguration<RealEstate>
 {
-    public void Configure(EntityTypeBuilder<Property> builder)
+    public void Configure(EntityTypeBuilder<RealEstate> builder)
     {
-        builder.HasKey(sp => sp.Id);
-        builder.Property(sp => sp.Description)
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Description)
             .HasMaxLength(200);
-        builder.Property(sp => sp.Title)
+        builder.Property(x => x.Title)
             .HasMaxLength(100);
+        builder.HasIndex(x => x.UserId);
         builder.OwnsOne(saleProperty => saleProperty.Price, 
             pb =>
         {
             pb.Property(x => x.Value)
                 .HasColumnName("Price");
         });
-        builder.OwnsOne(sp => sp.FloorInformation, fi =>
+        builder.OwnsOne(x => x.FloorInformation, fi =>
         {
             fi.Property(x => x.TotalFloors).HasColumnName("TotalFloors").HasMaxLength(20);
             fi.Property(x => x.Floor).HasColumnName("Floor").HasMaxLength(20);
         });
-        builder.OwnsOne(sp => sp.PropertyType, pt =>
+        builder.OwnsOne(x => x.PropertyType, pt =>
         {
             pt.Property(x => x.PropertyTypeDeclaration).HasColumnName("PropertyTypeDeclaration").HasMaxLength(50);
         });
-        builder.OwnsOne(sp => sp.Area, a =>
+        builder.OwnsOne(x => x.Area, a =>
         {
             a.Property(x => x.SquadMeter).HasColumnName("Area");
         });
-        builder.OwnsOne(sp => sp.AdditionalInfo);
-        builder.HasOne(sp => sp.Address)
+        builder.OwnsOne(x => x.AdditionalInfo);
+        builder.HasOne(x => x.Address)
             .WithMany();
     }
 }

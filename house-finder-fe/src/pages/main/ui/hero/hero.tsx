@@ -26,8 +26,8 @@ export const Hero = () => {
                     <div className="flex-col-start hero-description"
                          data-aos="fade-down"
                          data-aos-duration="3000">
-                        <span className={'secondary-text'}>Find a variety of properties that suit you very easily</span>
-                        <span className={'secondary-text'}>Forget all difficulties in finding a residence for you</span>
+                        <span className={'secondary-text'}>Find a variety of properties that suit you very easily.</span>
+                        <span className={'secondary-text'}>Forget all difficulties in finding a residence for you.</span>
                     </div>
                     <SearchBar onSearch={handleOnSearch}
                                onSearchChange={handleCityChange}
@@ -38,7 +38,7 @@ export const Hero = () => {
                     <div className="image-container"
                          data-aos="fade-right"
                          data-aos-duration="3000">
-                        <img src={heroImage} alt={'img'} loading='lazy'/>
+                        <img src={heroImage} alt={'house'} loading='lazy'/>
                     </div>
                 </div>
             </div>

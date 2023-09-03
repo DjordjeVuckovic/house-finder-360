@@ -13,4 +13,10 @@ export interface UserPayload {
     iat: number;
     exp: number;
     jti: string;
+    role: string;
+}
+export interface User {
+    id: string;
+    email: string;
+    role: string;
 }

@@ -1,7 +1,6 @@
 
 import './buttons.scss'
 import {SubmitButtonProps} from "./button-props.ts";
-import {Fragment} from "react";
 import {CircularProgress} from "@mui/material";
 export const SubmitButton = ({   color,
                                  width,
@@ -22,16 +21,12 @@ export const SubmitButton = ({   color,
         >
             {children}
             {isLoading ? (
-                <Fragment>
-                    <CircularProgress size={20} className={'circular-progress'}/>
-                </Fragment>
-                )
-                : (
-                <Fragment>
-                    {Icon && <Icon color={iconColor} size={20}/>}
-                </Fragment>
-                )
-            }
+                <CircularProgress size={20} style={{color: iconColor}} />
+            ) : (
+                <div className={'submit-icon'}>
+                    {Icon && <Icon color={iconColor} size={20} />}
+                </div>
+            )}
         </button>
     );
 };

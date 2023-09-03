@@ -1,8 +1,8 @@
 ﻿using FluentResults;
 using HouseFinder360.Application.Common.BlobStorage;
 using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
-using HouseFinder360.Domain.Property.Entities;
-using HouseFinder360.Domain.Property.ValueObjects;
+using HouseFinder360.Domain.Properties.Entities;
+using HouseFinder360.Domain.Properties.ValueObjects;
 using MediatR;
 
 namespace HouseFinder360.Application.Property.Commands;
@@ -44,7 +44,7 @@ public class CreateSalePropertyCommandHandler : IRequestHandler<CreateSaleProper
             Uri = x.Uri,
             Container = CreateContainer.DefaultName
         });
-        var salePropertyResult = Domain.Property.Property.CreateSaleProperty(
+        var salePropertyResult = Domain.Properties.RealEstate.CreateSaleProperty(
             request.Title,
             request.Description,
             request.Area,
@@ -62,7 +62,8 @@ public class CreateSalePropertyCommandHandler : IRequestHandler<CreateSaleProper
             request.BathroomsNumber, 
             request.ToiletsNumber, 
             request.YearOfBuild,
-            propertyPhotos.ToList());
+            propertyPhotos.ToList(),
+            request.UserId);
         
         if (salePropertyResult.IsFailed) return Result.Fail(salePropertyResult.Errors);
         

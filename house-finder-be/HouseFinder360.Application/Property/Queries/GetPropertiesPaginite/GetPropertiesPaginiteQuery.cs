@@ -4,4 +4,4 @@ using MediatR;
 
 namespace HouseFinder360.Application.Property.Queries.GetPropertiesPaginite;
 
-public record GetPropertiesPaginiteQuery(Pagination Pagination) : IRequest<IEnumerable<PropertyResponse>>;
+public record GetPropertiesPaginiteQuery(Pagination Pagination) : IRequest<PagedResponse<PropertyResponse>>;

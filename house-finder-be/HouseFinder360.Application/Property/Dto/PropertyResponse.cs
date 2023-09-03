@@ -4,6 +4,7 @@ namespace HouseFinder360.Application.Property.Dto;
 
 public class PropertyResponse
 {
+    public Guid Id { get; set; }
     public string Title { get; set; } = null!;
     public int Price { get; set; }
     public AddressDto Address { get; set; } = null!;
@@ -11,5 +12,7 @@ public class PropertyResponse
     public int BathroomsNumber { get; set; }
     public int Area { get; set; }
     public string PropertyType { get; set; } = null!;
-    public string Kind { get; set; } = null!;
+    public string Purpose { get; set; } = null!;
+    public string? Description { get; set; }
+    public IEnumerable<string> PropertyImageUris { get; set; } = null!;
 }

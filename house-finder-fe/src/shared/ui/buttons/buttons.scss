@@ -1,7 +1,7 @@
 @import "src/scss/variables";
 @mixin button-base-mx{
   font-weight: 550;
-  padding: .6rem .6rem .6rem .6rem;
+  padding: .5rem 1rem;
   border: none;
   outline: none;
   border-radius: 16px;
@@ -11,7 +11,6 @@
   &:hover{
     cursor: pointer;
     opacity: 0.9;
-    background: $blue-gradient-hover;
     box-shadow: 0 0 .7em $black;
   }
 }
@@ -21,24 +20,23 @@
   justify-content: center;
   align-items: center;
   gap: .5rem;
-  &:disabled{
-    cursor: not-allowed;
-    background: rgba(105, 105, 105, 0.86);
-  }
+  //&:disabled{
+  //  cursor: not-allowed;
+  //  background: rgba(105, 105, 105, 0.86);
+  //}
 }
 .submit-button{
-  padding: .8rem;
   @include button-base-mx;
   background: linear-gradient(97.05deg, #4066ff 3.76%, #2949c6 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
+  gap: .7rem;
   &:disabled{
     cursor: not-allowed;
     background: rgba(51, 51, 51, 0.17);
   }
 }
-.circular-progress{
-  color: #ff922d!important;
+.submit-icon{
+  opacity: 1;
 }

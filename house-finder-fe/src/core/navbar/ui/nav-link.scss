@@ -24,3 +24,12 @@
     width: 100%;
   }
 }
+.button-as-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  outline: none;
+  border: none;
+}

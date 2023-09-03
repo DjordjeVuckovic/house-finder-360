@@ -20,7 +20,7 @@ export const SearchBar = ({onSearch,onSearchChange,mode}) => {
     }
     return (
         <div className={'search-bar'}>
-            <div className={'icon'}>
+            <div className={'icon-search'}>
                 <HiLocationMarker color={'#4066ff'} size={30}/>
             </div>
             <CityAutoComplete onSearchChange={handleChange}

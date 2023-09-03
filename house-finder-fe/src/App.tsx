@@ -2,7 +2,7 @@ import './App.scss'
 import './core/navbar/index.ts'
 import {Navbar} from "./core/navbar";
 import {Route, Routes} from "react-router-dom";
-import {DashboardPage} from "./pages/home";
+import {DashboardPage} from "./pages/dashboard";
 import {HomePage} from "./pages/main";
 import {Body} from "./core/body";
 import {ContactPage} from "./pages/contact";
@@ -23,7 +23,7 @@ function App() {
                   <Navbar/>
                   <Body>
                       <Routes>
-                          <Route path='/home' element={<DashboardPage/>}/>
+                          <Route path='/dashboard' element={<DashboardPage/>}/>
                           <Route path='/' element={<HomePage/>}/>
                           <Route path='/contact' element={<ContactPage/>}/>
                           <Route path='/sign-in' element={<SignInPage/>}/>

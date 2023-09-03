@@ -67,7 +67,6 @@
   flex-direction: column;
 }
 .sign-in-form *{
-  color: #ffffff;
   letter-spacing: 0.3px;
   outline: none;
   border: none;
@@ -90,10 +89,11 @@ input{
   padding: .8rem;
   width: 100%;
   background-color: rgba(255,255,255,0.07);
-  border-radius: 3px;
+  border-radius: 20px;
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 300;
+font-weight: 400;
+  color: #e5e5e5
 }
 ::placeholder{
   color: #e5e5e5;

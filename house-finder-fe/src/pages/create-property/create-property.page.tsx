@@ -14,6 +14,8 @@ import {useToast} from "../../shared/toast-messages/use-toast.ts";
 import {AxiosError} from "axios";
 import {useNavigate} from "react-router-dom";
 import {useFileStore} from "./state/file.store.ts";
+import {useUserPayload} from "../../auth/use-get-user.ts";
+import {handleError} from "../../utils/handle-error.ts";
 
 export const CreatePropertyPage = () => {
     const {
@@ -27,12 +29,13 @@ export const CreatePropertyPage = () => {
     const {showToast} = useToast()
 
     const { files, clearStore} = useFileStore();
+    const user = useUserPayload()
 
     const navigate = useNavigate()
 
     const mutation = useMutation(createSaleProperty, {
         onError: (error: AxiosError) => {
-            showToast(error.message, 'error');
+            showToast(handleError(error), 'error');
         },
         onSuccess: _ => {
             showToast('You are successfully created property!', 'success');
@@ -51,6 +54,7 @@ export const CreatePropertyPage = () => {
     const totalSteps = 4;
     const [activeStep, setActiveStep] = useState(0);
     const handleNext = () => {
+        console.log(user.id)
         setActiveStep(prev => prev + 1);
     };
     const handlePrev = () => {
@@ -59,18 +63,16 @@ export const CreatePropertyPage = () => {
     const onSubmitFormStep = () => {
         handleNext()
     }
-    const onSubmitFinalSubmit = (data) => {
+    const onSubmitFinalSubmit = (data: SaleProperty) => {
         console.log(data)
         const request = mapSalePropertyToRequest(data)
-        console.log(request)
-        mutation.mutate(transformToFormData(request))
+        const property = {...request,userId: user.id} as SalePropertyRequest
+        mutation.mutate(transformToFormData(property))
     }
-    const onChangeStep = (step) => {
+    const onChangeStep = (step: number) => {
         setActiveStep(step);
     };
-    const onUpload = (e) => {
-        console.log(e)
-    }
+
     return (
             <div className={'padding-base inner-width grid-form'}>
                 <div className={'form-create'}>
@@ -90,8 +92,7 @@ export const CreatePropertyPage = () => {
                                                             getValues={getValues}
                                                             onBack={handlePrev}/>
                     }
-                    {activeStep === 2 && <UploadFilesStep onUpload={onUpload}
-                                                          type={'Create'}
+                    {activeStep === 2 && <UploadFilesStep type={'Create'}
                                                           onBack={handlePrev}
                                                           onNext={handleNext} />
                     }

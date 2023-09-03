@@ -52,7 +52,7 @@ export const DeterminatePriceStep = ({
                               iconColor={'#ff922d'}
                               isLoading={isLoading}
                               type={'submit'}
-                              disabled={false}>
+                              disabled={isLoading}>
                     {isLoading ? 'Loading...' : 'Finish'}
                 </SubmitButton>
             </div>

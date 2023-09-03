@@ -1,5 +1,5 @@
 ﻿using HouseFinder360.Application.Common.Interfaces.Persistence.Generic;
-using HouseFinder360.Domain.Property;
+using HouseFinder360.Domain.Properties;
 using HouseFinder360.Domain.Users;
 using HouseFinder360.Infrastructure.Extensions;
 using HouseFinder360.Infrastructure.Persistence.Configurations;
@@ -14,7 +14,7 @@ public class HouseFinder360DbContext: DbContext,IDbContext
     }
 
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<Property> Properties { get; set; } = null!;
+    public DbSet<RealEstate> Properties { get; set; } = null!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(HouseFinder360DbContext).Assembly);
