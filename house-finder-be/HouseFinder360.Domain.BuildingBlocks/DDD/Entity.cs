@@ -29,7 +29,7 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
         return Id.GetHashCode();
     }
 
-    public static bool operator ==(Entity<TId> left, Entity<TId> right)
+    public static bool operator ==(Entity<TId>? left, Entity<TId> right)
     {
         return Equals(left, right);
     }

@@ -51,7 +51,7 @@ internal static class PropertiesModule
             return result.IsFailed 
                 ? Results.BadRequest(result.Errors.ToResponse())
                 : Results.Ok();
-        });
+        }).RequireAuthorization();
         
         app.MapGet("api/v1/properties", async (
             int currentPage,
@@ -66,6 +66,7 @@ internal static class PropertiesModule
             }));
             return Results.Ok(properties);
         });
+        
         app.MapGet("api/v1/properties/{userId:guid}", async (
             Guid userId,
             ISender sender) =>

@@ -8,7 +8,7 @@ public class Price:ValueObject
 {
     public int Value { get; private set; }
     public string Currency { get; private set; } = null!;
-    private static readonly string[] PossibleCurrencies = {"euro", "dollar"};
+    private static readonly string[] PossibleCurrencies = { "euro", "dollar" };
 
     public static string PossibleCurrenciesToString()
     {

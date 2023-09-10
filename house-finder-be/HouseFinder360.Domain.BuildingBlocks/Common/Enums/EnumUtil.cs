@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 
-namespace HouseFinder360.RealEstates.Domain.Common.Utils;
+namespace HouseFinder360.Domain.BuildingBlocks.Common.Enums;
 
 public static class EnumUtil
 {

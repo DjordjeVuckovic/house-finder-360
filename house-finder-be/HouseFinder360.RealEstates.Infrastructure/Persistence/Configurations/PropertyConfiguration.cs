@@ -20,21 +20,41 @@ public class PropertyConfiguration : IEntityTypeConfiguration<RealEstate>
             pb.Property(x => x.Value)
                 .HasColumnName("Price");
         });
+        
         builder.OwnsOne(x => x.FloorInformation, fi =>
         {
-            fi.Property(x => x.TotalFloors).HasColumnName("TotalFloors").HasMaxLength(20);
-            fi.Property(x => x.Floor).HasColumnName("Floor").HasMaxLength(20);
+            fi.Property(x => x.TotalFloors)
+                .HasColumnName("TotalFloors")
+                .HasMaxLength(20);
+            fi.Property(x => x.Floor)
+                .HasColumnName("Floor")
+                .HasMaxLength(20);
         });
+        
         builder.OwnsOne(x => x.PropertyType, pt =>
         {
-            pt.Property(x => x.PropertyTypeDeclaration).HasColumnName("PropertyTypeDeclaration").HasMaxLength(50);
+            pt.Property(x => x.PropertyTypeDeclaration)
+                .HasColumnName("PropertyTypeDeclaration")
+                .HasMaxLength(50);
         });
+        
         builder.OwnsOne(x => x.Area, a =>
         {
             a.Property(x => x.SquadMeter).HasColumnName("Area");
         });
+        
         builder.OwnsOne(x => x.AdditionalInfo);
-        builder.HasOne(x => x.Address)
+        builder
+            .HasOne(x => x.Address)
             .WithMany();
+
+        builder
+            .HasMany(x => x.Actions)
+            .WithOne()
+            .HasForeignKey(x => x.RealEstateId);
+
+        builder.Ignore(x => x.TotalClicks);
+        
+        builder.Ignore(x => x.TotalLikes);
     }
 }

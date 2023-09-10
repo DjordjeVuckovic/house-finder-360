@@ -45,7 +45,7 @@ export interface SalePropertyRequest {
     bathroomsNumber: number;
     numberOfBalconies: number;
     files?: FormData;
-    userId: string;
+    userId?: string;
 }
 
 export interface AddressRequest {

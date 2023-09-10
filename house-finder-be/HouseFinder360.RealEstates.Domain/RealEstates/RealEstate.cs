@@ -1,6 +1,6 @@
 ﻿using FluentResults;
+using HouseFinder360.Domain.BuildingBlocks.Common.Enums;
 using HouseFinder360.Domain.BuildingBlocks.DDD;
-using HouseFinder360.RealEstates.Domain.Common.Utils;
 using HouseFinder360.RealEstates.Domain.RealEstates.Entities;
 using HouseFinder360.RealEstates.Domain.RealEstates.Enums;
 using HouseFinder360.RealEstates.Domain.RealEstates.ValueObjects;
@@ -26,6 +26,9 @@ public sealed class RealEstate : AggregateRoot<Guid>
     public int ElevatorsNumber { get; set; }
     public List<PropertyPhoto> Photos { get; private set; } = new();
     public Guid UserId { get; private set; }
+    public List<PropertyAction> Actions { get; private set; } = new();
+    public int TotalLikes => Actions.Count(a => a.ActionType == ActionType.Like);
+    public int TotalClicks => Actions.Count(a => a.ActionType == ActionType.Click);
 
     private RealEstate(
         string title, 

@@ -14,4 +14,7 @@
       <ProjectReference Include="..\HouseFinder360.Domain.BuildingBlocks\HouseFinder360.Domain.BuildingBlocks.csproj" />
     </ItemGroup>
 
+
+
+
 </Project>
