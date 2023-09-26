@@ -1,11 +1,10 @@
-﻿using Carter;
+﻿namespace HouseFinder360.Api.Endpoints;
 
-namespace HouseFinder360.Api.Endpoints;
-
-public class ErrorsModule : ICarterModule
+public static class ErrorsModule
 {
-    public void AddRoutes(IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapErrorsModule(this IEndpointRouteBuilder app)
     {
         app.MapGet("/errors", () => Results.Problem());
+        return app;
     }
 }

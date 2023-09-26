@@ -16,3 +16,44 @@
 .c-left{
   gap: 0.5rem;
 }
+.contact-card{
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 8px;
+  padding: 1.2rem;
+  border: 1px solid #80808035;
+}
+.contact-card-icon{
+  display: flex;
+  padding: .8rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 8px;
+  background-color: #d9d9d9;
+  background-image: linear-gradient(10deg, #f6f2f2 0%, rgba(128, 128, 128, 0) 2%);
+}
+.btn-contact{
+  background-color: #d9d9d9;
+  background-image: linear-gradient(10deg, grey 0%, rgba(128, 128, 128, 0) 2%);
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: .3rem;
+  font-size: 16px;
+  font-weight: 550;
+  color: #3D5CB8FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  &:hover{
+    color: #d9d9d9;
+    background: #3D5CB8FF;
+  }
+}
+.contact-card-content{
+  padding: 0 2rem 1rem 1rem;
+}

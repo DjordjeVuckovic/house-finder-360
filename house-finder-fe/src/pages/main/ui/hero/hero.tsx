@@ -1,17 +1,12 @@
 import heroImage from "../../../../assets/pictures/hero-image.png"
 import "./hero.scss"
 import {SearchBar} from "../../../../core/search/search-bar.tsx";
-import {useState} from "react";
-import {City} from "../../../../core/search/model/city.ts";
 import {Stats} from "../stats/stats.tsx";
+import {useNavigate} from "react-router-dom";
 export const Hero = () => {
-    const [selectedCity, setSelectedCity] = useState<City | null>(null);
-
-    const handleCityChange = (city: City): void => {
-        setSelectedCity(city);
-    };
+    const navigate = useNavigate()
     const handleOnSearch = (): void => {
-        console.log(selectedCity)
+        navigate('/properties')
     }
     return (
         <section className="hero-wrapper">
@@ -30,7 +25,6 @@ export const Hero = () => {
                         <span className={'secondary-text'}>Forget all difficulties in finding a residence for you.</span>
                     </div>
                     <SearchBar onSearch={handleOnSearch}
-                               onSearchChange={handleCityChange}
                                mode={'white'}/>
                     <Stats/>
                 </div>

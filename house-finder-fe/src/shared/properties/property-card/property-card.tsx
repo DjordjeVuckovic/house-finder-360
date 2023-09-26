@@ -25,7 +25,7 @@ export const PropertyCard = (props : PropertyCardProps) => {
             </span>
             <span className={'primary-text p-title'}>{props.title}</span>
             <span style={{color: color}} className={'p-description'}>
-                {truncateString(props.description,80)}
+                {truncateString(props.description,40)}
             </span>
             <div className={'p-card-icon-group'}>
                 <div className={'p-card-icon'}>

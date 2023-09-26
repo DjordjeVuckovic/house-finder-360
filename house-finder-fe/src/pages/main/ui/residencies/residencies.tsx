@@ -5,7 +5,7 @@ import {Fragment} from "react";
 import {CustomLoader} from "../../../../core/custom-loader/custom-loader.tsx";
 import {PropertyCard} from "../../../../shared/properties/property-card/property-card.tsx";
 import {PropertyResponse} from "../../../../shared/model/property-response.ts";
-import {SwiperSlider} from "../../../../core/swiper/swiper-slider.tsx";
+import {SwiperSlider} from "../../../../shared/ui/swiper/swiper-slider.tsx";
 export const Residencies = () => {
     const {
         data,
@@ -13,9 +13,8 @@ export const Residencies = () => {
         isLoading,
         fetchNextPage,
         hasNextPage,
-    } = useInfiniteQuery('sale-properties', fetchPropertiesPaginate, {
+    } = useInfiniteQuery('properties', fetchPropertiesPaginate, {
         getNextPageParam: (lastPage, _) => {
-            // Replace with your logic to determine if there's a next page
             return lastPage.hasNextPage ? lastPage.currentPage + 1 : false;
         },
     });

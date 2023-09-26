@@ -1,24 +1,28 @@
-using Carter;
 using HouseFinder360.Api;
+using HouseFinder360.Api.Endpoints;
 using HouseFinder360.Api.Swagger;
-using HouseFinder360.Application;
-using HouseFinder360.Infrastructure;
+using HouseFinder360.RealEstates.Api;
+using HouseFinder360.RealEstates.Api.Endpoints;
+using HouseFinder360.Users.Api;
+using HouseFinder360.Users.Api.Endpoints;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-const string policyName = "HoseFinderPolicy";
+const string policyName = "HouseFinderPolicy";
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
     builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>,ConfigureSwaggerOptions>();
-    builder.Services.AddCarter();
+    
     builder.Services.AddAuthentication();
     builder.Services.AddAuthorization();
+
     builder.Services
-        .AddPresentation()
-        .AddInfrastructure(builder.Configuration)
-        .AddApplication();
+        .AddBootstrapper()
+        .AddRealEstateModule(builder.Configuration)
+        .AddUsersModule(builder.Configuration);
+    
     builder.Services
         .AddCors(options =>
         {
@@ -40,9 +44,14 @@ var app = builder.Build();
     app.UseHttpsRedirection();
     app.UseRouting();
     app.UseCors(policyName);
-    app.MapCarter();
+    
+    app.MapErrorsModule()
+        .MapRealEstateModule()
+        .MapUserModule();
+    
     app.UseAuthentication();
     app.UseAuthorization();
-    app.RunMigrations();
+    app.RunRealEstateMigrations(app.Environment);
+    app.RunUsersMigrations(app.Environment);
     app.Run();
 }

@@ -1,4 +1,4 @@
-import {CreatePropertyPage} from  './create-property.page.tsx'
+import {PropertyFormPage} from './property-form.page.tsx'
 export {
-    CreatePropertyPage
+    PropertyFormPage
 }

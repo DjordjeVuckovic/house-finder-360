@@ -9,12 +9,13 @@
   </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HouseFinder360.Application\HouseFinder360.Application.csproj" />
-      <ProjectReference Include="..\HouseFinder360.Infrastructure\HouseFinder360.Infrastructure.csproj" />
+      <ProjectReference Include="..\HouseFinder360.RealEstates.Api\HouseFinder360.RealEstates.Api.csproj" />
+      <ProjectReference Include="..\HouseFinder360.RealEstates.Application\HouseFinder360.RealEstates.Application.csproj" />
+      <ProjectReference Include="..\HouseFinder360.RealEstates.Infrastructure\HouseFinder360.RealEstates.Infrastructure.csproj" />
+      <ProjectReference Include="..\HouseFinder360.Users.Api\HouseFinder360.Users.Api.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Carter" Version="7.1.0" />
       <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
       <PackageReference Include="Mapster" Version="7.3.0" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
@@ -25,8 +26,5 @@
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Dto\" />
-    </ItemGroup>
 
 </Project>

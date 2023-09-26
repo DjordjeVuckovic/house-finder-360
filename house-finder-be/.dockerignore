@@ -2,6 +2,8 @@
 **/bin
 **/obj
 
+.env
+global.json
 # Exclude any files with the following extensions
 **/*.log
 **/*.tmp

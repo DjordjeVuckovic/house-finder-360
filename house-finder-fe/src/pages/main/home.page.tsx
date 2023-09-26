@@ -7,6 +7,8 @@ import {useEffect} from "react";
 import {Residencies} from "./ui/residencies/residencies.tsx";
 import {HomeValue} from "./ui/value/home-value.tsx";
 import {Contacts} from "./ui/contacts/contacts.tsx";
+import {GetStarted} from "./ui/get-started/get-started.tsx";
+import {Footer} from "../../shared/ui/footer/footer.tsx";
 export const HomePage = () => {
     useEffect(() => {
         AOS.init({duration: 2000})
@@ -22,6 +24,8 @@ export const HomePage = () => {
                 <Residencies/>
                 <HomeValue/>
                 <Contacts/>
+                <GetStarted/>
+                <Footer/>
             </div>
         </>
     )

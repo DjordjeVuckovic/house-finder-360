@@ -1,4 +1,4 @@
-import '../upload-files.scss'
+import '../upload-photos.scss'
 import {RiDeleteBin2Fill} from "react-icons/ri";
 import {FileCardProps} from "../upload-files-props.ts";
 export const FileCard= ({file,onDelete}: FileCardProps) => {

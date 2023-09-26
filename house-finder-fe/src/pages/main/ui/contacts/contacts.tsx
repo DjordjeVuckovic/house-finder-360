@@ -1,5 +1,8 @@
 import cImage from "../../../../assets/pictures/contact.jpg"
 import './contacts.scss'
+import {contactsConstants} from "./constants/contacts.constants.ts";
+import {ContactCard} from "./ui/contact-card.tsx";
+
 export const Contacts = () => {
     return (
         <section className={'c-wrapper'}>
@@ -19,6 +22,18 @@ export const Contacts = () => {
                         <br/>
                         You can call, chat or message our support 24/7.
                     </span>
+                    <div className={'grid-2-c'}>
+                        {contactsConstants.map((x, index) =>
+                            <div data-aos="fade-top"
+                                 data-aos-duration="3000">
+                                <ContactCard key={index}
+                                             title={x.title}
+                                             text={x.text}
+                                             buttonText={x.buttonText}
+                                             icon={x.icon}/>
+                            </div>
+                        )}
+                    </div>
 
                 </div>
 

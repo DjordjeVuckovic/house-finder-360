@@ -15,8 +15,8 @@ services:
       - house-finder-db-data:/var/lib/postgresql/data
     networks: 
       - house-finder-net
-  house-finder-360-app:
-    container_name: house-finder-360-api
+  backend:
+    container_name: house-finder-be
     image: ${DOCKER_REGISTRY-}house-finder-360-app
     build: ../house-finder-be/
     ports:
@@ -32,6 +32,18 @@ services:
       - house-finder-db
     networks:
       - house-finder-net
+  frontend:
+    container_name: house-finder-fe
+    image: ${DOCKER_REGISTRY-}house-finder-fe
+    build: 
+      context: ../house-finder-fe/
+      args:
+        BUILD_MODE: container
+    ports:
+      - "5173:80"
+    networks:
+      - house-finder-net
+  
 volumes: 
   house-finder-db-data:
     driver: local

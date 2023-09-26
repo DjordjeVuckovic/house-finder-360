@@ -89,16 +89,20 @@ input{
   padding: .8rem;
   width: 100%;
   background-color: rgba(255,255,255,0.07);
-  border-radius: 20px;
+  border-radius: 8px;
   margin-top: 8px;
   font-size: 14px;
-font-weight: 400;
+  font-weight: 400;
   color: #e5e5e5
 }
 ::placeholder{
   color: #e5e5e5;
 }
-.btn {
+.btn-sign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
   margin-top: 1rem;
   width: 100%;
   padding: .5rem;
@@ -116,7 +120,9 @@ font-weight: 400;
     transform: scale(1.02);
     background: $blue-gradient-hover;
   }
-
+}
+.sign-btn-icon{
+  margin-top: 5px;
 }
 .social{
   margin-top: 30px;

@@ -22,16 +22,20 @@ export const Navbar = () => {
      <nav className='navbar-wrapper'>
          <section className='padding-base inner-width navbar-container'>
              <div className={'flex-center logo-container'}>
-                 <img src={logo} alt={'logo'} className={'image-logo'} loading='lazy'/>
+                 <img src={logo}
+                      alt={'logo'}
+                      className={'image-logo'}
+                      loading='lazy' onClick={() => navigate('')}
+                 />
              </div>
              <div className='flex-center navbar-menu-middle'>
                  <NavLink url={''}>Home</NavLink>
-                 <NavLink url={'/dashboard'}>Dashboard</NavLink>
+                 {user && <NavLink url={'/dashboard'}>Dashboard</NavLink>}
                  {user && <NavLink url={'/rental-manager/all-properties'}>Rental Manager</NavLink>}
                  <NavButton title={'Contact'} link={'/contact'} />
              </div>
              <div className='flex-end navbar-menu-end'>
-                 {!user && <NavLink url={'/sign-up'}>Sign Up <AiOutlineUserAdd size={20}/></NavLink>}
+                 {!user && <NavLink url={'/sign-up'}>Sign Up <AiOutlineUserAdd size={25}/></NavLink>}
                  {!user && <NavLink url={'/sign-in'}>Sign In <AiOutlineLogin size={20}/></NavLink>}
                  {user &&
                      <ButtonAsLink onClick={logOut}>

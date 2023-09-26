@@ -66,6 +66,7 @@ body{
   align-items: center;
 }
 .flex-wrap{
+  display: flex;
   flex-wrap: wrap;
 }
 .flex-end{
@@ -96,10 +97,20 @@ body{
   justify-content: center;
   align-items: flex-end;
 }
+.grid-2-c{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
 .primary-text {
   color: #1f3e72;
   font-weight: bold;
   font-size: 2rem;
+}
+.primary-text-small {
+  color: #1f3e72;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 .white-text{
   color: $text-color;
@@ -162,6 +173,11 @@ body{
   font-size: 2.8rem;
   font-weight: 600;
 }
+.orange-text-md {
+  color: orange;
+  font-size: 2.1rem;
+  font-weight: 600;
+}
 .orange-text-small {
   color: orange;
   font-size: 1rem;
@@ -178,6 +194,10 @@ body{
 }
 .mg-b-5{
   margin-bottom: .5rem;
+}
+
+.mg-t-1{
+  margin-top: 1rem;
 }
 @media (min-width: 1400px) {
   .inner-width{
@@ -231,4 +251,8 @@ body{
     width: 100%;
     height: 100%;
   }
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
 }

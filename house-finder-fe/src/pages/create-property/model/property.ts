@@ -19,6 +19,7 @@ export interface SaleProperty {
     toiletsNumber: number;
     balconiesNumber: number;
     bathroomsNumber: number;
+    listingType: string;
 }
 export interface Address{
     country: Country;
@@ -45,7 +46,7 @@ export interface SalePropertyRequest {
     bathroomsNumber: number;
     numberOfBalconies: number;
     files?: FormData;
-    userId: string;
+    userId?: string;
 }
 
 export interface AddressRequest {
