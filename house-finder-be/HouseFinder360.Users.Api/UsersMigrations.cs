@@ -20,7 +20,7 @@ public static class UsersMigrations
         {
             var context = services.GetService<UserDbContext>();
             context?.SeedRoles();
-            if(webHostEnvironment.IsProduction()) return;
+            /*if(webHostEnvironment.IsProduction()) return;*/
             context?.Database.Migrate();
         }
         catch (Exception e)
