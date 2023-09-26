@@ -31,8 +31,8 @@ jobs:
         run: dotnet publish ./HouseFinder360.Api/HouseFinder360.Api.csproj --configuration Release -o ./publish --no-build
         
       - run: |
-          docker build -t housefinder360.azurecr.io/house-finder-be:${{ github.sha }} -f ./cd.dockerfile .
-          docker push housefinder360.azurecr.io/house-finder-be:${{ github.sha }}
+          docker build -t housefinderreg.azurecr.io/house-finder-be:${{ github.sha }} -f ./cd.dockerfile .
+          docker push housefinderreg.azurecr.io/house-finder-be:${{ github.sha }}
 
       - name: Login to Azure
         uses: azure/login@v1
@@ -42,20 +42,20 @@ jobs:
       - name: Login and push to acr with docker
         uses: azure/docker-login@v1
         with:
-          login-server: housefinder360.azurecr.io
+          login-server: housefinderreg.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Publish to azure web app
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'house-finder-be'
-          images: 'housefinder360.azurecr.io/house-finder-be:${{ github.sha }}'
+          app-name: 'house-finder-backend'
+          images: 'housefinderreg.azurecr.io/house-finder-be:${{ github.sha }}'
 
       - name: Set up azure configuration
         uses: Azure/appservice-settings@v1
         with:
-          app-name: 'house-finder-be'
+          app-name: 'house-finder-backend'
           app-settings-json: |
             [
                {
