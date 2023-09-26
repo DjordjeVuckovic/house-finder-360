@@ -33,17 +33,26 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
             .SingleOrDefaultAsync(x =>
             x.PhoneNumber == query.EmailOrPhone || x.Email == query.EmailOrPhone, 
             cancellationToken);
+        
         if (user is null)
         {
-            return Result.Fail<AuthResult>(UsersErrors.WrongCredential);
+            return Result.Fail<AuthResult>(UsersErrors.WrongCredentialForUser(query.EmailOrPhone));
         }
 
         var passwordValid = await _userManager.CheckPasswordAsync(user, query.Password);
         if (!passwordValid)
         {
-            return Result.Fail<AuthResult>(UsersErrors.WrongCredential);
+            return Result.Fail<AuthResult>(UsersErrors.WrongCredentialForUser(query.EmailOrPhone));
         }
-        var token = _jwtTokenGenerator.GenerateToken(user);
-        return new AuthResult(token);
+
+        try
+        {
+            var token = _jwtTokenGenerator.GenerateToken(user);
+            return new AuthResult(token);
+        }
+        catch (Exception exception)
+        {
+            return Result.Fail<AuthResult>(UsersErrors.CannotGenerateToken); 
+        }
     }
 }

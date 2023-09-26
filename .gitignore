@@ -6,6 +6,9 @@ obj/
 project.lock.json
 NuGetScratch/
 
+#sql
+pg_dump/
+
 api/wwwroot/**
 !api/wwwroot/scratch.html
 !api/wwwroot/favicon.ico

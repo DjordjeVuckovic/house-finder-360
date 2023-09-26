@@ -71,7 +71,15 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
             await transaction.RollbackAsync(cancellationToken);
             return Result.Fail(UsersErrors.Role);
         }
-        await _userManager.AddToRoleAsync(user, request.Role);
+
+        try
+        {
+            await _userManager.AddToRoleAsync(user, request.Role);
+        }
+        catch
+        {
+            return Result.Fail(UsersErrors.Role); 
+        }
 
         await transaction.CommitAsync(cancellationToken);
         
