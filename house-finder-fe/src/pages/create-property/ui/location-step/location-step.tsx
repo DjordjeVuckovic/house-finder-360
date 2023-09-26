@@ -7,7 +7,7 @@ import {InputCore} from "../../../../shared/ui/forms";
 import {MdNavigateBefore, MdOutlineNavigateNext} from "react-icons/md";
 import {ButtonWithIcon} from "../../../../shared/ui/buttons";
 
-export const PropertyFormStep2 = ({
+export const LocationStep = ({
                                       type,
                                       register,
                                       handleSubmit,

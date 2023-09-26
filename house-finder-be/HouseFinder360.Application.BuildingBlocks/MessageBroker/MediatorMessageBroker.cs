@@ -2,7 +2,7 @@
 
 namespace HouseFinder360.Application.BuildingBlocks.MessageBroker;
 
-public class MediatorMessageBroker : IMessageBroker
+public sealed class MediatorMessageBroker : IMessageBroker
 {
     private readonly IMediator _mediator;
 

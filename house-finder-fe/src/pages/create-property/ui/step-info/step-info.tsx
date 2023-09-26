@@ -1,6 +1,6 @@
 import house from "../../../../assets/pictures/residential.png";
-import './property-form-photo.scss'
-export const PropertyFormPhoto = ({totalSteps,activeStep,onChangeStep}) => {
+import './step-info.scss'
+export const StepInfo = ({totalSteps,activeStep,onChangeStep}) => {
     return (
         <div className="property-form-photo">
             {/*<div className="circle-small" />*/}

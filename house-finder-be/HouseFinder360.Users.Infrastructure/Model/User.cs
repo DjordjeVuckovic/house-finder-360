@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HouseFinder360.Users.Infrastructure.Model;
 
-public class User : IdentityUser<Guid>
+public sealed class User : IdentityUser<Guid>
 {
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;

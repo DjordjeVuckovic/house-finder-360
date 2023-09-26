@@ -17,10 +17,11 @@ var builder = WebApplication.CreateBuilder(args);
     
     builder.Services.AddAuthentication();
     builder.Services.AddAuthorization();
-    
-    builder.Services.AddBootstrapper()
-        .AddUsersModule(builder.Configuration)
-        .AddRealEstateModule(builder.Configuration);
+
+    builder.Services
+        .AddBootstrapper()
+        .AddRealEstateModule(builder.Configuration)
+        .AddUsersModule(builder.Configuration);
     
     builder.Services
         .AddCors(options =>
@@ -43,9 +44,11 @@ var app = builder.Build();
     app.UseHttpsRedirection();
     app.UseRouting();
     app.UseCors(policyName);
+    
     app.MapErrorsModule()
         .MapRealEstateModule()
         .MapUserModule();
+    
     app.UseAuthentication();
     app.UseAuthorization();
     app.RunRealEstateMigrations(app.Environment);

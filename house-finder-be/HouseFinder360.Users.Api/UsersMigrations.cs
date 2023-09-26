@@ -14,12 +14,13 @@ public static class UsersMigrations
         this WebApplication app, 
         IWebHostEnvironment webHostEnvironment)
     {
-        if(webHostEnvironment.IsProduction()) return;
         using var serviceScope = app.Services.CreateScope();
         var services = serviceScope.ServiceProvider;
         try
         {
             var context = services.GetService<UserDbContext>();
+            context?.SeedRoles();
+            if(webHostEnvironment.IsProduction()) return;
             context?.Database.Migrate();
         }
         catch (Exception e)

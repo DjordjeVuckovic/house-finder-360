@@ -8,6 +8,6 @@ internal class PropertyMappingConfig : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {
-        config.NewConfig<SalePropertyRequest, CreateSalePropertyCommand>();
+        config.NewConfig<SalePropertyRequest, CreatePropertyCommand>();
     }
 }

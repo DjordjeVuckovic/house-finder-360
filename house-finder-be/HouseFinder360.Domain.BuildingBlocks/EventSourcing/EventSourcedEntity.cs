@@ -10,10 +10,16 @@ public abstract class EventSourcedEntity<T> : Entity<T> where T : notnull
     /// Initializes the entity for event sourcing. 
     /// </summary>
     /// <remarks>
-    /// Override if the entity contains other <see cref="EventSourcedEntity"/> objects which needs to be initialized. 
+    /// Override if the entity contains other <see>
+    ///     <cref>EventSourcedEntity</cref>
+    /// </see>
+    /// objects which needs to be initialized. 
     /// This method should only be invoked from 
-    /// <see cref="EventSourcedAggregateRoot.Initialize"/> (for entities contained by the aggregate root)
-    /// or <see cref="Initialize(EventSourcedAggregateRoot)"/> (for entities contained by other entities).
+    /// <see>
+    ///     <cref>EventSourcedAggregateRoot.Initialize</cref>
+    /// </see>
+    /// (for entities contained by the aggregate root)
+    /// or <see cref="Initialize(EventSourcedAggregateRoot{T})"/> (for entities contained by other entities).
     /// </remarks>
     /// <param name="root"></param>
     /// <exception cref="ArgumentNullException"></exception>
@@ -23,7 +29,10 @@ public abstract class EventSourcedEntity<T> : Entity<T> where T : notnull
     }
 
     /// <summary>
-    /// Forwards the event to <see cref="EventSourcedAggregateRoot.Causes(DomainEvent)"/> to be recorded and applied
+    /// Forwards the event to <see>
+    ///     <cref>EventSourcedAggregateRoot.Causes(DomainEvent)</cref>
+    /// </see>
+    /// to be recorded and applied
     /// to the aggregate.
     /// </summary>
     /// <remarks>
@@ -46,7 +55,10 @@ public abstract class EventSourcedEntity<T> : Entity<T> where T : notnull
     /// Changes to entity state should happen exclusively in this method.
     /// Implementation should assume that the event is valid and apply changes without checking invariants. 
     /// This method should only be invoked from 
-    /// <see cref="EventSourcedAggregateRoot.Apply(DomainEvent)"/> (for entities contained by the aggregate root) 
+    /// <see>
+    ///     <cref>EventSourcedAggregateRoot.Apply(DomainEvent)</cref>
+    /// </see>
+    /// (for entities contained by the aggregate root) 
     /// or <see cref="Apply(DomainEvent)"/> (for entities contained by other entities).
     /// </remarks>
     /// <param name="event"></param>

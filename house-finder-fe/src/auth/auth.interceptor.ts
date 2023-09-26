@@ -5,9 +5,7 @@ const excludedPaths: string[] = [`${BASE_URL}/api/v1/auth`];
 
 export const addInterceptor = (config: InternalAxiosRequestConfig) : InternalAxiosRequestConfig => {
     const accessToken = useAuthStore.getState().accessToken
-    console.log(accessToken)
     if (excludedPaths.includes(config.url)) {
-        console.log('excluded')
         return config;
     }
 

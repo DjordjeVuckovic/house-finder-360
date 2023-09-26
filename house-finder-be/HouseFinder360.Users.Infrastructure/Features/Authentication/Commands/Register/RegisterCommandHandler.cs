@@ -69,9 +69,11 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
         if (roleResult.IsFailed)
         {
             await transaction.RollbackAsync(cancellationToken);
-            return Result.Fail(UsersErrors.RoleAssign);
+            return Result.Fail(UsersErrors.Role);
         }
         await _userManager.AddToRoleAsync(user, request.Role);
+
+        await transaction.CommitAsync(cancellationToken);
         
         var token = _jwtTokenGenerator.GenerateToken(user);
         

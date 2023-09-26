@@ -19,6 +19,7 @@ export interface SaleProperty {
     toiletsNumber: number;
     balconiesNumber: number;
     bathroomsNumber: number;
+    listingType: string;
 }
 export interface Address{
     country: Country;

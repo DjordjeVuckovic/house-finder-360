@@ -16,7 +16,7 @@ public class CreateRoleHandler : IRequestHandler<CreateRoleCommand,Result>
 
     public async Task<Result> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
     {
-        if (await _roleManager.RoleExistsAsync(request.Name.ToUpper())) return Result.Ok();
+        if (await _roleManager.RoleExistsAsync(request.Name.ToLower())) return Result.Ok();
         var role = new UserRole
         {
             Name = request.Name

@@ -8,12 +8,12 @@ using MediatR;
 
 namespace HouseFinder360.RealEstates.Application.RealEstates.Commands;
 
-public class CreateSalePropertyCommandHandler : IRequestHandler<CreateSalePropertyCommand,Result>
+public class CreatePropertyCommandHandler : IRequestHandler<CreatePropertyCommand,Result>
 {
     private readonly IDbContext _dbContext;
     private readonly BlobHandler _blobHandler;
 
-    public CreateSalePropertyCommandHandler(
+    public CreatePropertyCommandHandler(
         IDbContext dbContext, 
         BlobHandler blobHandler)
     {
@@ -21,7 +21,7 @@ public class CreateSalePropertyCommandHandler : IRequestHandler<CreateSaleProper
         _blobHandler = blobHandler;
     }
 
-    public async Task<Result> Handle(CreateSalePropertyCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(CreatePropertyCommand request, CancellationToken cancellationToken)
     {
         var address = new Address(
             new Location
@@ -64,7 +64,8 @@ public class CreateSalePropertyCommandHandler : IRequestHandler<CreateSaleProper
             request.ToiletsNumber, 
             request.YearOfBuild,
             propertyPhotos.ToList(),
-            request.UserId);
+            request.UserId,
+            request.ListingType);
         
         if (salePropertyResult.IsFailed) return Result.Fail(salePropertyResult.Errors);
         

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import './upload-files.scss'
+import './upload-photos.scss'
 import uploadPhoto from '../../../../assets/pictures/upload.png'
 import {LiaFileUploadSolid} from "react-icons/lia";
 import {Typography} from "@mui/material";
@@ -8,39 +8,36 @@ import {FilePreview} from "./model/files.ts";
 import {useFileStore} from "../../state/file.store.ts";
 import {ButtonWithIcon} from "../../../../shared/ui/buttons";
 import {MdNavigateBefore, MdOutlineNavigateNext} from "react-icons/md";
-export const UploadFilesStep = ({ type,onBack,onNext }) => {
+export const UploadPhotosStep = ({ type,onBack,onNext }) => {
     const [dragging, setDragging] = useState(false);
     const { files, previews, addFiles, removeFile, addPreviews, removePreview } = useFileStore();
 
     const handleDragEnter = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        preventDefaultAndStopPropagation(e)
         setDragging(true);
     };
 
     const handleDragLeave = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        preventDefaultAndStopPropagation(e)
         setDragging(false);
     };
 
-    const handleDragOver = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
+    const handleDragOver = (e) => preventDefaultAndStopPropagation(e)
     const onDeleteFile = (e:FilePreview) => {
         removePreview(e.filename)
         removeFile(e.filename)
     }
 
     const handleDrop = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
         setDragging(false);
         const filesArray = [...e.dataTransfer.files];
         addFiles(filesArray);
         handlePreviewFiles(filesArray)
     };
+    const preventDefaultAndStopPropagation = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    }
     const handlePreviewFiles = (filesUpload) => {
         const previewsArray: FilePreview[] = filesUpload.map(file => {
             const filePreview: FilePreview =  {
@@ -48,7 +45,6 @@ export const UploadFilesStep = ({ type,onBack,onNext }) => {
                 blob: URL.createObjectURL(file)}
             return filePreview
         });
-        console.log(previewsArray)
         addPreviews(previewsArray);
     }
     const handleFileChange = (e) => {

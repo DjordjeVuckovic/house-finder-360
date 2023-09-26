@@ -1,11 +1,11 @@
 import './property-form.scss';
-import {PropertyFormPhoto} from "./ui/property-form-photo/property-form-photo.tsx";
-import {PropertyFormStep1} from "./ui/property-form-step-1/property-form-step-1.tsx";
+import {StepInfo} from "./ui/step-info/step-info.tsx";
+import {GeneralInfoStep} from "./ui/general-info-step/general-info-step.tsx";
 import {useState} from "react";
-import {PropertyFormStep2} from "./ui/property-form-step-2/property-form-step-2.tsx";
+import {LocationStep} from "./ui/location-step/location-step.tsx";
 import {useForm} from "react-hook-form";
 import {SaleProperty, SalePropertyRequest} from "./model/property.ts";
-import {UploadFilesStep} from "./ui/upload-files-step/upload-files-step.tsx";
+import {UploadPhotosStep} from "./ui/upload-files-step/upload-photos-step.tsx";
 import {DeterminatePriceStep} from "./ui/determinate-price-step/determinate-price-step.tsx";
 import {useMutation} from "react-query";
 import {createSaleProperty} from "../../shared/services/property.service.ts";
@@ -17,7 +17,7 @@ import {useFileStore} from "./state/file.store.ts";
 import {useUserPayload} from "../../auth/use-get-user.ts";
 import {handleError} from "../../utils/handle-error.ts";
 
-export const CreatePropertyPage = () => {
+export const PropertyFormPage = ({type} : {type: string}) => {
     const {
         register,
         handleSubmit,
@@ -55,7 +55,6 @@ export const CreatePropertyPage = () => {
     const totalSteps = 4;
     const [activeStep, setActiveStep] = useState(0);
     const handleNext = () => {
-        console.log(user.id)
         setActiveStep(prev => prev + 1);
     };
     const handlePrev = () => {
@@ -65,7 +64,6 @@ export const CreatePropertyPage = () => {
         handleNext()
     }
     const onSubmitFinalSubmit = (data: SaleProperty) => {
-        console.log(data)
         const request = mapSalePropertyToRequest(data)
         const property = {...request,userId: user.id} as SalePropertyRequest
         mutation.mutate(transformToFormData(property))
@@ -77,39 +75,40 @@ export const CreatePropertyPage = () => {
     return (
             <div className={'padding-base inner-width grid-form'}>
                 <div className={'form-create'}>
-                    {activeStep === 0 && <PropertyFormStep1 type={'Create'}
-                                                            onFinishHandler={onSubmitFormStep}
-                                                            register={register}
-                                                            errors={errors}
-                                                            handleSubmit={handleSubmit}
-                                                            getValues={getValues}/>
+                    {activeStep === 0 && <GeneralInfoStep type={type}
+                                                          onFinishHandler={onSubmitFormStep}
+                                                          register={register}
+                                                          errors={errors}
+                                                          handleSubmit={handleSubmit}
+                                                          getValues={getValues}/>
                     }
-                    {activeStep === 1 && <PropertyFormStep2 type={'Create'}
-                                                            onFinishHandler={onSubmitFormStep}
-                                                            register={register}
-                                                            errors={errors}
-                                                            handleSubmit={handleSubmit}
-                                                            setValue={setValue}
-                                                            getValues={getValues}
-                                                            onBack={handlePrev}/>
+                    {activeStep === 1 && <LocationStep type={type}
+                                                       onFinishHandler={onSubmitFormStep}
+                                                       register={register}
+                                                       errors={errors}
+                                                       handleSubmit={handleSubmit}
+                                                       setValue={setValue}
+                                                       getValues={getValues}
+                                                       onBack={handlePrev}/>
                     }
-                    {activeStep === 2 && <UploadFilesStep type={'Create'}
-                                                          onBack={handlePrev}
-                                                          onNext={handleNext} />
+                    {activeStep === 2 && <UploadPhotosStep type={type}
+                                                           onBack={handlePrev}
+                                                           onNext={handleNext} />
                     }
-                    {activeStep === 3 && <DeterminatePriceStep  type={'Create'}
+                    {activeStep === 3 && <DeterminatePriceStep  type={type}
                                                                 errors={errors}
                                                                 register={register}
                                                                 handleSubmit={handleSubmit}
                                                                 onFinishHandler={onSubmitFinalSubmit}
                                                                 onBack={handlePrev}
                                                                 isLoading={mutation.isLoading}
+                                                                getValues={getValues}
                     />
                     }
                 </div>
-                <PropertyFormPhoto activeStep={activeStep}
-                                   totalSteps={totalSteps}
-                                   onChangeStep={onChangeStep}/>
+                <StepInfo activeStep={activeStep}
+                          totalSteps={totalSteps}
+                          onChangeStep={onChangeStep}/>
             </div>
     );
 };

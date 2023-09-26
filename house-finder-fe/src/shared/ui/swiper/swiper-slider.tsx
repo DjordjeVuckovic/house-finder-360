@@ -1,7 +1,8 @@
 import React, {ReactNode, useEffect, useRef, useState} from "react";
 import './swiper-slider.scss'
 import {MdNavigateBefore, MdOutlineNavigateNext} from "react-icons/md";
-import {ButtonWithIcon} from "../../shared/ui/buttons";
+import {ButtonWithIcon} from "../buttons";
+
 interface SwiperProps {
     children: ReactNode;
     fetchMore: () => void;

@@ -7,5 +7,6 @@ public static class UsersErrors
 {
     public static readonly IError WrongCredential = ErrorMessage.Forbidden("Bad credentials!");
     public static readonly IError RegisterFailed = ErrorMessage.BadRequest("You cannot register new account at the moment!");
-    public static readonly IError RoleAssign = ErrorMessage.BadRequest("Wrong role!");
+    public static readonly IError RoleAssign = ErrorMessage.BadRequest("Cannot assign role role!");
+    public static readonly IError Role = ErrorMessage.BadRequest("Wrong role!");
 }

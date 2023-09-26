@@ -117,17 +117,20 @@ public sealed class RealEstate : AggregateRoot<Guid>
         int toiletsNumber,
         DateTime yearOfBuild,
         List<PropertyPhoto> photos,
-        Guid userId
+        Guid userId,
+        string purpose
         )
     {
         var areaResult = Area.CreateArea(area);
         var priceResult = Price.CreatePrice(price, "euro");
         var status = EnumUtil.ToEnum<RegisterStatus>(registerStatus);
-        var merged = Result.Merge(priceResult, areaResult,status);
+        var propPurpose = EnumUtil.ToEnum<PropertyPurpose>(purpose);
+        var merged = Result.Merge(priceResult, areaResult,status,propPurpose);
         if (merged.IsFailed)
         {
             return merged;
         }
+        
         var additionalInfo = new PropertyAdditionalInfo
         {
             YearOfBuild = DateOnly.FromDateTime(yearOfBuild),
@@ -158,7 +161,7 @@ public sealed class RealEstate : AggregateRoot<Guid>
             heating,
             elevatorsNumber,
             photos, 
-            PropertyPurpose.Sale,
+            propPurpose.Value,
             userId);
     }
 

@@ -4,6 +4,8 @@ import {InputWithSymbol} from "../../../../shared/ui/forms";
 import {ButtonWithIcon,SubmitButton} from "../../../../shared/ui/buttons";
 import {MdNavigateBefore} from "react-icons/md";
 import {BsFillHouseAddFill} from "react-icons/bs";
+import {SelectItem} from "../../../../shared/ui/selects/select-props.ts";
+import {SingleSelect} from "../../../../shared/ui/selects";
 export const DeterminatePriceStep = ({
                                          type,
                                          register,
@@ -11,7 +13,12 @@ export const DeterminatePriceStep = ({
                                          onBack,
                                          onFinishHandler,
                                          handleSubmit,
-                                         isLoading}) => {
+                                         isLoading,
+                                         getValues}) => {
+    const listingItems: SelectItem[] = [
+        {value: 'Sale', text: 'Sale'},
+        {value: 'Rent', text: 'Rent'}
+    ]
     return (
         <form style={{
             display: 'flex',
@@ -23,6 +30,16 @@ export const DeterminatePriceStep = ({
             <Typography fontSize={25} fontWeight={700} color="#ffffff">
                 {type} a Property <span className={'step-count'}>(set price)</span>
             </Typography>
+            <SingleSelect items={listingItems}
+                          register={register('listingType', {
+                              required: {
+                                  value: true,
+                                  message: 'Property listing is required'
+                              }})}
+                          selectedItemValue={getValues('listingType')}
+                          defaultValue={listingItems[0]}
+                          label={'Select property listing'}
+            />
             <InputWithSymbol
                 key={'price'}
                 label={'Enter property price (euro)'}
@@ -53,7 +70,7 @@ export const DeterminatePriceStep = ({
                               isLoading={isLoading}
                               type={'submit'}
                               disabled={isLoading}>
-                    {isLoading ? 'Loading...' : 'Finish'}
+                    {isLoading ? 'Loading' : 'Finish'}
                 </SubmitButton>
             </div>
         </form>

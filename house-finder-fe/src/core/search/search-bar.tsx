@@ -1,22 +1,19 @@
 import {HiLocationMarker} from "react-icons/hi";
-import {useState} from "react";
 import {City} from "./model/city.ts";
 import "./search.scss"
 import {AiOutlineSearch} from "react-icons/ai";
 import {CityAutoComplete} from "../../shared/ui/auto-complete";
 import {citiesAndCountries} from "./data-access/cities.ts";
+import {usePropertyStore} from "../../shared/state/property.state.ts";
 
-export const SearchBar = ({onSearch,onSearchChange,mode}) => {
-    const [selectedOption, setSelectedOption] = useState<City| null>(null);
+export const SearchBar = ({onSearch,mode}) => {
+    const {setSelectedCity} = usePropertyStore()
     const cities = citiesAndCountries
     const handleSearch = () => {
-        if(selectedOption){
-            onSearch();
-        }
+        onSearch();
     };
     const handleChange = (city: City) => {
-        setSelectedOption(city);
-        onSearchChange(city);
+        setSelectedCity(city);
     }
     return (
         <div className={'search-bar'}>
@@ -27,7 +24,8 @@ export const SearchBar = ({onSearch,onSearchChange,mode}) => {
                               mode={mode}
                               width={300}
                               cities={cities}/>
-            <button className={'btn-primary flex-center-align g-3'} onClick={handleSearch}><AiOutlineSearch/> Search</button>
+            <button className={'btn-primary flex-center-align g-3'}
+                    onClick={handleSearch}><AiOutlineSearch/> Search</button>
         </div>
     );
 };

@@ -55,7 +55,7 @@ public static class DependencyInjection
 
     private static void AddIdentityUser(this IServiceCollection services)
     {
-        services.AddIdentity<User, UserRole>()  // Note IdentityRole here
+        services.AddIdentity<User, UserRole>()
             .AddEntityFrameworkStores<UserDbContext>()
             .AddDefaultTokenProviders();
     }
@@ -64,7 +64,7 @@ public static class DependencyInjection
     {
         var server = Environment.GetEnvironmentVariable("DATABASE_HOST") ?? "localhost";
         var port = Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "5432";
-        var database = Environment.GetEnvironmentVariable("DATABASE_SCHEMA") ?? "house-finder";
+        var database = Environment.GetEnvironmentVariable("DATABASE_DB") ?? "house-finder";
         var username = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "postgres";
         var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "postgres";
         return $"Server={server};Port={port};Database={database};Username={username};Password={password}";

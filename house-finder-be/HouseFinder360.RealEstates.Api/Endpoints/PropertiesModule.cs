@@ -4,6 +4,7 @@ using HouseFinder360.RealEstates.Api.Extensions;
 using HouseFinder360.RealEstates.Application.Common.Pagination;
 using HouseFinder360.RealEstates.Application.RealEstates.Commands;
 using HouseFinder360.RealEstates.Application.RealEstates.Queries.GetPropertiesPaginite;
+using HouseFinder360.RealEstates.Application.RealEstates.Queries.GetRealEstatesByCity;
 using HouseFinder360.RealEstates.Application.RealEstates.Queries.GetUserProperties;
 using MapsterMapper;
 using MediatR;
@@ -17,7 +18,7 @@ namespace HouseFinder360.RealEstates.Api.Endpoints;
 internal static class PropertiesModule
 {
 
-    public static void AddRoutes(IEndpointRouteBuilder app)
+    internal static void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("api/v1/properties", async (
             [FromForm] IFormFileCollection photos,
@@ -45,7 +46,7 @@ internal static class PropertiesModule
                     Errors = new[]{"Wrong request format!"}
                 });
             }
-            var mapped = mapper.Map<CreateSalePropertyCommand>(salePropertyRequest);
+            var mapped = mapper.Map<CreatePropertyCommand>(salePropertyRequest);
             mapped.Photos = photos;
             var result = await sender.Send(mapped);
             return result.IsFailed 
@@ -75,5 +76,21 @@ internal static class PropertiesModule
                 new GetUserPropertiesQuery(userId));
             return Results.Ok(properties);
         }).RequireAuthorization();
+
+        app.MapGet("api/v1/properties/city/{name}", async (
+            int currentPage,
+            int pageSize,
+            string name,
+            ISender sender) =>
+        {
+            var pagination = new Pagination
+            {
+                CurrentPage = currentPage,
+                PageSize = pageSize
+            };
+            var properties = await sender
+                .Send(new GetRealEstatesByCityQuery(name, pagination));
+            return Results.Ok(properties);
+        });
     }
 }

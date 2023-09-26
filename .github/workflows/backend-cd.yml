@@ -1,0 +1,86 @@
+﻿name: House Finder Cd
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  house-finder-cd:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: house-finder-be
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up ASP.NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish modular monolith
+        run: dotnet publish ./HouseFinder360.Api/HouseFinder360.Api.csproj --configuration Release -o ./publish --no-build
+        
+      - run: |
+          docker build -t housefinder360.azurecr.io/house-finder-be:${{ github.sha }} -f -f ./cd.dockerfile .
+          docker push housefinder360.azurecr.io/house-finder-be:${{ github.sha }}
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Login and push to acr with docker
+        uses: azure/docker-login@v1
+        with:
+          login-server: housefinder360.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Publish to azure web app
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'house-finder-be'
+          images: 'housefinder360.azurecr.io/house-finder-be:${{ github.sha }}'
+
+      - name: Set up azure configuration
+        uses: Azure/appservice-settings@v1
+        with:
+          app-name: 'we-do-hr-backend-staging'
+          app-settings-json: |
+            [
+               {
+                   "name": "ASPNETCORE_ENVIRONMENT",
+                   "value": "Production",
+                   "slotSetting": false
+               },
+               {
+                   "name": "JwtSettings__Secret",
+                   "value": "${{ secrets.JWT_SECRET  }}",
+                   "slotSetting": false
+               },
+               {
+                   "name": "BlobStorage__BaseAddress",
+                   "value": "${{ secrets.JWT_AUTH_URL  }}",
+                   "slotSetting": false
+               },
+               {
+                   "name": "BlobStorage__BaseAddress",
+                   "value": "${{ secrets.JWT_AUTH_URL  }}",
+                   "slotSetting": false
+               }
+            ]
+
+      - name: Logout from azure
+        run: az logout  
+
+      

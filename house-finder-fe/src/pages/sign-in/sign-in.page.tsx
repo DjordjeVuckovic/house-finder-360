@@ -1,18 +1,19 @@
 import "./sign-in.scss"
 import {BiLogoFacebookCircle} from "react-icons/bi";
 import React, {useEffect, useState} from "react";
-import {Box, Modal, Typography} from "@mui/material";
+import {Box, CircularProgress, Modal, Typography} from "@mui/material";
 import useAuthStore from "../../auth/auth-store.ts";
 import {useForm} from "react-hook-form";
 import {SignInRequest} from "../../auth/auth.model.ts";
 import {FieldError} from "../../shared/ui/errors/FieldError.tsx";
 import {FcGoogle} from "react-icons/fc";
-import {logIn} from "../../auth/auth-service.ts";
 import {useMutation} from "react-query";
 import {useToast} from "../../shared/toast-messages/use-toast.ts";
 import {AxiosError} from "axios";
 import {useNavigate} from "react-router-dom";
 import {handleError} from "../../utils/handle-error.ts";
+import {signIn} from "../../auth/auth-service.ts";
+import {AiOutlineLogin} from "react-icons/ai";
 const modalStyle = {
     position: 'absolute',
     top: '50%',
@@ -27,23 +28,22 @@ const modalStyle = {
 };
 
 export const SignInPage = () => {
-    const [animateCircles, setAnimateCircles] = useState(false);
-    const [animateForm, setAnimateForm] = useState(false);
-    const [open, setOpen] = React.useState(false);
     const { setAccessToken} = useAuthStore()
     const {showToast} = useToast()
     const navigate = useNavigate()
-    const mutation = useMutation(logIn, {
+    const mutation = useMutation(signIn, {
         onError: (error: AxiosError) => {
             showToast(handleError(error), 'error');
         },
         onSuccess: (data: {token: string}) => {
-            console.log(data)
             showToast('You are successfully sign in!', 'success');
             setAccessToken(data.token)
             navigate('/rental-manager/all-properties')
         }
     });
+    const [animateCircles, setAnimateCircles] = useState(false);
+    const [animateForm, setAnimateForm] = useState(false);
+    const [open, setOpen] = React.useState(false);
     const {
         register,
         handleSubmit,
@@ -62,7 +62,7 @@ export const SignInPage = () => {
         setAnimateForm(true);
     };
 
-    const signIn = async (data: SignInRequest) => {
+    const handleSignIn = (data: SignInRequest) => {
         mutation.mutate(data)
     }
 
@@ -72,7 +72,9 @@ export const SignInPage = () => {
                 <div className="shape"></div>
                 <div className="shape"></div>
             </div>
-            <form className={`sign-in-form ${animateForm ? 'animate-form' : ''}`} onSubmit={handleSubmit(signIn)}>
+            <form className={`sign-in-form ${animateForm ? 'animate-form' : ''}`}
+                  onSubmit={handleSubmit(handleSignIn)}
+            >
                 <h3 className={'white-text'}>Sign In</h3>
                 <label htmlFor="username" className={'white-text'}>Username</label>
                 <input type="text"
@@ -105,9 +107,13 @@ export const SignInPage = () => {
                     <FieldError error={errors.password.message}/>
                 )}
                 <button type={'submit'}
-                        className={'btn'}
+                        className={'btn-sign'}
                         disabled={mutation.isLoading}>
-                    Log In
+                    Sign In
+                    {!mutation.isLoading
+                        ? (<span className={'sign-btn-icon'}><AiOutlineLogin size={25}/></span>)
+                        : (<span className={'sign-btn-icon'}><CircularProgress size={25} style={{color: "white"}} /></span>)
+                    }
                 </button>
                 <button className={'forgot-link'} onClick={handleOpen}>Forgot your password?</button>
                 <div className="social">
@@ -135,7 +141,6 @@ export const SignInPage = () => {
                     </Box>
                 </Modal>
             </form>
-
         </div>
     );
 };

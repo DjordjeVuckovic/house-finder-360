@@ -6,16 +6,16 @@ using Microsoft.Extensions.Logging;
 
 namespace HouseFinder360.RealEstates.Application.Common.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class ValidationPipelineBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
     where TResponse : ResultBase, new()
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    private readonly ILogger<ValidationBehaviour<TRequest, TResponse>> _logger;
+    private readonly ILogger<ValidationPipelineBehaviour<TRequest, TResponse>> _logger;
 
-    public ValidationBehaviour(
+    public ValidationPipelineBehaviour(
         IEnumerable<IValidator<TRequest>> validators, 
-        ILogger<ValidationBehaviour<TRequest, TResponse>> logger)
+        ILogger<ValidationPipelineBehaviour<TRequest, TResponse>> logger)
     {
         _validators = validators;
         _logger = logger;

@@ -3,7 +3,7 @@ using HouseFinder360.RealEstates.Application.RealEstates.Commands;
 
 namespace HouseFinder360.RealEstates.Application.RealEstates.Validators;
 
-public class SalePropertyValidator : AbstractValidator<CreateSalePropertyCommand>
+public class SalePropertyValidator : AbstractValidator<CreatePropertyCommand>
 {
     public SalePropertyValidator()
     {

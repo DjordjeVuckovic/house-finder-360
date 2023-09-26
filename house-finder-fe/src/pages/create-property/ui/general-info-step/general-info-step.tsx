@@ -8,7 +8,7 @@ import {SingleSelect} from "../../../../shared/ui/selects";
 import {SelectItem} from "../../../../shared/ui/selects/select-props.ts";
 import {ButtonWithIcon} from "../../../../shared/ui/buttons";
 import {MdOutlineNavigateNext} from "react-icons/md";
-export const PropertyFormStep1 = ({type,register,handleSubmit,errors,onFinishHandler,getValues}) => {
+export const GeneralInfoStep = ({type,register,handleSubmit,errors,onFinishHandler,getValues}) => {
     const typeMenuItems: SelectItem[] = [
         {value: 'Apartment', text: 'Apartment'},
         {value: 'Villa', text: 'Villa'},
