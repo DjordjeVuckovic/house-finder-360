@@ -27,8 +27,12 @@ jobs:
           login-server: housefinderreg.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - run: |
-          docker build . -t housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}
+      - name: Build and Push Docker image
+        run: |
+          docker build . \
+            --build-arg VITE_BE_BASE_URL=${{ secrets.VITE_BE_BASE_URL }} \
+            --build-arg VITE_GOOGLE_MAP_KEY=${{ secrets.VITE_GOOGLE_MAP_KEY }} \
+            -t housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}
           docker push housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}
       
       - name: Publish to azure web app
