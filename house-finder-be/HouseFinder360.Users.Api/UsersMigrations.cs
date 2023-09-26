@@ -19,9 +19,9 @@ public static class UsersMigrations
         try
         {
             var context = services.GetService<UserDbContext>();
+            context?.Database.Migrate();
             context?.SeedRoles();
             /*if(webHostEnvironment.IsProduction()) return;*/
-            context?.Database.Migrate();
         }
         catch (Exception e)
         {
