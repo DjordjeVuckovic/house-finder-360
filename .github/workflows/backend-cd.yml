@@ -71,6 +71,31 @@ jobs:
                    "name": "BlobStorage__Authorization",
                    "value": "${{ secrets.BLOB_STORAGE_KEY  }}",
                    "slotSetting": false
+               },
+              {
+                   "name": "BlobStorage__BaseAddress",
+                   "value": "${{ secrets.BLOB_STORAGE_ADDRESS  }}",
+                   "slotSetting": false
+               },
+              {
+                   "name": "DATABASE_HOST",
+                   "value": "${{ secrets.DATABASE_HOST  }}",
+                   "slotSetting": false
+               },
+              {
+                   "name": "DATABASE_DB",
+                   "value": "${{ secrets.DATABASE_DB  }}",
+                   "slotSetting": false
+               },
+              {
+                   "name": "DATABASE_USERNAME",
+                   "value": "${{ secrets.DATABASE_USERNAME  }}",
+                   "slotSetting": false
+               },
+              {
+                   "name": "DATABASE_PASSWORD",
+                   "value": "${{ secrets.DATABASE_PASSWORD  }}",
+                   "slotSetting": false
                }
             ]
 
