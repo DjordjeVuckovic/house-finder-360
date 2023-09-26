@@ -1,0 +1,41 @@
+name: House Finder Fe Cd
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: 
+    
+jobs:
+  house-finder-fe-cd:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: house-finder-fe
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with: 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Login and push to azr with docker
+        uses: azure/docker-login@v1
+        with:
+          login-server: housefinderreg.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build . -t housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}
+          docker push housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}
+      
+      - name: Publish to azure web app
+        uses: azure/webapps-deploy@v2
+        with: 
+          app-name: 'house-finder-fe'
+          images: 'housefinderreg.azurecr.io/house-finder-fe:${{ github.sha }}'
+
+      - name: Logout from azure
+        run: az logout

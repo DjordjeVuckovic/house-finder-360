@@ -55,7 +55,7 @@ jobs:
       - name: Set up azure configuration
         uses: Azure/appservice-settings@v1
         with:
-          app-name: 'we-do-hr-backend-staging'
+          app-name: 'house-finder-be'
           app-settings-json: |
             [
                {
@@ -66,16 +66,6 @@ jobs:
                {
                    "name": "JwtSettings__Secret",
                    "value": "${{ secrets.JWT_SECRET  }}",
-                   "slotSetting": false
-               },
-               {
-                   "name": "BlobStorage__BaseAddress",
-                   "value": "${{ secrets.JWT_AUTH_URL  }}",
-                   "slotSetting": false
-               },
-               {
-                   "name": "BlobStorage__BaseAddress",
-                   "value": "${{ secrets.JWT_AUTH_URL  }}",
                    "slotSetting": false
                }
             ]
