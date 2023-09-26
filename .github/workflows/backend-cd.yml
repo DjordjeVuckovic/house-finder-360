@@ -57,31 +57,31 @@ jobs:
           app-name: 'house-finder-backend'
           app-settings-json: |
             [
-               {
+              {
                    "name": "ASPNETCORE_ENVIRONMENT",
                    "value": "Production",
                    "slotSetting": false
-               },
-               {
+              },
+              {
                    "name": "JwtSettings__Issuer",
                    "value": "${{ secrets.JWT_ISSUER  }}",
                    "slotSetting": false
-               },
-               {
+              },
+              {
                    "name": "JwtSettings__Audience",
                    "value": "${{ secrets.JWT_AUDIENCE }}",
                    "slotSetting": false
-               },
-               {
+              },
+              {
                    "name": "JwtSettings__Secret",
                    "value": "${{ secrets.JWT_SECRET }}",
                    "slotSetting": false
-               },
-               {
+              },
+              {
                    "name": "BlobStorage__Authorization",
                    "value": "${{ secrets.BLOB_STORAGE_KEY  }}",
                    "slotSetting": false
-               },
+              },
               {
                    "name": "BlobStorage__BaseAddress",
                    "value": "${{ secrets.BLOB_STORAGE_ADDRESS  }}",
@@ -91,7 +91,7 @@ jobs:
                    "name": "DATABASE_HOST",
                    "value": "${{ secrets.DATABASE_HOST  }}",
                    "slotSetting": false
-               },
+              },
               {
                    "name": "DATABASE_DB",
                    "value": "${{ secrets.DATABASE_DB  }}",
@@ -106,7 +106,7 @@ jobs:
                    "name": "DATABASE_PASSWORD",
                    "value": "${{ secrets.DATABASE_PASSWORD  }}",
                    "slotSetting": false
-               }
+              }
             ]
 
       - name: Logout from azure
