@@ -3,9 +3,7 @@ import './footer.scss'
 export const Footer = () => {
     return (
         <div className={'inner-width padding-base footer-wrapper'}>
-            <div className={'footer-container'}
-                 data-aos="fade-right"
-                 data-aos-duration="2000">
+            <div className={'footer-container'}>
                 <div className={'flex-col-start logo-footer'}>
                     <img src={logo} alt={'logo'} className={'logo-footer__img'}/>
                     <div className={'white-text'}>Our vision is to make all people</div>
