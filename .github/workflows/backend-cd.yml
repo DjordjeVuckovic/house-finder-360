@@ -67,6 +67,11 @@ jobs:
                    "name": "JwtSettings__Secret",
                    "value": "${{ secrets.JWT_SECRET  }}",
                    "slotSetting": false
+               },
+              {
+                   "name": "BlobStorage__Authorization",
+                   "value": "${{ secrets.BLOB_STORAGE_KEY  }}",
+                   "slotSetting": false
                }
             ]
 
