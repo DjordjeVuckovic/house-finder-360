@@ -67,7 +67,7 @@ public static class DependencyInjection
         var database = Environment.GetEnvironmentVariable("DATABASE_DB") ?? "house-finder";
         var username = Environment.GetEnvironmentVariable("DATABASE_USERNAME") ?? "postgres";
         var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "postgres";
-        return $"Server={server};Port={port};Database={database};User Id={username};Password={password}";
+        return $"Server={server};Port={port};Database={database};Username={username};Password={password}";
     }
     private static IServiceCollection AddAuth(this IServiceCollection services,
         IConfiguration builderConfiguration)
