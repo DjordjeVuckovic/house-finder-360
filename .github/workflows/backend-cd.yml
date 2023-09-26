@@ -31,7 +31,7 @@ jobs:
         run: dotnet publish ./HouseFinder360.Api/HouseFinder360.Api.csproj --configuration Release -o ./publish --no-build
         
       - run: |
-          docker build -t housefinder360.azurecr.io/house-finder-be:${{ github.sha }} -f -f ./cd.dockerfile .
+          docker build -t housefinder360.azurecr.io/house-finder-be:${{ github.sha }} -f ./cd.dockerfile .
           docker push housefinder360.azurecr.io/house-finder-be:${{ github.sha }}
 
       - name: Login to Azure
