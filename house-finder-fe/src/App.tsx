@@ -17,6 +17,7 @@ import {PropertiesMapPage} from "./pages/property-map/properties-map.page.tsx";
 
 const queryClient = new QueryClient();
 function App() {
+    console.log(import.meta.env.VITE_BE_BASE_URL)
   return (
       <Fragment>
           <QueryClientProvider client={queryClient}>
