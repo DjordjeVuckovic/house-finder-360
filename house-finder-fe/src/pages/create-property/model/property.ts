@@ -47,6 +47,7 @@ export interface SalePropertyRequest {
     numberOfBalconies: number;
     files?: FormData;
     userId?: string;
+    listingType: string;
 }
 
 export interface AddressRequest {

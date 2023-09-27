@@ -17,7 +17,8 @@ export function mapSalePropertyToRequest(saleProperty: SaleProperty): SaleProper
         elevatorsNumber: saleProperty.elevatorsNumber,
         numberOfToilets: saleProperty.toiletsNumber,
         bathroomsNumber: saleProperty.bathroomsNumber,
-        numberOfBalconies: saleProperty.balconiesNumber
+        numberOfBalconies: saleProperty.balconiesNumber,
+        listingType: saleProperty.listingType
     };
 }
 

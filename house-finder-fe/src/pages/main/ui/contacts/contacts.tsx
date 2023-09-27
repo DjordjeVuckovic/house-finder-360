@@ -2,6 +2,7 @@ import cImage from "../../../../assets/pictures/contact.jpg"
 import './contacts.scss'
 import {contactsConstants} from "./constants/contacts.constants.ts";
 import {ContactCard} from "./ui/contact-card.tsx";
+import {Fragment} from "react";
 
 export const Contacts = () => {
     return (
@@ -26,11 +27,13 @@ export const Contacts = () => {
                         {contactsConstants.map((x, index) =>
                             <div data-aos="fade-top"
                                  data-aos-duration="3000">
-                                <ContactCard key={index}
-                                             title={x.title}
-                                             text={x.text}
-                                             buttonText={x.buttonText}
-                                             icon={x.icon}/>
+                                <Fragment key={index}>
+                                    <ContactCard key={index}
+                                                 title={x.title}
+                                                 text={x.text}
+                                                 buttonText={x.buttonText}
+                                                 icon={x.icon}/>
+                                </Fragment>
                             </div>
                         )}
                     </div>
