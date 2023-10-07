@@ -1,7 +1,6 @@
 ﻿using FluentValidation;
-using HouseFinder360.Users.Infrastructure.Features.Authentication.Commands.Register;
 
-namespace HouseFinder360.Users.Infrastructure.Features.Authentication.Validations;
+namespace HouseFinder360.Users.Infrastructure.Features.Authentication.Commands.Register;
 
 public class RegisterRequestValidator : AbstractValidator<RegisterCommand>
 {

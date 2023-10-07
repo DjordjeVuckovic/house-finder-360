@@ -1,6 +1,6 @@
 ﻿using FluentResults;
+using HouseFinder360.Users.Infrastructure.Common.Errors;
 using HouseFinder360.Users.Infrastructure.Common.Interfaces;
-using HouseFinder360.Users.Infrastructure.Errors;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Common;
 using HouseFinder360.Users.Infrastructure.Model;
 using HouseFinder360.Users.Infrastructure.Persistence;

@@ -1,7 +1,8 @@
 ﻿using FluentResults;
+using FluentValidation;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
+using HouseFinder360.Users.Infrastructure.Common.Errors;
 using HouseFinder360.Users.Infrastructure.Common.Interfaces;
-using HouseFinder360.Users.Infrastructure.Errors;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Common;
 using HouseFinder360.Users.Infrastructure.Features.Users.Commands;
 using HouseFinder360.Users.Infrastructure.Features.Users.Queries;

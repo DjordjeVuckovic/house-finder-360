@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using System.Text;
-using HouseFinder360.Users.Infrastructure.Common.Behaviours;
+using FluentValidation;
 using HouseFinder360.Users.Infrastructure.Common.Interfaces;
+using HouseFinder360.Users.Infrastructure.Features.Authentication.Commands.Register;
 using HouseFinder360.Users.Infrastructure.Jwt;
 using HouseFinder360.Users.Infrastructure.Model;
 using HouseFinder360.Users.Infrastructure.Persistence;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,12 +23,13 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddScoped<IValidator<RegisterCommand>, RegisterRequestValidator>();
         // mediator
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-        
+        services.AddMediatR(cfg => 
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
+                // .AddBehavior<IPipelineBehavior<RegisterCommand, Result<AuthResult>>, 
+                //     ValidationBehaviour<RegisterCommand, AuthResult>>()
+        );
         services.AddPersistence();
         services.AddIdentityUser();
         services.AddAuth(configuration);
@@ -69,7 +70,8 @@ public static class DependencyInjection
         var password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD") ?? "postgres";
         return $"Server={server};Port={port};Database={database};Username={username};Password={password}";
     }
-    private static IServiceCollection AddAuth(this IServiceCollection services,
+    private static IServiceCollection AddAuth(
+        this IServiceCollection services,
         IConfiguration builderConfiguration)
     {
         var jwtSettings = new JwtSettings();

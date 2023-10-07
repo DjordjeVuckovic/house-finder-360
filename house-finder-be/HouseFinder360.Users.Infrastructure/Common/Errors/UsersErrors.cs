@@ -1,7 +1,7 @@
 ﻿using FluentResults;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 
-namespace HouseFinder360.Users.Infrastructure.Errors;
+namespace HouseFinder360.Users.Infrastructure.Common.Errors;
 
 public static class UsersErrors
 {

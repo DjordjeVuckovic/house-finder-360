@@ -1,5 +1,5 @@
 ﻿using FluentResults;
-using HouseFinder360.Users.Infrastructure.Errors;
+using HouseFinder360.Users.Infrastructure.Common.Errors;
 using Microsoft.AspNetCore.Identity;
 
 namespace HouseFinder360.Users.Infrastructure.Model;

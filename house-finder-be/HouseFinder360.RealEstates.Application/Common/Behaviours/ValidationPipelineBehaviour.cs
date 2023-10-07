@@ -11,14 +11,11 @@ public class ValidationPipelineBehaviour<TRequest, TResponse> : IPipelineBehavio
     where TResponse : ResultBase, new()
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
-    private readonly ILogger<ValidationPipelineBehaviour<TRequest, TResponse>> _logger;
 
     public ValidationPipelineBehaviour(
-        IEnumerable<IValidator<TRequest>> validators, 
-        ILogger<ValidationPipelineBehaviour<TRequest, TResponse>> logger)
+        IEnumerable<IValidator<TRequest>> validators)
     {
         _validators = validators;
-        _logger = logger;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)

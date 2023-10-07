@@ -3,7 +3,7 @@ using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace HouseFinder360.RealEstates.Application.Common.Behaviours;
+namespace HouseFinder360.Application.BuildingBlocks.Common.Behaviours;
 
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

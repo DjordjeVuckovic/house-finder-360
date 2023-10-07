@@ -1,6 +1,7 @@
 using HouseFinder360.Api;
 using HouseFinder360.Api.Endpoints;
 using HouseFinder360.Api.Swagger;
+using HouseFinder360.Application.BuildingBlocks;
 using HouseFinder360.RealEstates.Api;
 using HouseFinder360.RealEstates.Api.Endpoints;
 using HouseFinder360.Users.Api;
@@ -21,7 +22,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services
         .AddBootstrapper()
         .AddRealEstateModule(builder.Configuration)
-        .AddUsersModule(builder.Configuration);
+        .AddUsersModule(builder.Configuration)
+        .AddBuildingBlocksApplicationDependencyInjection();
     
     builder.Services
         .AddCors(options =>
@@ -40,7 +42,11 @@ var app = builder.Build();
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-    app.UseExceptionHandler("/error");
+
+    if (app.Environment.IsProduction())
+    {
+        app.UseExceptionHandler("/error");   
+    }
     app.UseHttpsRedirection();
     app.UseRouting();
     app.UseCors(policyName);
@@ -51,7 +57,9 @@ var app = builder.Build();
     
     app.UseAuthentication();
     app.UseAuthorization();
+    
     app.RunRealEstateMigrations(app.Environment);
     app.RunUsersMigrations(app.Environment);
+    
     app.Run();
 }
