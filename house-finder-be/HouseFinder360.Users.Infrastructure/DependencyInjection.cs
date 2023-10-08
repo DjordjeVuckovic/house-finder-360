@@ -23,7 +23,7 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddScoped<IValidator<RegisterCommand>, RegisterRequestValidator>();
+        services.AddValidation();
         // mediator
         services.AddMediatR(cfg => 
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
@@ -34,6 +34,10 @@ public static class DependencyInjection
         services.AddIdentityUser();
         services.AddAuth(configuration);
         return services;
+    }
+    private static void AddValidation(this IServiceCollection services)
+    {
+        services.AddScoped<IValidator<RegisterCommand>, RegisterRequestValidator>();
     }
     private static void AddPersistence(this IServiceCollection services)
     {
