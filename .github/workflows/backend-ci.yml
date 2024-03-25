@@ -1,0 +1,40 @@
+﻿name: Backend CI
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - 'release/**'
+      - 'dev'
+      - 'main'
+  pull_request:
+    branches:
+      - 'feature/**'
+      - 'release/**'
+      - 'dev'
+      - 'main'
+  workflow_dispatch:
+    
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: house-finder-be
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up ASP.NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build solution
+        run: dotnet build --configuration Release --no-restore
+      
+      - name: Publish modular monolith service
+        run: dotnet publish ./HouseFinder360.Api/HouseFinder360.Api.csproj --configuration Release -o ./publish --no-build

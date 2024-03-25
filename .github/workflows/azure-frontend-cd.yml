@@ -1,4 +1,4 @@
-name: House Finder Fe Cd
+name: Azure House Finder Fe Cd
 on:
   push:
     branches:
