@@ -1,9 +1,9 @@
-@import "src/scss/variables";
-.search-bar{
+@import 'src/scss/variables';
+.search-bar {
   display: flex;
-  flex-direction: row!important;
+  flex-direction: row !important;
   gap: 1rem;
-  .icon-search{
+  .icon-search {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

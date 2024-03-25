@@ -1,10 +1,10 @@
-import {FilePreview} from "./model/files.ts";
+import { FilePreview } from './model/files.ts'
 
 export interface FilesPreviewProps {
-    files: FilePreview[],
-    onDeleteFile: any
+  files: FilePreview[]
+  onDeleteFile: any
 }
 export interface FileCardProps {
-    file: FilePreview
-    onDelete: any;
+  file: FilePreview
+  onDelete: any
 }

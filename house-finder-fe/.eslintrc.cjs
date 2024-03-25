@@ -12,6 +12,6 @@ module.exports = {
     'react-refresh/only-export-components': 'warn',
     '@typescript-eslint/no-unused-vars': 'off',
     // TODO: Remove this rule
-    '@typescript-eslint/no-explicit-any': 'off'
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 }

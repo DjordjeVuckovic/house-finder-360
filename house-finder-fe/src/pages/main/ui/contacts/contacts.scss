@@ -1,23 +1,23 @@
-.c-container{
+.c-container {
   justify-content: space-between;
-  .image-container{
+  .image-container {
     border: 8px solid rgb(220 220 220 / 93%);
   }
-  >div{
+  > div {
     flex: 1;
   }
 }
-.c-right{
+.c-right {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
-.c-left{
+.c-left {
   gap: 0.5rem;
 }
-.contact-card{
-  margin-top: .5rem;
+.contact-card {
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,35 +25,39 @@
   padding: 1.2rem;
   border: 1px solid #80808035;
 }
-.contact-card-icon{
+.contact-card-icon {
   display: flex;
-  padding: .8rem;
+  padding: 0.8rem;
   width: fit-content;
   height: fit-content;
   border-radius: 8px;
   background-color: #d9d9d9;
-  background-image: linear-gradient(10deg, #f6f2f2 0%, rgba(128, 128, 128, 0) 2%);
+  background-image: linear-gradient(
+    10deg,
+    #f6f2f2 0%,
+    rgba(128, 128, 128, 0) 2%
+  );
 }
-.btn-contact{
+.btn-contact {
   background-color: #d9d9d9;
   background-image: linear-gradient(10deg, grey 0%, rgba(128, 128, 128, 0) 2%);
   width: 100%;
   outline: none;
   border: none;
   border-radius: 8px;
-  padding: .3rem;
+  padding: 0.3rem;
   font-size: 16px;
   font-weight: 550;
-  color: #3D5CB8FF;
+  color: #3d5cb8ff;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  &:hover{
+  &:hover {
     color: #d9d9d9;
-    background: #3D5CB8FF;
+    background: #3d5cb8ff;
   }
 }
-.contact-card-content{
+.contact-card-content {
   padding: 0 2rem 1rem 1rem;
 }

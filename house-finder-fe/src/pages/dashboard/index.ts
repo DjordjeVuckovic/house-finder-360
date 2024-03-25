@@ -1,4 +1,2 @@
-import {DashboardPage} from "./dashboard.page.tsx"
-export {
-    DashboardPage
-}
+import { DashboardPage } from './dashboard.page.tsx'
+export { DashboardPage }

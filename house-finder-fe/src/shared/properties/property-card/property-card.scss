@@ -1,31 +1,30 @@
-.card-container{
+.card-container {
   padding: 1rem;
   border-radius: 20px;
   max-width: max-content;
   margin: auto;
   transition: all 300ms ease-in;
-  gap: .6rem;
+  gap: 0.6rem;
   border: 3px solid transparent;
-  background: rgba(26, 28, 29,0.05);
-  .c-image{
+  background: rgba(26, 28, 29, 0.05);
+  .c-image {
     position: relative;
     opacity: 0.9;
-    img{
+    img {
       border-radius: 20px;
       width: 22rem;
       height: 15rem;
       object-fit: cover;
       transition: all 0.2s ease-in;
-      :hover{
+      :hover {
         filter: grayscale(75%);
       }
     }
-    :hover{
+    :hover {
       opacity: 1;
     }
-
   }
-  .purpose{
+  .purpose {
     position: absolute;
     background: var(--primary-color);
     border-radius: 10px;
@@ -33,10 +32,10 @@
     z-index: 1;
     left: 6px;
     top: 8px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--text-color);
   }
-  .p-heart{
+  .p-heart {
     position: absolute;
     background: #ffffff;
     border-radius: 10px;
@@ -44,42 +43,42 @@
     z-index: 1;
     right: 6px;
     top: 8px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--text-color);
     &:hover {
       cursor: pointer;
     }
   }
 
-  .p-description{
+  .p-description {
     font-size: 0.7rem;
   }
-  &:hover{
-    background: rgba(26, 28, 29,0.08);
+  &:hover {
+    background: rgba(26, 28, 29, 0.08);
     scale: 1.01;
     cursor: pointer;
     box-shadow: 0 23px 21px -8px rgba(136, 160, 255, 0.2);
     border-radius: 20px;
   }
 }
-.p-price-symbol{
-  font-size: 1rem!important;
-  font-weight: 600!important;
+.p-price-symbol {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
 }
-.p-title{
-  font-size: 1.3rem!important;
+.p-title {
+  font-size: 1.3rem !important;
 }
-.p-price{
-  font-size: 1.2rem!important;
+.p-price {
+  font-size: 1.2rem !important;
 }
-.heart-icon{
+.heart-icon {
   &:hover {
     path {
       stroke: red;
     }
   }
 }
-.p-card-icon{
+.p-card-icon {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,16 +86,16 @@
   background: rgba(128, 128, 128, 0.24);
   padding: 0.3rem 0.6rem 0.3rem 0.6rem;
   text-align: center;
-  font-size: .8rem;
-  gap: .5rem;
-  .p-card-icon__text{
-    padding-top: .1rem;
+  font-size: 0.8rem;
+  gap: 0.5rem;
+  .p-card-icon__text {
+    padding-top: 0.1rem;
   }
 }
-.p-card-icon-group{
-  padding-top: .5rem;
+.p-card-icon-group {
+  padding-top: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: .1rem;
+  gap: 0.1rem;
 }

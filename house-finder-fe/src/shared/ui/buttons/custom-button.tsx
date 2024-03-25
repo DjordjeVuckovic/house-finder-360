@@ -1,8 +1,15 @@
-import {Button} from "@mui/material";
-import {CustomButtonProps} from "../../common";
+import { Button } from '@mui/material'
+import { CustomButtonProps } from '../../common'
 
-
-export const CustomButton = ({title,bgColor,color,fullWidth,icon,handleClick,isCapital}:CustomButtonProps) => {
+export const CustomButton = ({
+  title,
+  bgColor,
+  color,
+  fullWidth,
+  icon,
+  handleClick,
+  isCapital,
+}: CustomButtonProps) => {
   return (
     <Button
       sx={{
@@ -17,16 +24,16 @@ export const CustomButton = ({title,bgColor,color,fullWidth,icon,handleClick,isC
         gap: '10px',
         textTransform: isCapital ? 'uppercase' : 'inherit',
         '&:hover': {
-            cursor: 'pointer',
-            transform: 'scale(1.02)',
-            opacity: 0.9,
-            background: 'linear-gradient(30.05deg, #40a9ff 3.76%, #2978c6 100%)'
-        }
+          cursor: 'pointer',
+          transform: 'scale(1.02)',
+          opacity: 0.9,
+          background: 'linear-gradient(30.05deg, #40a9ff 3.76%, #2978c6 100%)',
+        },
       }}
       onClick={handleClick}
     >
       {icon}
       {title}
     </Button>
-  );
+  )
 }

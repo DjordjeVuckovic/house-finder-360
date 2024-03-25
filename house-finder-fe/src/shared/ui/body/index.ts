@@ -1,4 +1,2 @@
-import {Body} from "./body.tsx";
-export {
-    Body
-}
+import { Body } from './body.tsx'
+export { Body }

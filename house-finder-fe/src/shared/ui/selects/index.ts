@@ -1,4 +1,2 @@
-import {SingleSelect} from "./single-select/single-select.tsx"
-export {
-    SingleSelect
-}
+import { SingleSelect } from './single-select/single-select.tsx'
+export { SingleSelect }

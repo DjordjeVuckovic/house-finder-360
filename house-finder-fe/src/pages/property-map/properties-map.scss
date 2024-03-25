@@ -1,18 +1,18 @@
-.properties-grid{
+.properties-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: .3rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem;
   overflow-y: auto;
   overflow-x: hidden;
   width: 50%;
   height: 100%;
 }
-.properties-map-wrapper{
+.properties-map-wrapper {
   margin-top: 1rem;
   display: flex;
   height: calc(85dvh - 1rem);
   padding: 1rem;
 }
-.properties-map-container{
+.properties-map-container {
   width: 100%;
 }
