@@ -29,7 +29,7 @@ public class BlobService : IBlobService
     {
         var formData = new MultipartFormDataContent(Guid.NewGuid().ToString());
         formData.Add(new StreamContent(file.OpenReadStream()), "file", file.FileName);
-        return await _client.PostAsync($"api/v1/files/{RealEstates.Application.Common.BlobStorage.CreateContainer.DefaultName}", formData);
+        return await _client.PostAsync($"api/v1/files/{Application.Common.BlobStorage.CreateContainer.DefaultName}", formData);
     }
     public async Task<HttpResponseMessage> UploadMultipleFilesDefaultContainer(IFormFileCollection files)
     {
@@ -49,6 +49,6 @@ public class BlobService : IBlobService
 
             content.Add(fileContent, "files", file.FileName);
         }
-        return await _client.PostAsync($"api/v1/files/multiple/{RealEstates.Application.Common.BlobStorage.CreateContainer.DefaultName}", content);
+        return await _client.PostAsync($"api/v1/files/multiple/{Application.Common.BlobStorage.CreateContainer.DefaultName}", content);
     }
 }

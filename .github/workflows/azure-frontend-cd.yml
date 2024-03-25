@@ -2,7 +2,7 @@ name: House Finder Fe Cd
 on:
   push:
     branches:
-      - master
+      - never
   workflow_dispatch: 
     
 jobs:
