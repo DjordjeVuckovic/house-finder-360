@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Users.Api.Dto.Requests;
+namespace HouseFinder360.Users.Api.Dto.Requests;
 
 public record LoginRequest(
     string EmailOrPhone,

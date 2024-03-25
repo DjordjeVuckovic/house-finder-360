@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Api.Dto.Responses;
+namespace HouseFinder360.RealEstates.Api.Dto.Responses;
 
 public class ErrorResponse
 {

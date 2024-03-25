@@ -1,11 +1,11 @@
-﻿using FluentResults;
+using FluentResults;
 
 namespace HouseFinder360.Domain.BuildingBlocks.Errors;
 
 public class ErrorMessage : IError
 {
     public string Message { get; }
-    public Dictionary<string, object> Metadata { get; protected set;}
+    public Dictionary<string, object> Metadata { get; protected set; }
     public List<IError> Reasons { get; protected init; }
     public ErrorType StatusCode { get; protected init; }
 
@@ -16,7 +16,7 @@ public class ErrorMessage : IError
         {
             { "Message: ", message}
         };
-        Reasons = new List<IError>{new Error(message)};
+        Reasons = new List<IError> { new Error(message) };
     }
 
     public static ErrorMessage Conflict(string message)

@@ -1,10 +1,10 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Domain.BuildingBlocks.DDD;
 using HouseFinder360.RealEstates.Domain.Common.Errors;
 
 namespace HouseFinder360.RealEstates.Domain.RealEstates.ValueObjects;
 
-public class Price:ValueObject
+public class Price : ValueObject
 {
     public int Value { get; private set; }
     public string Currency { get; private set; } = null!;

@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Common;
 using MediatR;
 
@@ -6,4 +6,4 @@ namespace HouseFinder360.Users.Infrastructure.Features.Authentication.Query.Logi
 
 public record LoginQuery(
     string EmailOrPhone,
-    string Password):IRequest<Result<AuthResult>>;
+    string Password) : IRequest<Result<AuthResult>>;

@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using HouseFinder360.RealEstates.Application.RealEstates.Commands;
 
 namespace HouseFinder360.RealEstates.Application.RealEstates.Validators;

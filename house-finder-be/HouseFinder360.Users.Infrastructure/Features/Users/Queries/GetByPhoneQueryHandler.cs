@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Common.Errors;
 using HouseFinder360.Users.Infrastructure.Model;
 using HouseFinder360.Users.Infrastructure.Persistence;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.Users.Infrastructure.Features.Users.Queries;
 
-public class GetByPhoneQueryHandler : IRequestHandler<GetByPhoneQuery,Result<User>>
+public class GetByPhoneQueryHandler : IRequestHandler<GetByPhoneQuery, Result<User>>
 {
     private readonly UserDbContext _dbContext;
 

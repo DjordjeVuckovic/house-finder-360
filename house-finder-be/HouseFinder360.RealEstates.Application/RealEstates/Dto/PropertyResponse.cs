@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Dtos.Shared;
+using HouseFinder360.RealEstates.Application.Common.Dtos.Shared;
 
 namespace HouseFinder360.RealEstates.Application.RealEstates.Dto;
 

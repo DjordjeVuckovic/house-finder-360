@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Domain.BuildingBlocks.Common.Enums;
 using HouseFinder360.Domain.BuildingBlocks.DDD;
 using HouseFinder360.RealEstates.Domain.RealEstates.Entities;
@@ -10,19 +10,19 @@ namespace HouseFinder360.RealEstates.Domain.RealEstates;
 public sealed class RealEstate : AggregateRoot<Guid>
 {
     public string Title { get; private set; } = null!;
-    public string Description { get; private set;} = null!;
+    public string Description { get; private set; } = null!;
     public string NumberOfRooms { get; private set; } = null!;
     public Address Address { get; private set; } = null!;
     public string? PropertyState { get; private set; }
     public Area Area { get; private set; } = null!;
-    public FloorInformation FloorInformation { get; private set;} = null!;
-    public Price Price { get; private set;} = null!;
-    public PropertyAdditionalInfo AdditionalInfo {get; private set;} = null!;
-    public PropertyType PropertyType { get; private set;} = null!;
-    public RegisterStatus RegisterStatus { get; private set;}
-    public string? Heating { get;private set; }
-    public PropertyPurpose Purpose { get;private set; }
-    
+    public FloorInformation FloorInformation { get; private set; } = null!;
+    public Price Price { get; private set; } = null!;
+    public PropertyAdditionalInfo AdditionalInfo { get; private set; } = null!;
+    public PropertyType PropertyType { get; private set; } = null!;
+    public RegisterStatus RegisterStatus { get; private set; }
+    public string? Heating { get; private set; }
+    public PropertyPurpose Purpose { get; private set; }
+
     public int ElevatorsNumber { get; set; }
     public List<PropertyPhoto> Photos { get; private set; } = new();
     public Guid UserId { get; private set; }
@@ -31,14 +31,14 @@ public sealed class RealEstate : AggregateRoot<Guid>
     public int TotalClicks => Actions.Count(a => a.ActionType == ActionType.Click);
 
     private RealEstate(
-        string title, 
-        string description, 
-        string numberOfRooms, 
+        string title,
+        string description,
+        string numberOfRooms,
         Address address,
         string? propertyState,
         Area area,
         FloorInformation floorInformation,
-        Price price, 
+        Price price,
         PropertyAdditionalInfo additionalInfo,
         PropertyType propertyType,
         RegisterStatus registerStatus,
@@ -62,14 +62,14 @@ public sealed class RealEstate : AggregateRoot<Guid>
         Id = new Guid();
     }
     private RealEstate(
-        string title, 
-        string description, 
-        string numberOfRooms, 
+        string title,
+        string description,
+        string numberOfRooms,
         Address address,
         string? propertyState,
         Area area,
         FloorInformation floorInformation,
-        Price price, 
+        Price price,
         PropertyAdditionalInfo additionalInfo,
         PropertyType propertyType,
         RegisterStatus registerStatus,
@@ -99,10 +99,10 @@ public sealed class RealEstate : AggregateRoot<Guid>
     }
 
     public static Result<RealEstate> CreateSaleProperty(
-        string title, 
+        string title,
         string description,
         int area,
-        string roomsNumber, 
+        string roomsNumber,
         Address address,
         string condition,
         string floor,
@@ -125,12 +125,12 @@ public sealed class RealEstate : AggregateRoot<Guid>
         var priceResult = Price.CreatePrice(price, "euro");
         var status = EnumUtil.ToEnum<RegisterStatus>(registerStatus);
         var propPurpose = EnumUtil.ToEnum<PropertyPurpose>(purpose);
-        var merged = Result.Merge(priceResult, areaResult,status,propPurpose);
+        var merged = Result.Merge(priceResult, areaResult, status, propPurpose);
         if (merged.IsFailed)
         {
             return merged;
         }
-        
+
         var additionalInfo = new PropertyAdditionalInfo
         {
             YearOfBuild = DateOnly.FromDateTime(yearOfBuild),
@@ -160,7 +160,7 @@ public sealed class RealEstate : AggregateRoot<Guid>
             status.Value,
             heating,
             elevatorsNumber,
-            photos, 
+            photos,
             propPurpose.Value,
             userId);
     }

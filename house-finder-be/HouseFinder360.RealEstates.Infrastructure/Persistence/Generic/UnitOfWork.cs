@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using FluentResults;
 using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.RealEstates.Domain.Common.Errors;

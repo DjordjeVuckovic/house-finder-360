@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Infrastructure.Persistence;
+using HouseFinder360.RealEstates.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.RealEstates.Api;

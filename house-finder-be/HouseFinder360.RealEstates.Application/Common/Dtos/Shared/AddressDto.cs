@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Application.Common.Dtos.Shared;
+namespace HouseFinder360.RealEstates.Application.Common.Dtos.Shared;
 
 public record AddressDto(
     string Street,

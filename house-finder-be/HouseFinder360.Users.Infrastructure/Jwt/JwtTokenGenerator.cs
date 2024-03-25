@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
@@ -24,7 +24,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
     {
         var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(_jwtSettings.Secret)
-        ),SecurityAlgorithms.HmacSha256);
+        ), SecurityAlgorithms.HmacSha256);
         var securityToken = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,

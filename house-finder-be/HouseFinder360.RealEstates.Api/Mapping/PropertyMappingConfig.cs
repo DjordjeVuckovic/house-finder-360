@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Api.Dto.Requests.Property;
+using HouseFinder360.RealEstates.Api.Dto.Requests.Property;
 using HouseFinder360.RealEstates.Application.RealEstates.Commands;
 using Mapster;
 

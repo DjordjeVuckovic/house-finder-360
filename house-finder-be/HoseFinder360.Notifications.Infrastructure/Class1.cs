@@ -1,4 +1,4 @@
-﻿namespace HoseFinder360.Notifications.Infrastructure;
+namespace HoseFinder360.Notifications.Infrastructure;
 
 public class Class1
 {

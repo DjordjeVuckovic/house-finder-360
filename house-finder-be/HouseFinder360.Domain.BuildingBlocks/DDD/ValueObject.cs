@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.BuildingBlocks.DDD;
+namespace HouseFinder360.Domain.BuildingBlocks.DDD;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
@@ -10,7 +10,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
             return false;
         }
 
-        var valueObject = (ValueObject) obj;
+        var valueObject = (ValueObject)obj;
         return GetEqualityComponents()
             .SequenceEqual(valueObject.GetEqualityComponents());
     }
@@ -34,6 +34,6 @@ public abstract class ValueObject : IEquatable<ValueObject>
 
     public bool Equals(ValueObject? other)
     {
-        return Equals((object?) other);
+        return Equals((object?)other);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.BuildingBlocks.Common.Pagination;
+namespace HouseFinder360.Domain.BuildingBlocks.Common.Pagination;
 
 public class PagedResult<T>
 {

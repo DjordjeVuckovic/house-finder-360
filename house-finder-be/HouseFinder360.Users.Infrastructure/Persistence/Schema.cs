@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Users.Infrastructure.Persistence;
+namespace HouseFinder360.Users.Infrastructure.Persistence;
 
 public static class Schema
 {

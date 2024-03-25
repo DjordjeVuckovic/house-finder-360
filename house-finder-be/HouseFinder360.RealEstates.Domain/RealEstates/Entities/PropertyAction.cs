@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.BuildingBlocks.DDD;
+using HouseFinder360.Domain.BuildingBlocks.DDD;
 using HouseFinder360.RealEstates.Domain.RealEstates.Enums;
 
 namespace HouseFinder360.RealEstates.Domain.RealEstates.Entities;

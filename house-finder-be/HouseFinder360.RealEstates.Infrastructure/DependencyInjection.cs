@@ -1,4 +1,4 @@
-﻿using DotNetEnv.Configuration;
+using DotNetEnv.Configuration;
 using HouseFinder360.RealEstates.Application.Common.BlobStorage;
 using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.RealEstates.Application.Common.Interfaces.Services;
@@ -21,14 +21,14 @@ public static class DependencyInjection
     {
         builderConfiguration.AddDotNetEnv();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        
+
         services.Configure<BlobStorageSettings>
             (builderConfiguration.GetSection(BlobStorageSettings.SectionName));
-        services.AddSingleton(provider => 
+        services.AddSingleton(provider =>
             provider.GetRequiredService<IOptions<BlobStorageSettings>>().Value);
         services.ConfigureBlobClient();
         services.AddPersistence();
-        
+
         return services;
     }
     private static void ConfigureBlobClient(this IServiceCollection services)
@@ -48,7 +48,7 @@ public static class DependencyInjection
 
     private static void AddPersistence(this IServiceCollection services)
     {
-        services.AddDbContext<HouseFinder360DbContext>(options => 
+        services.AddDbContext<HouseFinder360DbContext>(options =>
             options.UseNpgsql(CreateConnectionString(),
                 npgsqlOptions =>
                 {
@@ -65,7 +65,7 @@ public static class DependencyInjection
                     })
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors());
-        
+
         services.AddScoped<IDbContext>(provider => provider.GetRequiredService<HouseFinder360DbContext>());
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

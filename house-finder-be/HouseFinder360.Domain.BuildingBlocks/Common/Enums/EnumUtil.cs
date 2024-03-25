@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 
 namespace HouseFinder360.Domain.BuildingBlocks.Common.Enums;
 
@@ -8,15 +8,15 @@ public static class EnumUtil
     {
         try
         {
-            var result = (T) Enum.Parse(typeof(T), value, true);
+            var result = (T)Enum.Parse(typeof(T), value, true);
             return result;
         }
         catch
         {
-            return  Result.Fail($"Cannot parse {typeof(T)} with value {value} ");
+            return Result.Fail($"Cannot parse {typeof(T)} with value {value} ");
         }
     }
-    public static Result<string> FromEnum<T>(T enumParse) 
+    public static Result<string> FromEnum<T>(T enumParse)
         where T : struct, IConvertible
     {
         if (!typeof(T).IsEnum)

@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.BuildingBlocks.EventSourcing;
+namespace HouseFinder360.Domain.BuildingBlocks.EventSourcing;
 
 public abstract class DomainEvent
 {

@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Pagination;
+using HouseFinder360.RealEstates.Application.Common.Pagination;
 using HouseFinder360.RealEstates.Application.RealEstates.Dto;
 using MediatR;
 

@@ -32,6 +32,13 @@ jobs:
 
             - name: Install dependencies
               run: npm install
+            
+            - name: Check format
+              run: |
+                if ! npm run format:check; then
+                  echo "Error: Code formatting issues found. Did you forget to run 'npm run format'?"
+                  exit 1
+                fi
               
             - name: Lint
               run: npm run lint

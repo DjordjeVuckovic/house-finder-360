@@ -1,13 +1,13 @@
-﻿namespace HouseFinder360.RealEstates.Application.Common.Pagination;
+namespace HouseFinder360.RealEstates.Application.Common.Pagination;
 
 public class Pagination
 {
     private readonly int _currentPage = 1;
     private readonly int _pageSize = 10;
-    public int CurrentPage 
-    { 
+    public int CurrentPage
+    {
         get => _currentPage;
-        init => _currentPage = value > 0 ? value : 1; 
+        init => _currentPage = value > 0 ? value : 1;
     }
     public int PageSize
     {

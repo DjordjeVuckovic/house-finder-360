@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Routing;
 
 namespace HouseFinder360.Users.Api.Endpoints;
 
@@ -8,5 +8,5 @@ public static class MapUserModuleEndpoints
     {
         UsersModule.AddRoutes(app);
         return app;
-    } 
+    }
 }

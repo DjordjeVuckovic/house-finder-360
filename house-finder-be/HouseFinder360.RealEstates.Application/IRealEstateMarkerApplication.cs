@@ -1,6 +1,6 @@
-﻿namespace HouseFinder360.RealEstates.Application;
+namespace HouseFinder360.RealEstates.Application;
 
 public interface IRealEstateMarkerApplication
 {
-    
+
 }

@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
+using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 using HouseFinder360.RealEstates.Api.Mapping;
 using HouseFinder360.RealEstates.Application;
 using HouseFinder360.RealEstates.Infrastructure;

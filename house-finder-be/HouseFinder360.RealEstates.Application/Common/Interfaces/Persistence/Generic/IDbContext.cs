@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Domain.RealEstates;
+using HouseFinder360.RealEstates.Domain.RealEstates;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;

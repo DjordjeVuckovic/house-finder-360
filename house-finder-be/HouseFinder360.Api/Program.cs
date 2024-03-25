@@ -14,8 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-    builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>,ConfigureSwaggerOptions>();
-    
+    builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+
     builder.Services.AddAuthentication();
     builder.Services.AddAuthorization();
 
@@ -24,7 +24,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddRealEstateModule(builder.Configuration)
         .AddUsersModule(builder.Configuration)
         .AddBuildingBlocksApplicationDependencyInjection();
-    
+
     builder.Services
         .AddCors(options =>
         {
@@ -32,7 +32,7 @@ var builder = WebApplication.CreateBuilder(args);
                 b => b.WithOrigins(builder.Configuration["AllowedHosts"]!)
                     .AllowAnyOrigin()
                     .AllowAnyHeader()
-                    .AllowAnyMethod()); 
+                    .AllowAnyMethod());
         });
 }
 var app = builder.Build();
@@ -45,21 +45,21 @@ var app = builder.Build();
 
     if (app.Environment.IsProduction())
     {
-        app.UseExceptionHandler("/error");   
+        app.UseExceptionHandler("/error");
     }
     app.UseHttpsRedirection();
     app.UseRouting();
     app.UseCors(policyName);
-    
+
     app.MapErrorsModule()
         .MapRealEstateModule()
         .MapUserModule();
-    
+
     app.UseAuthentication();
     app.UseAuthorization();
-    
+
     app.RunRealEstateMigrations(app.Environment);
     app.RunUsersMigrations(app.Environment);
-    
+
     app.Run();
 }

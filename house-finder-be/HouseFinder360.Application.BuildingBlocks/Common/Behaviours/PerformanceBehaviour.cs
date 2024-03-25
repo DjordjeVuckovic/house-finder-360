@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;

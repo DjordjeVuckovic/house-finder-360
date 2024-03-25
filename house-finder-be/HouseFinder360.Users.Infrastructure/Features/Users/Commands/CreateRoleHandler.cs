@@ -1,11 +1,11 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Model;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 namespace HouseFinder360.Users.Infrastructure.Features.Users.Commands;
 
-public class CreateRoleHandler : IRequestHandler<CreateRoleCommand,Result>
+public class CreateRoleHandler : IRequestHandler<CreateRoleCommand, Result>
 {
     private readonly RoleManager<UserRole> _roleManager;
 

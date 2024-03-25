@@ -1,3 +1,3 @@
-﻿namespace HouseFinder360.Users.Infrastructure;
+namespace HouseFinder360.Users.Infrastructure;
 
 public interface IUsersMarker { }

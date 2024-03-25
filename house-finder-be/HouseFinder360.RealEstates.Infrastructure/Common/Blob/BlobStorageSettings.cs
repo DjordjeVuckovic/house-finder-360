@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Infrastructure.Common.Blob;
+namespace HouseFinder360.RealEstates.Infrastructure.Common.Blob;
 
 public class BlobStorageSettings
 {

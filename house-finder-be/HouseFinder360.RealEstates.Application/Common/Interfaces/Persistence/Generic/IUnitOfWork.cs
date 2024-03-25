@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using FluentResults;
 
 namespace HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
