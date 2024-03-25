@@ -38,7 +38,4 @@ jobs:
 
             - name: Build
               run: npm run build
-              
-            - name: Preview
-              run: npm run preview
     

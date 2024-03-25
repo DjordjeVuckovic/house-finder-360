@@ -36,5 +36,5 @@ jobs:
       - name: Build solution
         run: dotnet build --configuration Release --no-restore
       
-      - name: Publish modular monolith service
+      - name: Publish modular monolith
         run: dotnet publish ./HouseFinder360.Api/HouseFinder360.Api.csproj --configuration Release -o ./publish --no-build
