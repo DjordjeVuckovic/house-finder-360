@@ -13,7 +13,7 @@ For the backend, we have chosen a modular monolith architecture built with .NET.
 This approach makes our system solid yet flexible enough to grow. 
 On the frontend, we built it using React and chose Vite as our building tool.
 
-### System Architecture Diagram
+## System Architecture Diagram
 
 Below is a C4 diagram that illustrates the overall architecture of the system, including how the frontend, backend, and database interact:
 
@@ -21,7 +21,7 @@ Below is a C4 diagram that illustrates the overall architecture of the system, i
 
 In docs folder you can find more detailed view of the architecture.That folder also contains all the diagrams that are used in this project(architecture diagrams, sequence diagrams, etc.).
 
-### Getting Started
+## Getting Started
 
 If you are using docker, you can start the project by running the following command in the root directory:
 
@@ -57,14 +57,14 @@ npm run dev
 
 For the development purpose you can use the docker/docker-compose.dev.yml file that spin up all dev dependencies. 
 
-### Technologies
+## Technologies
 - .NET Core 7
 - React
 - Docker
 - Nginx
 
 
-### Application ui pictures
+## Application ui pictures
 
 ![Landing page](/static/images/landing-page.png)
 * Landing page

@@ -5,13 +5,17 @@ on:
       - 'feature/**'
       - 'release/**'
       - 'dev'
-      - 'main'
+      - 'master'
+    paths:
+      - 'house-finder-fe/**'
   pull_request:
     branches:
       - 'feature/**'
       - 'release/**'
       - 'dev'
-      - 'main'
+      - 'master'
+    paths:
+      - 'house-finder-fe/**'
   workflow_dispatch:
 
 jobs:
