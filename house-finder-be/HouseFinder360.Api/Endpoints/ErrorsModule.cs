@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Api.Endpoints;
+namespace HouseFinder360.Api.Endpoints;
 
 public static class ErrorsModule
 {

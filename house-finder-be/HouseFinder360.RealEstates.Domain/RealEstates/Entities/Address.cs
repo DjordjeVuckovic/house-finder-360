@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.BuildingBlocks.DDD;
+using HouseFinder360.Domain.BuildingBlocks.DDD;
 using HouseFinder360.RealEstates.Domain.RealEstates.ValueObjects;
 
 namespace HouseFinder360.RealEstates.Domain.RealEstates.Entities;
@@ -12,7 +12,7 @@ public class Address : Entity<long>
 
     public Address(
         Location street,
-        Location city, 
+        Location city,
         string country)
     {
         Street = street;

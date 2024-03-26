@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
+namespace HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 
 public interface ICurrentUserService
 {

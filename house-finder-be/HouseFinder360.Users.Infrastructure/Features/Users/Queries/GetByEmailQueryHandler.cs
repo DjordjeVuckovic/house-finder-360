@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Common.Errors;
 using HouseFinder360.Users.Infrastructure.Model;
 using HouseFinder360.Users.Infrastructure.Persistence;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.Users.Infrastructure.Features.Users.Queries;
 
-public class GetByEmailQueryHandler : IRequestHandler<GetByEmailQuery,Result<User>>
+public class GetByEmailQueryHandler : IRequestHandler<GetByEmailQuery, Result<User>>
 {
     private readonly UserDbContext _dbContext;
 
@@ -19,7 +19,7 @@ public class GetByEmailQueryHandler : IRequestHandler<GetByEmailQuery,Result<Use
     public async Task<Result<User>> Handle(GetByEmailQuery request, CancellationToken cancellationToken)
     {
         var user = await _dbContext.Users
-            .SingleOrDefaultAsync(user => user.Email == request.Email,cancellationToken);
+            .SingleOrDefaultAsync(user => user.Email == request.Email, cancellationToken);
         if (user is null)
         {
             return Result.Fail(UsersErrors.WrongCredential);

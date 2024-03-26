@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Application.Common.Pagination;
+namespace HouseFinder360.RealEstates.Application.Common.Pagination;
 
 public class PagedResponse<T>
 {

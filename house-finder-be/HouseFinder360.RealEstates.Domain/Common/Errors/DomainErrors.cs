@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using HouseFinder360.RealEstates.Domain.RealEstates.ValueObjects;
 

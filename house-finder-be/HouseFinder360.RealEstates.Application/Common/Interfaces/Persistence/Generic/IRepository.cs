@@ -1,8 +1,8 @@
-﻿namespace HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
+namespace HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 
-public interface IRepository<T, in TId> 
+public interface IRepository<T, in TId>
     where T : class
-    where TId : notnull 
+    where TId : notnull
 {
     Task<T?> GetById(TId id, CancellationToken cancellationToken = default);
     Task Create(T entity);

@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.BuildingBlocks.DDD;
+using HouseFinder360.Domain.BuildingBlocks.DDD;
 
 namespace HoseFinder360.Notifications.Core.Model;
 

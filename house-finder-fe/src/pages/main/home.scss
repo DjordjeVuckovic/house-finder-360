@@ -1,18 +1,18 @@
-@import "src/scss/variables";
-.black-wrapper{
+@import 'src/scss/variables';
+.black-wrapper {
   position: relative;
 }
 
-.white-gradient{
+.white-gradient {
   position: absolute;
   top: 10px;
   left: 80px;
   width: 9rem;
   height: 8rem;
-  background: rgba(255,255,255,0.52);
+  background: rgba(255, 255, 255, 0.52);
   filter: blur(100px);
   z-index: 2;
 }
-.white-section{
+.white-section {
   background: var(--text-color);
 }

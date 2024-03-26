@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.BuildingBlocks.Common.Pagination;
+using HouseFinder360.Domain.BuildingBlocks.Common.Pagination;
 
 namespace HouseFinder360.Domain.BuildingBlocks.EventSourcing;
 

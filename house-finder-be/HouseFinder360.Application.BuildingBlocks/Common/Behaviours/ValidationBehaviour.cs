@@ -1,11 +1,11 @@
-﻿using FluentResults;
+using FluentResults;
 using FluentValidation;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using MediatR;
 
 namespace HouseFinder360.Application.BuildingBlocks.Common.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResult> 
+public class ValidationBehaviour<TRequest, TResult>
     : IPipelineBehavior<TRequest, TResult>
     where TRequest : IRequest<TResult>
     where TResult : ResultBase

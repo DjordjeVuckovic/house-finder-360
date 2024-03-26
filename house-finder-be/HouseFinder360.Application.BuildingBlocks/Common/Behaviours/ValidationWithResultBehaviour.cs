@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using FluentValidation;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using MediatR;
@@ -17,8 +17,8 @@ public class ValidationWithResultBehaviour<TRequest, TResult> : IPipelineBehavio
     }
 
     public async Task<Result<TResult>> Handle(
-        TRequest request, 
-        RequestHandlerDelegate<Result<TResult>> next, 
+        TRequest request,
+        RequestHandlerDelegate<Result<TResult>> next,
         CancellationToken cancellationToken)
     {
         if (!_validators.Any()) return await next();

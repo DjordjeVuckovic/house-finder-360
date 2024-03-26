@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+using FluentValidation;
 using HouseFinder360.RealEstates.Application.Common.BlobStorage;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +8,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddMediatR(cfg => 
+        services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(typeof(IRealEstateMarkerApplication).Assembly));
         services.AddScoped<BlobHandler>();
         return services;

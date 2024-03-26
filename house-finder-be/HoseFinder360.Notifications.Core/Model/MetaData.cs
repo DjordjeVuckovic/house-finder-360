@@ -1,4 +1,4 @@
-﻿namespace HoseFinder360.Notifications.Core.Model;
+namespace HoseFinder360.Notifications.Core.Model;
 
 public class MetaData
 {
@@ -6,6 +6,6 @@ public class MetaData
     public string CreatedBy { get; private set; }
     public List<string> SendTo { get; private set; }
     public string Type { get; private set; }
-    #pragma warning disable
-    private MetaData(){}
+#pragma warning disable
+    private MetaData() { }
 }

@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Application.Common.BlobStorage;
+namespace HouseFinder360.RealEstates.Application.Common.BlobStorage;
 
 public class UploadFileResponse
 {

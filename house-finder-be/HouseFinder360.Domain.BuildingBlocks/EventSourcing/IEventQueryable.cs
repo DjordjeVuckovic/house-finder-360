@@ -1,4 +1,4 @@
-﻿using System.Linq.Expressions;
+using System.Linq.Expressions;
 using System.Text.Json;
 
 namespace HouseFinder360.Domain.BuildingBlocks.EventSourcing;

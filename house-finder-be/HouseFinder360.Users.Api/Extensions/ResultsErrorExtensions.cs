@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using Microsoft.AspNetCore.Http;
 
@@ -25,7 +25,7 @@ public static class ResultsErrorExtensions
         {
             ErrorStatusCodes.BadRequest => Results.BadRequest(errorResponse),
             ErrorStatusCodes.NotFound => Results.NotFound(errorResponse),
-            ErrorStatusCodes.Forbidden => Results.Forbid(), 
+            ErrorStatusCodes.Forbidden => Results.Forbid(),
             _ => Results.Conflict(errorResponse)
         };
     }

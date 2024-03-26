@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Common.Errors;
 using Microsoft.AspNetCore.Identity;
 
@@ -8,7 +8,7 @@ public sealed class User : IdentityUser<Guid>
 {
     public string FirstName { get; set; } = string.Empty;
     public string LastName { get; set; } = string.Empty;
-    public List<UserRole> Roles { get;private set; } = new();
+    public List<UserRole> Roles { get; private set; } = new();
     public override string? Email { get; set; }
 
     public IEnumerable<string?> GetRoleNames() => Roles.Select(x => x.Name);
@@ -17,7 +17,7 @@ public sealed class User : IdentityUser<Guid>
         .Select(x => x.Name)
         .ToArray();
 
-    private readonly List<string> _allowedRoles = new() { "user","agency"};
+    private readonly List<string> _allowedRoles = new() { "user", "agency" };
 
     public Result AssignRole(string role)
     {

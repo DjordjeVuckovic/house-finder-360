@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
+using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.RealEstates.Application.RealEstates.Dto;
 using HouseFinder360.RealEstates.Application.RealEstates.Mapper;
 using MediatR;

@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using FluentResults;
 using Microsoft.AspNetCore.Http;
 
@@ -25,7 +25,7 @@ public class BlobHandler
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
-            return JsonSerializer.Deserialize<List<UploadFileResponse>>(responseContent,options) 
+            return JsonSerializer.Deserialize<List<UploadFileResponse>>(responseContent, options)
                    ?? new List<UploadFileResponse>();
         }
         catch (Exception e)

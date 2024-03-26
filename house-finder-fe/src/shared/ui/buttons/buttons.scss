@@ -1,43 +1,43 @@
-@import "src/scss/variables";
-@mixin button-base-mx{
+@import 'src/scss/variables';
+@mixin button-base-mx {
   font-weight: 550;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border: none;
   outline: none;
   border-radius: 16px;
   font-size: 16px;
   transition: all 300ms ease-in;
   margin-top: 0;
-  &:hover{
+  &:hover {
     cursor: pointer;
     opacity: 0.9;
-    box-shadow: 0 0 .7em $black;
+    box-shadow: 0 0 0.7em $black;
   }
 }
-.button-base-icon{
+.button-base-icon {
   @include button-base-mx;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   //&:disabled{
   //  cursor: not-allowed;
   //  background: rgba(105, 105, 105, 0.86);
   //}
 }
-.submit-button{
+.submit-button {
   @include button-base-mx;
   background: linear-gradient(97.05deg, #4066ff 3.76%, #2949c6 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .7rem;
-  &:disabled{
+  gap: 0.7rem;
+  &:disabled {
     cursor: not-allowed;
     background: rgba(51, 51, 51, 0.17);
   }
 }
-.submit-icon{
-  margin-top: .05rem;
+.submit-icon {
+  margin-top: 0.05rem;
   opacity: 1;
 }

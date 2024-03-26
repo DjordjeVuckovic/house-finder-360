@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Users.Api.Mappings;
+using HouseFinder360.Users.Api.Mappings;
 using HouseFinder360.Users.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

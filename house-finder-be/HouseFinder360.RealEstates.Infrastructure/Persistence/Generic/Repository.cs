@@ -1,19 +1,19 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
+using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.RealEstates.Infrastructure.Persistence.Generic;
 
-public class Repository<T,TId> : IRepository<T,TId>
+public class Repository<T, TId> : IRepository<T, TId>
 where T : class
 where TId : notnull
 {
-    protected readonly DbSet<T>  DbSet;
+    protected readonly DbSet<T> DbSet;
 
     protected Repository(HouseFinder360DbContext dbContext)
     {
         DbSet = dbContext.Set<T>();
     }
-    public async Task<T?> GetById(TId id,CancellationToken cancellationToken = default)
+    public async Task<T?> GetById(TId id, CancellationToken cancellationToken = default)
     {
         return await DbSet.FindAsync(new object?[] { id, cancellationToken }, cancellationToken: cancellationToken);
     }
@@ -40,6 +40,6 @@ where TId : notnull
 
     public async Task CreateBulk(IEnumerable<T> entities)
     {
-       await DbSet.AddRangeAsync(entities);
+        await DbSet.AddRangeAsync(entities);
     }
 }

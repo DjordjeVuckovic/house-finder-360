@@ -1,6 +1,6 @@
-﻿namespace HouseFinder360.RealEstates.Api;
+namespace HouseFinder360.RealEstates.Api;
 
 internal interface IAssemblyMarker
 {
-    
+
 }

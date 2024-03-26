@@ -1,4 +1,2 @@
-import {ContactPage} from './contact.page.tsx'
-export {
-    ContactPage
-}
+import { ContactPage } from './contact.page.tsx'
+export { ContactPage }

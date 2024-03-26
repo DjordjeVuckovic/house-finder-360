@@ -1,6 +1,6 @@
-﻿namespace HouseFinder360.Domain.BuildingBlocks.DDD;
+namespace HouseFinder360.Domain.BuildingBlocks.DDD;
 
-public class AggregateRoot<TId> : Entity<TId> 
+public class AggregateRoot<TId> : Entity<TId>
     where TId : notnull
 {
     protected AggregateRoot(TId id) : base(id)

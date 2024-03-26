@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.RealEstates.Application.Common.Dtos.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Http;

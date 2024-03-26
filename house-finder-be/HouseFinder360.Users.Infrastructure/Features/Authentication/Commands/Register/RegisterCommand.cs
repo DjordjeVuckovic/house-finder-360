@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Common;
 using MediatR;
 
@@ -8,6 +8,6 @@ public record RegisterCommand(
     string FirstName,
     string LastName,
     string Email,
-    string Password, 
+    string Password,
     string Phone,
-    string Role): IRequest<Result<AuthResult>>;
+    string Role) : IRequest<Result<AuthResult>>;

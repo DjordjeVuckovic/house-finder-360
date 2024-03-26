@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using FluentValidation;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using HouseFinder360.Users.Infrastructure.Common.Errors;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HouseFinder360.Users.Infrastructure.Features.Authentication.Commands.Register;
 
-public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<AuthResult>>
+public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result<AuthResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly ISender _sender;
@@ -21,8 +21,8 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
     private readonly UserDbContext _dbContext;
     public RegisterCommandHandler(
         IJwtTokenGenerator jwtTokenGenerator,
-        ISender sender, 
-        UserManager<User> userManager, 
+        ISender sender,
+        UserManager<User> userManager,
         UserDbContext dbContext)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
@@ -37,7 +37,7 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
 
         var userByEmailResult = await _sender.Send(new GetByEmailQuery(request.Email), cancellationToken);
         var userByPhone = await _sender.Send(new GetByPhoneQuery(request.Phone), cancellationToken);
-        
+
         if (userByEmailResult.IsSuccess || userByPhone.IsSuccess)
         {
             var error = Result.Fail<AuthResult>(UsersErrors.WrongCredential);
@@ -52,12 +52,12 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
             Email = request.Email,
             UserName = request.Email
         };
-        
+
         var result = await _userManager.CreateAsync(user, request.Password);
         if (!result.Succeeded)
         {
-            return  Result.Fail(result.Errors.Select(x => 
-                new ErrorResult(x.Description, 
+            return Result.Fail(result.Errors.Select(x =>
+                new ErrorResult(x.Description,
                 ErrorStatusCodes.BadRequest)));
         }
         var roleResult = await _sender.Send(new CreateRoleCommand(request.Role), cancellationToken);
@@ -79,14 +79,14 @@ public class RegisterCommandHandler: IRequestHandler<RegisterCommand, Result<Aut
         }
         catch
         {
-            return Result.Fail(UsersErrors.Role); 
+            return Result.Fail(UsersErrors.Role);
         }
 
         await transaction.CommitAsync(cancellationToken);
-        
+
         var token = _jwtTokenGenerator.GenerateToken(user);
-        
-        
+
+
         return new AuthResult(token);
     }
 }

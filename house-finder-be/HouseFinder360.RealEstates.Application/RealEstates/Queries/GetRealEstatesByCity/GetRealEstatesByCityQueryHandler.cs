@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
+using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.RealEstates.Application.Common.Pagination;
 using HouseFinder360.RealEstates.Application.RealEstates.Dto;
 using HouseFinder360.RealEstates.Application.RealEstates.Mapper;
@@ -10,7 +10,7 @@ namespace HouseFinder360.RealEstates.Application.RealEstates.Queries.GetRealEsta
 
 public record GetRealEstatesByCityQuery(string City, Pagination Pagination) : IRequest<PagedResponse<PropertyResponse>>;
 
-public class GetRealEstatesByCityQueryHandler : IRequestHandler<GetRealEstatesByCityQuery,PagedResponse<PropertyResponse>>
+public class GetRealEstatesByCityQueryHandler : IRequestHandler<GetRealEstatesByCityQuery, PagedResponse<PropertyResponse>>
 {
     private readonly IDbContext _dbContext;
 
@@ -18,7 +18,7 @@ public class GetRealEstatesByCityQueryHandler : IRequestHandler<GetRealEstatesBy
     {
         _dbContext = dbContext;
     }
-    
+
 
     public async Task<PagedResponse<PropertyResponse>> Handle(GetRealEstatesByCityQuery request, CancellationToken cancellationToken)
     {
@@ -34,7 +34,7 @@ public class GetRealEstatesByCityQueryHandler : IRequestHandler<GetRealEstatesBy
             .Include(x => x.Photos)
             .ToListAsync(cancellationToken);
         var mapped = propertyList.Select(PropertyMapper.MapProperty);
-        
+
         return new PagedResponse<PropertyResponse>
         {
             Data = mapped,

@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 namespace HouseFinder360.RealEstates.Infrastructure.Extensions;
 

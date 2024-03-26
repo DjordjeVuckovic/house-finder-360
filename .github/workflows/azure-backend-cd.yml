@@ -1,8 +1,8 @@
-﻿name: House Finder Cd
+﻿name: Azure House Finder Be Cd
 on:
   push:
     branches:
-      - master
+      - never
   workflow_dispatch:
 
 jobs:

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Text;
 using FluentValidation;
 using HouseFinder360.Users.Infrastructure.Common.Interfaces;
@@ -23,21 +23,25 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddScoped<IValidator<RegisterCommand>, RegisterRequestValidator>();
+        services.AddValidation();
         // mediator
-        services.AddMediatR(cfg => 
+        services.AddMediatR(cfg =>
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())
-                // .AddBehavior<IPipelineBehavior<RegisterCommand, Result<AuthResult>>, 
-                //     ValidationBehaviour<RegisterCommand, AuthResult>>()
+        // .AddBehavior<IPipelineBehavior<RegisterCommand, Result<AuthResult>>, 
+        //     ValidationBehaviour<RegisterCommand, AuthResult>>()
         );
         services.AddPersistence();
         services.AddIdentityUser();
         services.AddAuth(configuration);
         return services;
     }
+    private static void AddValidation(this IServiceCollection services)
+    {
+        services.AddScoped<IValidator<RegisterCommand>, RegisterRequestValidator>();
+    }
     private static void AddPersistence(this IServiceCollection services)
     {
-        services.AddDbContext<UserDbContext>(options => 
+        services.AddDbContext<UserDbContext>(options =>
             options.UseNpgsql(CreateConnectionString(),
                     npgsqlOptions =>
                     {
@@ -45,7 +49,7 @@ public static class DependencyInjection
                             tableName: HistoryRepository.DefaultTableName,
                             schema: Schema.UsersSchema
                         );
-                    
+
                     }
                 )
                 .UseNpgsql(
@@ -75,7 +79,7 @@ public static class DependencyInjection
         IConfiguration builderConfiguration)
     {
         var jwtSettings = new JwtSettings();
-        builderConfiguration.Bind(JwtSettings.SectionName,jwtSettings);
+        builderConfiguration.Bind(JwtSettings.SectionName, jwtSettings);
         services.AddSingleton(Options.Create(jwtSettings));
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddAuthentication(x =>
@@ -84,10 +88,10 @@ public static class DependencyInjection
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(options => 
+            .AddJwtBearer(options =>
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateAudience  = true,
+                    ValidateAudience = true,
                     ValidateIssuer = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,

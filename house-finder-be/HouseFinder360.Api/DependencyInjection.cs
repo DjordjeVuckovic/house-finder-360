@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Api.Services;
+using HouseFinder360.Api.Services;
 using HouseFinder360.Application.BuildingBlocks.Common.Interfaces;
 
 namespace HouseFinder360.Api;

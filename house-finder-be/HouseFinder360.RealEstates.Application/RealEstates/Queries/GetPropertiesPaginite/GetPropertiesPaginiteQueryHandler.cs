@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
+using HouseFinder360.RealEstates.Application.Common.Interfaces.Persistence.Generic;
 using HouseFinder360.RealEstates.Application.Common.Pagination;
 using HouseFinder360.RealEstates.Application.RealEstates.Dto;
 using HouseFinder360.RealEstates.Application.RealEstates.Mapper;
@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.RealEstates.Application.RealEstates.Queries.GetPropertiesPaginite;
 
-public class GetPropertiesPaginiteQueryHandler : IRequestHandler<GetPropertiesPaginiteQuery,PagedResponse<PropertyResponse>>
+public class GetPropertiesPaginiteQueryHandler : IRequestHandler<GetPropertiesPaginiteQuery, PagedResponse<PropertyResponse>>
 {
     private readonly IDbContext _dbContext;
 

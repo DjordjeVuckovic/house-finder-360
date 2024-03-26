@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Users.Infrastructure.Persistence;
+using HouseFinder360.Users.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ namespace HouseFinder360.Users.Api;
 public static class UsersMigrations
 {
     public static void RunUsersMigrations(
-        this WebApplication app, 
+        this WebApplication app,
         IWebHostEnvironment webHostEnvironment)
     {
         using var serviceScope = app.Services.CreateScope();

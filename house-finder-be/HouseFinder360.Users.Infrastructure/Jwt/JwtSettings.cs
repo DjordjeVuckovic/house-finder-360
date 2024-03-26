@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Users.Infrastructure.Jwt;
+namespace HouseFinder360.Users.Infrastructure.Jwt;
 
 public class JwtSettings
 {

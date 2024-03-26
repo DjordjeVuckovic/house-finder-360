@@ -1,6 +1,6 @@
-﻿namespace HouseFinder360.Users.Api;
+namespace HouseFinder360.Users.Api;
 
 internal interface IUserApiMarker
 {
-    
+
 }

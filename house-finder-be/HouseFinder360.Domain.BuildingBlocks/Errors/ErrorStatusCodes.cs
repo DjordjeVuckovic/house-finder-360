@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.Domain.BuildingBlocks.Errors;
+namespace HouseFinder360.Domain.BuildingBlocks.Errors;
 
 public static class ErrorStatusCodes
 {

@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Users.Api.Dto.Requests;
+using HouseFinder360.Users.Api.Dto.Requests;
 using HouseFinder360.Users.Api.Dto.Responses;
 using HouseFinder360.Users.Api.Extensions;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Commands.Register;
@@ -16,7 +16,7 @@ internal static class UsersModule
 
     internal static void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/v1/auth/register",Register);
+        app.MapPost("/api/v1/auth/register", Register);
         app.MapPost("/api/v1/auth", Auth);
     }
 
@@ -27,20 +27,20 @@ internal static class UsersModule
     {
         var command = mapper.Map<RegisterCommand>(registerRequest);
         var authResult = await sender.Send(command);
-        
-        return authResult.IsFailed 
-            ? authResult.Errors.BuildErrorResponse() 
+
+        return authResult.IsFailed
+            ? authResult.Errors.BuildErrorResponse()
             : Results.Ok(mapper.Map<AuthenticationResponse>(authResult.Value));
     }
 
     private static async Task<IResult> Auth(
-        LoginRequest loginRequest, 
-        ISender sender, 
+        LoginRequest loginRequest,
+        ISender sender,
         IMapper mapper)
     {
         var query = mapper.Map<LoginQuery>(loginRequest);
         var loginResult = await sender.Send(query);
-        return loginResult.IsFailed 
+        return loginResult.IsFailed
             ? loginResult.Errors.BuildErrorResponse()
             : Results.Ok(mapper.Map<AuthenticationResponse>(loginResult.Value));
     }

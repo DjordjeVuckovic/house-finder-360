@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Api.Dto.Requests.Property;
+namespace HouseFinder360.RealEstates.Api.Dto.Requests.Property;
 
 public record AddressRequest(
     string Street,

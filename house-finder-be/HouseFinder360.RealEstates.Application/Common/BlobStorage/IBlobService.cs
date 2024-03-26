@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace HouseFinder360.RealEstates.Application.Common.BlobStorage;
 

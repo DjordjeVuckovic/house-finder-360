@@ -1,4 +1,2 @@
-import {HomePage} from "./home.page.tsx"
-export {
-    HomePage
-}
+import { HomePage } from './home.page.tsx'
+export { HomePage }

@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using HouseFinder360.Users.Infrastructure.Common.Errors;
 using HouseFinder360.Users.Infrastructure.Common.Interfaces;
 using HouseFinder360.Users.Infrastructure.Features.Authentication.Common;
@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HouseFinder360.Users.Infrastructure.Features.Authentication.Query.Login;
 
-public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
+public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<AuthResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly UserDbContext _dbContext;
     private readonly UserManager<User> _userManager;
 
     public LoginQueryHandler(
-        IJwtTokenGenerator jwtTokenGenerator, 
-        UserDbContext dbContext, 
+        IJwtTokenGenerator jwtTokenGenerator,
+        UserDbContext dbContext,
         UserManager<User> userManager)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
@@ -31,9 +31,9 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
         var user = await _dbContext.Users
             .Include(x => x.Roles)
             .SingleOrDefaultAsync(x =>
-            x.PhoneNumber == query.EmailOrPhone || x.Email == query.EmailOrPhone, 
+            x.PhoneNumber == query.EmailOrPhone || x.Email == query.EmailOrPhone,
             cancellationToken);
-        
+
         if (user is null)
         {
             return Result.Fail<AuthResult>(UsersErrors.WrongCredentialForUser(query.EmailOrPhone));
@@ -52,7 +52,7 @@ public class LoginQueryHandler: IRequestHandler<LoginQuery, Result<AuthResult>>
         }
         catch (Exception exception)
         {
-            return Result.Fail<AuthResult>(UsersErrors.CannotGenerateToken); 
+            return Result.Fail<AuthResult>(UsersErrors.CannotGenerateToken);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Domain.RealEstates.Enums;
+namespace HouseFinder360.RealEstates.Domain.RealEstates.Enums;
 
 public enum TypeOfProperty
 {

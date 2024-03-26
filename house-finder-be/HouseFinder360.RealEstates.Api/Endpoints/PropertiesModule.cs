@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using HouseFinder360.RealEstates.Api.Dto.Requests.Property;
 using HouseFinder360.RealEstates.Api.Extensions;
 using HouseFinder360.RealEstates.Application.Common.Pagination;
@@ -31,7 +31,7 @@ internal static class PropertiesModule
             {
                 return Results.BadRequest(new ErrorResponse
                 {
-                    Errors = new[]{"Cannot find property form field!"}
+                    Errors = new[] { "Cannot find property form field!" }
                 });
             }
             var options = new JsonSerializerOptions
@@ -43,17 +43,17 @@ internal static class PropertiesModule
             {
                 return Results.BadRequest(new ErrorResponse
                 {
-                    Errors = new[]{"Wrong request format!"}
+                    Errors = new[] { "Wrong request format!" }
                 });
             }
             var mapped = mapper.Map<CreatePropertyCommand>(salePropertyRequest);
             mapped.Photos = photos;
             var result = await sender.Send(mapped);
-            return result.IsFailed 
+            return result.IsFailed
                 ? Results.BadRequest(result.Errors.ToResponse())
                 : Results.Ok();
         }).RequireAuthorization();
-        
+
         app.MapGet("api/v1/properties", async (
             int currentPage,
             int pageSize,
@@ -61,13 +61,13 @@ internal static class PropertiesModule
         {
             var properties = await sender.Send(
                 new GetPropertiesPaginiteQuery(new Pagination
-            {
-                CurrentPage = currentPage,
-                PageSize = pageSize
-            }));
+                {
+                    CurrentPage = currentPage,
+                    PageSize = pageSize
+                }));
             return Results.Ok(properties);
         });
-        
+
         app.MapGet("api/v1/properties/{userId:guid}", async (
             Guid userId,
             ISender sender) =>

@@ -1,10 +1,10 @@
-﻿using MediatR;
+using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace HouseFinder360.Application.BuildingBlocks.Common.Behaviours;
 
 public class UnhandledExceptionBehaviour<TRequest, TResponse>
-    : IPipelineBehavior<TRequest, TResponse> 
+    : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
 {
     private readonly ILogger<TRequest> _logger;

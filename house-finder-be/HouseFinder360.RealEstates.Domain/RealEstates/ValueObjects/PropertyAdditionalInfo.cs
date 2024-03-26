@@ -1,4 +1,4 @@
-﻿using HouseFinder360.Domain.BuildingBlocks.DDD;
+using HouseFinder360.Domain.BuildingBlocks.DDD;
 
 namespace HouseFinder360.RealEstates.Domain.RealEstates.ValueObjects;
 
@@ -6,9 +6,9 @@ public class PropertyAdditionalInfo : ValueObject
 {
     public DateOnly YearOfBuild { get; init; }
     public DateOnly AvailableFrom { get; init; }
-    public int BalconyNumber { get;  init; }
+    public int BalconyNumber { get; init; }
     public int BathroomNumber { get; init; }
-    public int ToiletNumber { get;  init; }
+    public int ToiletNumber { get; init; }
     public bool HaveKitchen { get; init; }
     public bool HaveStorage { get; init; }
     public bool HaveParking { get; init; }

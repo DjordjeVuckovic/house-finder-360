@@ -1,0 +1,48 @@
+﻿name: Frontend CI
+on:
+  push:
+    branches:
+      - 'feature/**'
+      - 'release/**'
+      - 'dev'
+      - 'main'
+  pull_request:
+    branches:
+      - 'feature/**'
+      - 'release/**'
+      - 'dev'
+      - 'main'
+  workflow_dispatch:
+
+jobs:
+    build-and-publish:
+        runs-on: ubuntu-latest
+        defaults:
+          run:
+              shell: bash
+              working-directory: house-finder-fe
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Install Node.js
+              uses: actions/setup-node@v2
+              with:
+                node-version: '18'
+
+            - name: Install dependencies
+              run: npm install
+            
+            - name: Check format
+              run: |
+                if ! npm run format:check; then
+                  echo "Error: Code formatting issues found. Did you forget to run 'npm run format'?"
+                  exit 1
+                fi
+              
+            - name: Lint
+              run: npm run lint
+
+            - name: Build
+              run: npm run build
+    

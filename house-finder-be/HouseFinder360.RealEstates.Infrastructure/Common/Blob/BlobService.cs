@@ -1,4 +1,4 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using HouseFinder360.RealEstates.Application.Common.BlobStorage;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +15,7 @@ public class BlobService : IBlobService
     }
     public async Task<HttpResponseMessage> CreateContainer(string containerName)
     {
-        var container = new CreateContainer{Name = containerName};
+        var container = new CreateContainer { Name = containerName };
         return await _client.PostAsJsonAsync($"api/v1/containers", container);
     }
 
@@ -29,11 +29,11 @@ public class BlobService : IBlobService
     {
         var formData = new MultipartFormDataContent(Guid.NewGuid().ToString());
         formData.Add(new StreamContent(file.OpenReadStream()), "file", file.FileName);
-        return await _client.PostAsync($"api/v1/files/{RealEstates.Application.Common.BlobStorage.CreateContainer.DefaultName}", formData);
+        return await _client.PostAsync($"api/v1/files/{Application.Common.BlobStorage.CreateContainer.DefaultName}", formData);
     }
     public async Task<HttpResponseMessage> UploadMultipleFilesDefaultContainer(IFormFileCollection files)
     {
-        
+
         using var content = new MultipartFormDataContent();
 
         foreach (var file in files)
@@ -49,6 +49,6 @@ public class BlobService : IBlobService
 
             content.Add(fileContent, "files", file.FileName);
         }
-        return await _client.PostAsync($"api/v1/files/multiple/{RealEstates.Application.Common.BlobStorage.CreateContainer.DefaultName}", content);
+        return await _client.PostAsync($"api/v1/files/multiple/{Application.Common.BlobStorage.CreateContainer.DefaultName}", content);
     }
 }

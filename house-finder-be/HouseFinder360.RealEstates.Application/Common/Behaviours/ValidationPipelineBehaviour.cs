@@ -1,4 +1,4 @@
-﻿using FluentResults;
+using FluentResults;
 using FluentValidation;
 using HouseFinder360.Domain.BuildingBlocks.Errors;
 using MediatR;
@@ -29,7 +29,7 @@ public class ValidationPipelineBehaviour<TRequest, TResponse> : IPipelineBehavio
 
         var failures = validationResults
             .Where(r => r.Errors.Any())
-            .SelectMany(r => r.Errors.Select(x => new ErrorResult(x.ErrorMessage,ErrorStatusCodes.BadRequest)))
+            .SelectMany(r => r.Errors.Select(x => new ErrorResult(x.ErrorMessage, ErrorStatusCodes.BadRequest)))
             .ToList();
 
         if (!failures.Any()) return await next();

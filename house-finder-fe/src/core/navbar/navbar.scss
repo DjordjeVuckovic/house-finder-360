@@ -1,4 +1,4 @@
-@import "src/scss/variables";
+@import 'src/scss/variables';
 .navbar-wrapper {
   background: $black;
   color: $text-color;
@@ -17,22 +17,22 @@
     cursor: pointer;
   }
 }
-.navbar-menu-end{
+.navbar-menu-end {
   gap: 2rem;
   &:hover {
     cursor: pointer;
   }
 }
-.logo-container{
-  padding-bottom: .5rem;
-  .image-logo{
+.logo-container {
+  padding-bottom: 0.5rem;
+  .image-logo {
     cursor: pointer;
-    &:hover{
+    &:hover {
       transform: scale(1.02);
     }
   }
 }
-.button-link{
+.button-link {
   text-decoration: none;
   color: $text-color;
 }

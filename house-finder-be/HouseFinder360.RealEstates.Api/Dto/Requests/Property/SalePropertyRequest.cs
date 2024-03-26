@@ -1,9 +1,9 @@
-﻿namespace HouseFinder360.RealEstates.Api.Dto.Requests.Property;
+namespace HouseFinder360.RealEstates.Api.Dto.Requests.Property;
 
 public record SalePropertyRequest(
     string Title,
     string Description,
-    string RoomsNumber, 
+    string RoomsNumber,
     AddressRequest Address,
     string Condition,
     int Area,
@@ -14,8 +14,8 @@ public record SalePropertyRequest(
     string RegisterStatus,
     string Heating,
     int ElevatorsNumber,
-    int NumberOfToilets, 
-    int BathroomsNumber, 
+    int NumberOfToilets,
+    int BathroomsNumber,
     int NumberOfBalconies,
-    Guid UserId, 
-    string ListingType );
+    Guid UserId,
+    string ListingType);

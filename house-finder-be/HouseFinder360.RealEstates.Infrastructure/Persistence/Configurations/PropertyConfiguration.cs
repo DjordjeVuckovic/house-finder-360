@@ -1,4 +1,4 @@
-﻿using HouseFinder360.RealEstates.Domain.RealEstates;
+using HouseFinder360.RealEstates.Domain.RealEstates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,13 +14,13 @@ public class PropertyConfiguration : IEntityTypeConfiguration<RealEstate>
         builder.Property(x => x.Title)
             .HasMaxLength(100);
         builder.HasIndex(x => x.UserId);
-        builder.OwnsOne(saleProperty => saleProperty.Price, 
+        builder.OwnsOne(saleProperty => saleProperty.Price,
             pb =>
         {
             pb.Property(x => x.Value)
                 .HasColumnName("Price");
         });
-        
+
         builder.OwnsOne(x => x.FloorInformation, fi =>
         {
             fi.Property(x => x.TotalFloors)
@@ -30,19 +30,19 @@ public class PropertyConfiguration : IEntityTypeConfiguration<RealEstate>
                 .HasColumnName("Floor")
                 .HasMaxLength(20);
         });
-        
+
         builder.OwnsOne(x => x.PropertyType, pt =>
         {
             pt.Property(x => x.PropertyTypeDeclaration)
                 .HasColumnName("PropertyTypeDeclaration")
                 .HasMaxLength(50);
         });
-        
+
         builder.OwnsOne(x => x.Area, a =>
         {
             a.Property(x => x.SquadMeter).HasColumnName("Area");
         });
-        
+
         builder.OwnsOne(x => x.AdditionalInfo);
         builder
             .HasOne(x => x.Address)
@@ -54,7 +54,7 @@ public class PropertyConfiguration : IEntityTypeConfiguration<RealEstate>
             .HasForeignKey(x => x.RealEstateId);
 
         builder.Ignore(x => x.TotalClicks);
-        
+
         builder.Ignore(x => x.TotalLikes);
     }
 }

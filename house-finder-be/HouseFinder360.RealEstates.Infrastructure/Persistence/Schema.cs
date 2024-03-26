@@ -1,4 +1,4 @@
-﻿namespace HouseFinder360.RealEstates.Infrastructure.Persistence;
+namespace HouseFinder360.RealEstates.Infrastructure.Persistence;
 
 public static class Schema
 {
