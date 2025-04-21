@@ -8,6 +8,7 @@ import { FilePreview } from './model/files.ts'
 import { useFileStore } from '../../state/file.store.ts'
 import { ButtonWithIcon } from '../../../../shared/ui/buttons'
 import { MdNavigateBefore, MdOutlineNavigateNext } from 'react-icons/md'
+
 export const UploadPhotosStep = ({ type, onBack, onNext }) => {
   const [dragging, setDragging] = useState(false)
   const { files, previews, addFiles, removeFile, addPreviews, removePreview } =
